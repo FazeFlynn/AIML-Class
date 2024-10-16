@@ -223,7 +223,7 @@
 
 ### `Decision Tree`:
 
-> ![Decision tree Of the Datset](images/decisiontrees.png)
+> ![Decision tree Of the Datset](/images/decisiontrees.png)
 
 
 
@@ -231,7 +231,7 @@
 ### `Formulas Of Decision Trees`:
 
 #### `Entropy (For Small datasets)`
-> ![Entropy Formula](images/btentropy.png)
+> ![Entropy Formula](/images/btentropy.png)
 
 - where:
    - H(S) is the entropy of the set (S),

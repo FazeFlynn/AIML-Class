@@ -460,6 +460,52 @@ Since **Outlook** has the highest Information Gain, it is chosen as the root nod
 
 # `Structure of ML:`
 
+<table>
+  <tr>
+    <th colspan="2">Supervised Learning</th>
+    <th>Unsupervised Learning</th>
+  </tr>
+  <tr>
+    <td>Classification</td>
+    <td>Regression</td>
+    <td>PCA</td>
+  </tr>
+  <tr>
+    <td>Logistic Regression</td>
+    <td>Linear Regression</td>
+    <td>K-mean Clustering</td>
+  </tr>
+  <tr>
+    <td>Naive Bayes</td>
+    <td>Ridge Regression</td>  
+    <td>Hierarchical Clustering</td>
+  </tr>
+  <tr>
+    <td>Linear Discriminant Analysis (LDA)</td>
+    <td>Lasso Regression</td>  
+    <td>DB Scan Clustering</td>
+  </tr>
+  <tr>
+    <td colspan="2" >Decision Trees</td>
+  </tr>
+  <tr>
+    <td colspan="2">Random Forest</td>
+  </tr>
+  <tr>
+    <td colspan="2">Support Vector Machines (SVM)</td>
+  </tr>
+  <tr>
+    <td colspan="2">K-Nearest Neighbors (KNN)</td>
+  </tr>
+  <tr>
+    <td colspan="2">Gradient Boosting Algorithms</td>
+  </tr>
+  <tr>
+    <td colspan="2">Neural Networks</td>
+  </tr>
+</table>
+
+<!-- 
 ## `Supervised Learning`
 
 - `Two Types:` `Classification and Regression`
@@ -494,6 +540,22 @@ Since **Outlook** has the highest Information Gain, it is chosen as the root nod
    - K-mean Clustering
    - Hierarchical Clustering
    - DB Scan Clustering
+ -->
+
+
+<!-- 
+| Supervised Learning                       | Unsupervised Learning                   |
+|------------------------------------------|-----------------------------------------|
+| Classification          Regression       | 2                                       |
+|        1                     2           | Unlabeled data                          |
+|        1                     2           | Discover hidden patterns or structures  |
+|        1                     2           | K-means, PCA, Apriori Algorithm         |
+|        1                     2           | Customer segmentation, anomaly detection|
+|        1                     2           | Difficult to evaluate objectively       |  
+-->
+
+
+
 
 
 
@@ -826,7 +888,8 @@ Random Forest is a powerful and flexible model that works well for many tasks. I
 
 
 
-### `Hierarchical Clustering`:
+# `Hierarchical Clustering`:
+
 **Hierarchical clustering** is an **unsupervised learning**  algorithm used for clustering data points into a hierarchy of clusters. It is commonly used in exploratory data analysis when the number of clusters is unknown. The goal is to create a dendrogram (tree-like diagram) that visually represents the nested grouping of data.
 
 ---
@@ -844,8 +907,6 @@ There are two main types of hierarchical clustering:
     - Splits the clusters iteratively until each data point is its own cluster.
 
 
----
-
 **2. Distance Metrics** In hierarchical clustering, the similarity between data points or clusters is determined using **distance metrics** . Commonly used distance metrics include: 
 - **Euclidean Distance** :
 $$
@@ -862,8 +923,6 @@ $$
  \text{similarity} = \frac{x \cdot y}{\|x\| \|y\|} 
 $$
 
-
----
 
 **3. Linkage Methods** 
 Linkage methods determine how the distance between clusters is calculated:
@@ -884,13 +943,9 @@ Linkage methods determine how the distance between clusters is calculated:
     - Generally produces clusters of similar size.
 
 
----
-
 **4. Dendrogram** A **dendrogram**  is a tree-like diagram used to represent the hierarchical structure of clusters. The height of the branches represents the distance or dissimilarity between clusters. 
 - **Cutting the Dendrogram** : By cutting the dendrogram at a certain height, you can choose the number of clusters.
 
-
----
 
 **5. Steps in Hierarchical Clustering** 
 ### Agglomerative Hierarchical Clustering: 
@@ -901,7 +956,6 @@ Linkage methods determine how the distance between clusters is calculated:
 4. **Repeat** : Continue merging until a single cluster remains.
 5. **Create Dendrogram** : Plot the hierarchical structure of the clusters.
 
----
 
 **6. Example in Python** 
 
@@ -932,7 +986,6 @@ plt.show()
 - **`linkage`**  performs hierarchical clustering using Ward’s method.
 - **`dendrogram`**  visualizes the hierarchical structure of clusters.
 
----
 
 **7. Advantages of Hierarchical Clustering**  
 - **No need to specify the number of clusters**  in advance (unlike K-Means).
@@ -944,8 +997,6 @@ plt.show()
 - Difficult to undo a merge (agglomerative) or a split (divisive) once made.
 
 
----
-
 **9. Applications of Hierarchical Clustering**  
 - **Gene expression analysis** : Group similar genes or samples based on expression patterns.
 - **Document clustering** : Organize documents into hierarchies based on content similarity.
@@ -953,3 +1004,252 @@ plt.show()
 
 
 ---
+
+
+
+
+
+# `K-Means Clustering` 
+[Refresher for K-Means Clustering](https://youtu.be/CLKW6uWJtTc?si=oU2h6lLe_fS9XDX1)
+
+
+**K-Means** Clustering is a popular **unsupervised learning**  algorithm used for **partitioning data**  into a specified number of clusters (K). The goal is to group data points into clusters such that points in the same cluster are more similar to each other than to those in other clusters. The algorithm iteratively refines the cluster centers (centroids) to minimize the sum of squared distances between each point and its nearest centroid.
+
+**1. How K-Means Clustering Works** 
+The K-Means algorithm follows these steps:
+ 
+1. **Choose the Number of Clusters (K)** :
+  - Decide the number of clusters, K.
+  - This is a hyperparameter that needs to be chosen in advance.
+ 
+2. **Initialize Centroids** :
+  - Randomly select K data points as initial cluster centroids.
+ 
+3. **Assign Data Points to Clusters** :
+  - For each data point, calculate its distance to each centroid.
+  - Assign the point to the cluster with the nearest centroid.
+ 
+4. **Update Centroids** :
+  - Calculate the new centroids as the mean of all points assigned to each cluster.
+ 
+5. **Repeat** :
+  - Repeat the assignment and update steps until the centroids no longer change significantly or a maximum number of iterations is reached.
+ 
+6. **Converge** :
+  - The algorithm stops when the centroids stabilize.
+
+
+**2. Distance Metrics** The most common distance metric used in K-Means Clustering is **Euclidean distance** :
+$$
+ \text{Distance} = \sqrt{\sum_{i=1}^n (x_i - y_i)^2} 
+$$
+
+
+**3. Example of K-Means Clustering in Python** 
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.datasets import make_blobs
+
+# Generate synthetic data
+X, _ = make_blobs(n_samples=300, centers=4, cluster_std=0.6, random_state=42)
+
+# Apply K-Means with K=4
+kmeans = KMeans(n_clusters=4, random_state=42)
+kmeans.fit(X)
+y_kmeans = kmeans.predict(X)
+
+# Plot the results
+plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, cmap='viridis', marker='o', edgecolor='k')
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=300, c='red', marker='X')
+plt.title("K-Means Clustering")
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
+plt.show()
+```
+**Explanation** : 
+  - **`make_blobs`**  generates a dataset with four distinct clusters.
+  - **`KMeans`**  is used to fit the model and assign cluster labels.
+  - **`cluster_centers_`**  provides the coordinates of the centroids.
+
+
+**4. Choosing the Number of Clusters (K)** 
+Selecting the right value of K is crucial for effective clustering. Common methods include:
+ 
+1. **Elbow Method** :
+  - Plot the sum of squared errors (SSE) for different values of K.
+  - The optimal K is often where the SSE starts to decrease more slowly (the "elbow").
+
+$$
+ \text{SSE} = \sum_{i=1}^{n} \|x_i - c_j\|^2 
+$$
+ 
+2. **Silhouette Score** :
+  - Measures how similar a point is to its own cluster compared to other clusters.
+  - A higher score indicates better clustering.
+
+
+**5. Advantages of K-Means Clustering**  
+
+  - **Simple and easy to implement** . 
+  - **Scales well**  to large datasets. 
+  - Efficient with a time complexity of $O(n \cdot k \cdot i)$, where n is the number of data points, k is the number of clusters, and i is the number of iterations.
+
+
+
+**6. Disadvantages of K-Means Clustering**  
+  - **Requires specification of K** : The number of clusters must be chosen beforehand. 
+  - **Sensitive to initial centroids** : Poor initialization can lead to suboptimal clustering. 
+  - **Assumes spherical clusters** : Struggles with non-spherical cluster shapes. 
+  - **Not robust to noise and outliers** : Outliers can significantly affect the centroids.
+
+
+**7. Limitations and Solutions**  
+1. **Limitation** : K-Means is sensitive to the initial placement of centroids. 
+  - **Solution** : Use the **K-Means++ initialization** , which selects initial centroids in a smart way to speed up convergence and improve accuracy.
+ 
+2. **Limitation** : Struggles with clusters of varying densities or non-spherical shapes. 
+  - **Solution** : Use density-based clustering algorithms like **DBSCAN**  or hierarchical clustering.
+
+
+
+**8. Applications of K-Means Clustering**  
+  - **Customer Segmentation** : Grouping customers based on purchasing behavior. 
+  - **Image Compression** : Reducing the number of colors in an image by clustering pixel colors. 
+  - **Anomaly Detection** : Identifying unusual data points as outliers. 
+  - **Document Clustering** : Grouping similar documents based on text features.
+
+
+**9. Practical Tips for Using K-Means**  
+  - **Standardize your data**  before applying K-Means, especially if features have different scales. 
+  - **Use the Elbow Method**  or **Silhouette Score**  to determine an optimal value for K. 
+  - **Initialize centroids using K-Means++**  to avoid poor convergence.
+
+
+---
+
+**10. Comparison with Other Clustering Algorithms**
+| Feature | K-Means | DBSCAN | Hierarchical Clustering | 
+| --- | --- | --- | --- | 
+| Number of Clusters | Must be specified | Not required | Can be decided using dendrogram | 
+| Cluster Shape | Spherical | Arbitrary | Arbitrary | 
+| Noise Handling | Poor | Robust (identifies noise) | Poor | 
+| Scalability | High | Moderate | Low | 
+
+
+#### `Practical Example of K-Means`
+
+<details>
+  <summary>Practical Example of K-Means</summary>
+
+
+##### Let us take Practical example  of K-Means clustering, including manual centroid selection, distance calculation, and updating the centroids.**Problem Statement** We have a small dataset with two features: **Height (in cm)**  and **Weight (in kg)** . We want to cluster these points into **2 clusters (K = 2)**  using the K-Means algorithm.**Step 1: Dataset**
+
+| Index | Height (in cm) | Weight (in kg) | 
+| --- | --- | --- | 
+| 1 | 150 | 50 | 
+| 2 | 160 | 55 | 
+| 3 | 170 | 65 | 
+| 4 | 180 | 70 | 
+| 5 | 155 | 52 | 
+| 6 | 165 | 60 | 
+
+**Step 2: Initial Centroid Selection** 
+Let's randomly choose the first two data points as our initial centroids:
+ 
+- **Centroid 1** : (150, 50) 
+- **Centroid 2** : (160, 55)
+
+**Step 3: Calculate Euclidean Distance** 
+For each data point, we calculate the Euclidean distance to each centroid.
+
+$$
+ \text{Distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} 
+$$
+**Distance calculations** : 
+- For **Point 1**  (150, 50): 
+  - Distance to Centroid 1: $\sqrt{(150-150)^2 + (50-50)^2} = 0$ 
+  - Distance to Centroid 2: $\sqrt{(160-150)^2 + (55-50)^2} = \sqrt{100 + 25} = \sqrt{125} = 11.18$ 
+  - Assign to **Cluster 1**  (closer to Centroid 1).
+ 
+- For **Point 2**  (160, 55): 
+  - Distance to Centroid 1: $\sqrt{(160-150)^2 + (55-50)^2} = 11.18$$
+  - Distance to Centroid 2: $\sqrt{(160-160)^2 + (55-55)^2} = 0$ 
+  - Assign to **Cluster 2**  (closer to Centroid 2).
+ 
+- For **Point 3**  (170, 65): 
+  - Distance to Centroid 1: $\sqrt{(170-150)^2 + (65-50)^2} = \sqrt{400 + 225} = \sqrt{625} = 25$
+  - Distance to Centroid 2: $\sqrt{(170-160)^2 + (65-55)^2} = \sqrt{100 + 100} = \sqrt{200} = 14.14$
+  - Assign to **Cluster 2** .
+ 
+- For **Point 4**  (180, 70): 
+  - Distance to Centroid 1: $\sqrt{(180-150)^2 + (70-50)^2} = \sqrt{900 + 400} = \sqrt{1300} = 36.06$
+  - Distance to Centroid 2: $\sqrt{(180-160)^2 + (70-55)^2} = \sqrt{400 + 225} = \sqrt{625} = 25$
+  - Assign to **Cluster 2** .
+ 
+- For **Point 5**  (155, 52): 
+  - Distance to Centroid 1: $\sqrt{(155-150)^2 + (52-50)^2} = \sqrt{25 + 4} = \sqrt{29} = 5.39$ 
+  - Distance to Centroid 2: $\sqrt{(155-160)^2 + (52-55)^2} = \sqrt{25 + 9} = \sqrt{34} = 5.83$
+  - Assign to **Cluster 1** .
+ 
+- For **Point 6**  (165, 60): 
+  - Distance to Centroid 1: $\sqrt{(165-150)^2 + (60-50)^2} = \sqrt{225 + 100} = \sqrt{325} = 18.03$ 
+  - Distance to Centroid 2: $\sqrt{(165-160)^2 + (60-55)^2} = \sqrt{25 + 25} = \sqrt{50} = 7.07$ 
+  - Assign to **Cluster 2** .
+
+**Step 4: Cluster Assignment**
+
+| Index | Height | Weight | Assigned Cluster | 
+| --- | --- | --- | --- | 
+| 1 | 150 | 50 | Cluster 1 | 
+| 2 | 160 | 55 | Cluster 2 | 
+| 3 | 170 | 65 | Cluster 2 | 
+| 4 | 180 | 70 | Cluster 2 | 
+| 5 | 155 | 52 | Cluster 1 | 
+| 6 | 165 | 60 | Cluster 2 | 
+
+**Step 5: Update Centroids** 
+Calculate the new centroids by taking the mean of the points in each cluster:
+ 
+- **New Centroid 1** : Mean of points in Cluster 1: 
+  - Height: $(150 + 155) / 2 = 152.5$
+  - Weight: $(50 + 52) / 2 = 51$
+  - New Centroid 1: (152.5, 51)
+ 
+- **New Centroid 2** : Mean of points in Cluster 2: 
+  - Height: $(160 + 170 + 180 + 165) / 4 = 168.75$
+  - Weight: $(55 + 65 + 70 + 60) / 4 = 62.5$
+  - New Centroid 2: (168.75, 62.5)
+  
+**Step 6: Repeat the Process** 
+We repeat the distance calculation and cluster assignment steps with the new centroids until the centroids do not change (convergence).
+**Final Clusters** 
+After a few iterations, the centroids stabilize, and we obtain the final clusters:
+
+| Index | Height | Weight | Final Cluster | 
+| --- | --- | --- | --- | 
+| 1 | 150 | 50 | Cluster 1 | 
+| 2 | 160 | 55 | Cluster 2 | 
+| 3 | 170 | 65 | Cluster 2 | 
+| 4 | 180 | 70 | Cluster 2 | 
+| 5 | 155 | 52 | Cluster 1 | 
+| 6 | 165 | 60 | Cluster 2 | 
+
+**Visualization**  
+- **Cluster 1** : Represents shorter individuals with lower weight.
+- **Cluster 2** : Represents taller individuals with higher weight.
+
+This manual step-by-step example shows the core mechanism of the K-Means algorithm. In practice, libraries like **Scikit-Learn**  perform these steps efficiently.
+
+
+
+</details>
+
+---
+
+
+
+
+

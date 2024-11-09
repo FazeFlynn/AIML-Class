@@ -3,7 +3,8 @@
 ---
 
 
-# `Structure of ML:`
+# Structure of ML:
+
 <div style="display: flex; justify-content: center;">
 <table style="text-align: center;">
   <tr>

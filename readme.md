@@ -487,21 +487,38 @@ Since **Outlook** has the highest Information Gain, it is chosen as the root nod
   </tr>
   <tr>
     <td colspan="2" >Decision Trees</td>
+    <td> </td>
+    <td> </td>
   </tr>
   <tr>
     <td colspan="2">Random Forest</td>
+    <td> </td>
+    <td> </td>
+
   </tr>
   <tr>
     <td colspan="2">Support Vector Machines (SVM)</td>
+    <td> </td>
+    <td> </td>
+
   </tr>
   <tr>
     <td colspan="2">K-Nearest Neighbors (KNN)</td>
+    <td> </td>
+    <td> </td>
+
   </tr>
   <tr>
     <td colspan="2">Gradient Boosting Algorithms</td>
+    <td> </td>
+    <td> </td>
+
   </tr>
   <tr>
     <td colspan="2">Neural Networks</td>
+    <td> </td>
+    <td> </td>
+
   </tr>
 </table>
 

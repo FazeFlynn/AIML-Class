@@ -460,7 +460,7 @@ Since **Outlook** has the highest Information Gain, it is chosen as the root nod
 
 # `Structure of ML:`
 
-<table>
+<table style="text-align: center;">
   <tr>
     <th colspan="2">Supervised Learning</th>
     <th>Unsupervised Learning</th>

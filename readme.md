@@ -486,7 +486,7 @@ Since **Outlook** has the highest Information Gain, it is chosen as the root nod
     <td>DB Scan Clustering</td>
   </tr>
   <tr>
-    <td colspan="2" >Decision Trees</td>
+    <td colspan="2" style="text-align: center;">Decision Trees</td>
     <td> </td>
   </tr>
   <tr>

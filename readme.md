@@ -465,7 +465,26 @@ Since **Outlook** has the highest Information Gain, it is chosen as the root nod
     <th colspan="2">Supervised Learning</th>
     <th>Unsupervised Learning</th>
   </tr>
-
+  <tr>
+    <td>Classification</td>
+    <td>Regression</td>
+    <td>PCA</td>
+  </tr>
+  <tr>
+    <td>Logistic Regression</td>
+    <td>Linear Regression</td>
+    <td>K-mean Clustering</td>
+  </tr>
+  <tr>
+    <td>Naive Bayes</td>
+    <td>Ridge Regression</td>  
+    <td>Hierarchical Clustering</td>
+  </tr>
+  <tr>
+    <td>Linear Discriminant Analysis (LDA)</td>
+    <td>Lasso Regression</td>  
+    <td>DB Scan Clustering</td>
+  </tr>
   <tr>
     <td colspan="2" style="text-align: center;">Decision Trees</td>
     <td> </td>
@@ -489,26 +508,6 @@ Since **Outlook** has the highest Information Gain, it is chosen as the root nod
   <tr>
     <td colspan="2">Neural Networks</td>
     <td> </td>
-  </tr>
-  <tr>
-    <td>Classification</td>
-    <td>Regression</td>
-    <td>PCA</td>
-  </tr>
-  <tr>
-    <td>Logistic Regression</td>
-    <td>Linear Regression</td>
-    <td>K-mean Clustering</td>
-  </tr>
-  <tr>
-    <td>Naive Bayes</td>
-    <td>Ridge Regression</td>  
-    <td>Hierarchical Clustering</td>
-  </tr>
-  <tr>
-    <td>Linear Discriminant Analysis (LDA)</td>
-    <td>Lasso Regression</td>  
-    <td>DB Scan Clustering</td>
   </tr>
 </table>
 </div>

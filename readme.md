@@ -459,7 +459,7 @@ Since **Outlook** has the highest Information Gain, it is chosen as the root nod
 
 
 # `Structure of ML:`
-
+<div style="display: flex; justify-content: center;">
 <table style="text-align: center;">
   <tr>
     <th colspan="2">Supervised Learning</th>
@@ -510,6 +510,7 @@ Since **Outlook** has the highest Information Gain, it is chosen as the root nod
     <td> </td>
   </tr>
 </table>
+</div>
 
 <!-- 
 ## `Supervised Learning`

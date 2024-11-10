@@ -146,23 +146,23 @@
 ### Precision & R-Squared (for Regression)
 
 1. **R-Squared (R²):**
-   - Formula: 
+  - Formula: 
 
-     $$
-        R^2 = 1 - \left(\frac{\text{Sum of Squared Residuals}}{\text{Total Sum of Squares}}\right)
-     $$
+  $$
+    R^2 = 1 - \left(\frac{\text{Sum of Squared Residuals}}{\text{Total Sum of Squares}}\right)
+  $$
 
-   - Problem: It doesn't account for which features are relevant.
+  - Problem: It doesn't account for which features are relevant.
 
 2. **Adjusted R-Squared:**
-   - Formula:
+  - Formula:
 
-$$
-Adjusted R^2 = 1 - \left(\frac{(1-R^2)(N-1)}{N-P-1}\right)
-$$
+  $$
+    \text{Adjusted } R^2 = 1 - \left(\frac{(1-R^2)(N-1)}{N-P-1}\right)
+  $$
 
-   - `N`: Number of data points
-   - `P`: Number of independent features
+  - `N`: Number of data points
+  - `P`: Number of independent features
 
 ---
 

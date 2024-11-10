@@ -149,7 +149,7 @@
    - Formula: 
 
      $$
-        R^2 = 1 - \left(\frac{\text{Sum of Squared Residuals}}{\text{Total Sum of Squares}}\right)
+        R^2 = 1 - \left(\frac{\text{Sum of Squared Residuals}}{\text{Total Sum of Squares}})
      $$
 
    - Problem: It doesn't account for which features are relevant.
@@ -158,7 +158,7 @@
    - Formula:
 
      $$
-        \text{Adjusted} R^2 = 1 - \left(\frac{(1-R^2)(N-1)}{N-P-1}\right)
+        Adjusted R^2 = 1 - \left(\frac{(1-R^2)(N-1)}{N-P-1}\right)
      $$
 
    - `N`: Number of data points

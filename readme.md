@@ -208,11 +208,11 @@
 ### Performance Metrics for Imbalanced Data
 
 1. **Precision:**
-   - Formula: 
+  - Formula: 
 
-     $$
-        \text{Precision} = \frac{TP}{TP + FP}
-     $$
+  $$
+    \text{Precision} = \frac{TP}{TP + FP}
+  $$
 
 2. **Recall:**
    - Formula: 

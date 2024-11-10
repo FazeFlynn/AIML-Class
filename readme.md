@@ -158,7 +158,7 @@
    - Formula:
 
 $$
-\text{Adjusted} R^2 = 1 - \left(\frac{(1-R^2)(N-1)}{N-P-1}\right)
+Adjusted R^2 = 1 - \left(\frac{(1-R^2)(N-1)}{N-P-1}\right)
 $$
 
    - `N`: Number of data points

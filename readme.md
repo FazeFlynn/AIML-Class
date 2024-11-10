@@ -147,16 +147,20 @@
 
 1. **R-Squared (R²):**
    - Formula: 
-     \[
+
+     $$
      R^2 = 1 - \left(\frac{\text{Sum of Squared Residuals}}{\text{Total Sum of Squares}}\right)
-     \]
+     $$
+
    - Problem: It doesn't account for which features are relevant.
 
 2. **Adjusted R-Squared:**
    - Formula:
-     \[
+
+     $$
      \text{Adjusted } R^2 = 1 - \left(\frac{(1-R^2)(N-1)}{N-P-1}\right)
-     \]
+     $$
+
    - `N`: Number of data points
    - `P`: Number of independent features
 
@@ -205,15 +209,18 @@
 
 1. **Precision:**
    - Formula: 
-     \[
+
+     $$
      \text{Precision} = \frac{TP}{TP + FP}
-     \]
+     $$
 
 2. **Recall:**
    - Formula: 
-     \[
+
+     $$
      \text{Recall} = \frac{TP}{TP + FN}
-     \]
+     $$
+
    - Used when reducing **False Negatives (FN)** is important.
 
 3. **F-Beta Score:**
@@ -228,9 +235,11 @@
 #### Measures of Central Tendency:
 1. **Mean:** 
    - Formula: 
-     \[
+
+     $$
      \text{Mean} = \frac{\text{Sum of All Numbers}}{\text{Count of Numbers}}
-     \]
+     $$
+
 2. **Median:**
    - Arrange data in ascending order and pick the middle value.
    - Use **Median** when there are outliers.
@@ -382,13 +391,13 @@ Where:
 - p(yes) = 9/14
 - p(no) = 5/14
 
-\[
+$$
 H(S) = - \\frac{9}{14} \log_2 \\left( \\frac{9}{14} \\right) - \\frac{5}{14} \log_2 \\left( \\frac{5}{14} \\right)
-\]
+$$
 
-\[
+$$
 H(S) ≈ -0.642 - 0.530 ≈ 1.172
-\]
+$$
 
 ---
 
@@ -396,9 +405,9 @@ H(S) ≈ -0.642 - 0.530 ≈ 1.172
 
 The Information Gain for a feature is the difference between the entropy of the original set and the weighted entropy after splitting the dataset on that feature.
 
-\[
+$$
 IG = H(S) - \\sum \\left( \\frac{|S_i|}{|S|} H(S_i) \\right)
-\]
+$$
 
 ### Feature: **Outlook**
 
@@ -409,14 +418,16 @@ IG = H(S) - \\sum \\left( \\frac{|S_i|}{|S|} H(S_i) \\right)
 | Rain     | 3 Yes, 2 No           | 5/14       |
 
 #### Entropy for Outlook:
-\[
+
+$$
 H(Outlook) ≈ 0.693
-\]
+$$
 
 #### Information Gain for Outlook:
-\[
+
+$$
 IG(Outlook) ≈ 0.479
-\]
+$$
 
 ### Feature: **Temperature**
 
@@ -427,14 +438,16 @@ IG(Outlook) ≈ 0.479
 | Cool        | 3 Yes, 1 No           | 4/14       |
 
 #### Entropy for Temperature:
-\[
+
+$$
 H(Temperature) ≈ 0.911
-\]
+$$
 
 #### Information Gain for Temperature:
-\[
+
+$$
 IG(Temperature) ≈ 0.261
-\]
+$$
 
 ### Feature: **Humidity**
 
@@ -444,14 +457,16 @@ IG(Temperature) ≈ 0.261
 | Normal   | 6 Yes, 1 No           | 7/14       |
 
 #### Entropy for Humidity:
-\[
+
+$$
 H(Humidity) ≈ 0.789
-\]
+$$
 
 #### Information Gain for Humidity:
-\[
+
+$$
 IG(Humidity) ≈ 0.383
-\]
+$$
 
 ### Feature: **Wind**
 
@@ -461,14 +476,16 @@ IG(Humidity) ≈ 0.383
 | Strong | 3 Yes, 3 No           | 6/14       |
 
 #### Entropy for Wind:
-\[
+
+$$
 H(Wind) ≈ 0.892
-\]
+$$
 
 #### Information Gain for Wind:
-\[
+
+$$
 IG(Wind) ≈ 0.280
-\]
+$$
 
 ---
 
@@ -923,16 +940,19 @@ There are two main types of hierarchical clustering:
 
 **2. Distance Metrics** In hierarchical clustering, the similarity between data points or clusters is determined using **distance metrics** . Commonly used distance metrics include: 
 - **Euclidean Distance** :
+
 $$
  d(x, y) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2} 
 $$
  
 - **Manhattan Distance** :
+
 $$
  d(x, y) = \sum_{i=1}^n |x_i - y_i| 
 $$
  
 - **Cosine Similarity** :
+
 $$
  \text{similarity} = \frac{x \cdot y}{\|x\| \|y\|} 
 $$
@@ -1054,6 +1074,7 @@ The K-Means algorithm follows these steps:
 
 
 **2. Distance Metrics** The most common distance metric used in K-Means Clustering is **Euclidean distance** :
+
 $$
  \text{Distance} = \sqrt{\sum_{i=1}^n (x_i - y_i)^2} 
 $$
@@ -1182,6 +1203,7 @@ For each data point, we calculate the Euclidean distance to each centroid.
 $$
  \text{Distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} 
 $$
+
 **Distance calculations** : 
 - For **Point 1**  (150, 50): 
   - Distance to Centroid 1: $\sqrt{(150-150)^2 + (50-50)^2} = 0$ 
@@ -1189,7 +1211,7 @@ $$
   - Assign to **Cluster 1**  (closer to Centroid 1).
  
 - For **Point 2**  (160, 55): 
-  - Distance to Centroid 1: $\sqrt{(160-150)^2 + (55-50)^2} = 11.18$$
+  - Distance to Centroid 1: $\sqrt{(160-150)^2 + (55-50)^2} = 11.18$
   - Distance to Centroid 2: $\sqrt{(160-160)^2 + (55-55)^2} = 0$ 
   - Assign to **Cluster 2**  (closer to Centroid 2).
  

@@ -149,7 +149,7 @@
    - Formula: 
 
      $$
-        R^2 = 1 - \left(\frac{\text{Sum of Squared Residuals}}{\text{Total Sum of Squares}})
+        R^2 = 1 - \left(\frac{\text{Sum of Squared Residuals}}{\text{Total Sum of Squares}}\right)
      $$
 
    - Problem: It doesn't account for which features are relevant.

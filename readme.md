@@ -215,13 +215,13 @@
   $$
 
 2. **Recall:**
-   - Formula: 
+  - Formula: 
 
-     $$
-        \text{Recall} = \frac{TP}{TP + FN}
-     $$
+  $$
+    \text{Recall} = \frac{TP}{TP + FN}
+  $$
 
-   - Used when reducing **False Negatives (FN)** is important.
+  - Used when reducing **False Negatives (FN)** is important.
 
 3. **F-Beta Score:**
    - Combines precision and recall.
@@ -234,11 +234,11 @@
 
 #### Measures of Central Tendency:
 1. **Mean:** 
-   - Formula: 
+  - Formula: 
 
-     $$
-        \text{Mean} = \frac{\text{Sum of All Numbers}}{\text{Count of Numbers}}
-     $$
+  $$
+    \text{Mean} = \frac{\text{Sum of All Numbers}}{\text{Count of Numbers}}
+  $$
 
 2. **Median:**
    - Arrange data in ascending order and pick the middle value.
@@ -942,19 +942,19 @@ There are two main types of hierarchical clustering:
 - **Euclidean Distance** :
 
 $$
- d(x, y) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2} 
+  \large{d(x, y) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}} 
 $$
  
 - **Manhattan Distance** :
 
 $$
- d(x, y) = \sum_{i=1}^n |x_i - y_i| 
+  d(x, y) = \sum_{i=1}^n |x_i - y_i| 
 $$
  
 - **Cosine Similarity** :
 
 $$
- \text{similarity} = \frac{x \cdot y}{\|x\| \|y\|} 
+  \text{similarity} = \frac{x \cdot y}{\|x\| \|y\|} 
 $$
 
 

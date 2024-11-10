@@ -149,7 +149,7 @@
    - Formula: 
 
      $$
-     R^2 = 1 - \left(\frac{\text{Sum of Squared Residuals}}{\text{Total Sum of Squares}}\right)
+        R^2 = 1 - \left(\frac{\text{Sum of Squared Residuals}}{\text{Total Sum of Squares}}\right)
      $$
 
    - Problem: It doesn't account for which features are relevant.
@@ -158,7 +158,7 @@
    - Formula:
 
      $$
-     \text{Adjusted } R^2 = 1 - \left(\frac{(1-R^2)(N-1)}{N-P-1}\right)
+        \text{Adjusted } R^2 = 1 - \left(\frac{(1-R^2)(N-1)}{N-P-1}\right)
      $$
 
    - `N`: Number of data points
@@ -211,14 +211,14 @@
    - Formula: 
 
      $$
-     \text{Precision} = \frac{TP}{TP + FP}
+        \text{Precision} = \frac{TP}{TP + FP}
      $$
 
 2. **Recall:**
    - Formula: 
 
      $$
-     \text{Recall} = \frac{TP}{TP + FN}
+        \text{Recall} = \frac{TP}{TP + FN}
      $$
 
    - Used when reducing **False Negatives (FN)** is important.
@@ -237,7 +237,7 @@
    - Formula: 
 
      $$
-     \text{Mean} = \frac{\text{Sum of All Numbers}}{\text{Count of Numbers}}
+        \text{Mean} = \frac{\text{Sum of All Numbers}}{\text{Count of Numbers}}
      $$
 
 2. **Median:**
@@ -392,11 +392,11 @@ Where:
 - p(no) = 5/14
 
 $$
-H(S) = - \\frac{9}{14} \log_2 \\left( \\frac{9}{14} \\right) - \\frac{5}{14} \log_2 \\left( \\frac{5}{14} \\right)
+  H(S) = - \\frac{9}{14} \log_2 \\left( \\frac{9}{14} \\right) - \\frac{5}{14} \log_2 \\left( \\frac{5}{14} \\right)
 $$
 
 $$
-H(S) ≈ -0.642 - 0.530 ≈ 1.172
+  H(S) ≈ -0.642 - 0.530 ≈ 1.172
 $$
 
 ---
@@ -406,7 +406,7 @@ $$
 The Information Gain for a feature is the difference between the entropy of the original set and the weighted entropy after splitting the dataset on that feature.
 
 $$
-IG = H(S) - \\sum \\left( \\frac{|S_i|}{|S|} H(S_i) \\right)
+  IG = H(S) - \\sum \\left( \\frac{|S_i|}{|S|} H(S_i) \\right)
 $$
 
 ### Feature: **Outlook**

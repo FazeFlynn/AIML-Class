@@ -158,7 +158,7 @@
    - Formula:
 
      $$
-        \text{Adjusted } R^2 = 1 - \left(\frac{(1-R^2)(N-1)}{N-P-1}\right)
+        \text{Adjusted} R^2 = 1 - \left(\frac{(1-R^2)(N-1)}{N-P-1}\right)
      $$
 
    - `N`: Number of data points
@@ -406,7 +406,7 @@ $$
 The Information Gain for a feature is the difference between the entropy of the original set and the weighted entropy after splitting the dataset on that feature.
 
 $$
-  IG = H(S) - \\sum \\left( \\frac{|S_i|}{|S|} H(S_i) \\right)
+IG = H(S) - \\sum \\left( \\frac{|S_i|}{|S|} H(S_i) \\right)
 $$
 
 ### Feature: **Outlook**

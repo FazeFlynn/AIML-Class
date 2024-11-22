@@ -407,7 +407,7 @@ The target variable is **Play Tennis**, which has 9 "Yes" and 5 "No" values. The
 `Formula`
 <!-- > ![H(S) = - p_{yes} \log_2(p_{yes}) - p_{no} \log_2(p_{no})](https://latex2png.com/pngs/adeba375467475dcfdb8598128c266b1.png) -->
 
-$H(S) = - p_{yes} \log_2(p_{yes}) - p_{no} \log_2(p_{no})$
+$$H(S) = - p_{yes} \log_2(p_{yes}) - p_{no} \log_2(p_{no})$$
 
 
 

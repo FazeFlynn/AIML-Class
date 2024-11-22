@@ -415,13 +415,9 @@ Where:
 - p(yes) = 9/14
 - p(no) = 5/14
 
-$$
-H(S) = - \\frac{9}{14} \log_2 \\left( \\frac{9}{14} \\right) - \\frac{5}{14} \log_2 \\left( \\frac{5}{14} \\right)
-$$
+$$H(S) = - \\frac{9}{14} \log_2 \\left( \\frac{9}{14} \\right) - \\frac{5}{14} \log_2 \\left( \\frac{5}{14} \\right)$$
 
-$$
-H(S) ≈ -0.642 - 0.530 ≈ 1.172
-$$
+$$H(S) ≈ -0.642 - 0.530 ≈ 1.172$$
 
 ---
 
@@ -430,9 +426,7 @@ $$
 The Information Gain for a feature is the difference between the entropy of the original set and the weighted entropy after splitting the dataset on that feature.
 
 
-$$
-IG = H(S) - \\sum \\left( \\frac{|S_i|}{|S|} H(S_i) \\right)
-$$
+$$IG = H(S) - \\sum \\left( \\frac{|S_i|}{|S|} H(S_i) \\right)$$
 
 ### Feature: **Outlook**
 
@@ -444,15 +438,11 @@ $$
 
 #### Entropy for Outlook:
 
-$$
-H(Outlook) ≈ 0.693
-$$
+$$H(Outlook) ≈ 0.693$$
 
 #### Information Gain for Outlook:
 
-$$
-IG(Outlook) ≈ 0.479
-$$
+$$IG(Outlook) ≈ 0.479$$
 
 ### Feature: **Temperature**
 
@@ -464,15 +454,11 @@ $$
 
 #### Entropy for Temperature:
 
-$$
-H(Temperature) ≈ 0.911
-$$
+$$H(Temperature) ≈ 0.911$$
 
 #### Information Gain for Temperature:
 
-$$
-IG(Temperature) ≈ 0.261
-$$
+$$IG(Temperature) ≈ 0.261$$
 
 ### Feature: **Humidity**
 
@@ -483,15 +469,11 @@ $$
 
 #### Entropy for Humidity:
 
-$$
-H(Humidity) ≈ 0.789
-$$
+$$H(Humidity) ≈ 0.789$$
 
 #### Information Gain for Humidity:
 
-$$
-IG(Humidity) ≈ 0.383
-$$
+$$IG(Humidity) ≈ 0.383$$
 
 ### Feature: **Wind**
 
@@ -502,15 +484,11 @@ $$
 
 #### Entropy for Wind:
 
-$$
-H(Wind) ≈ 0.892
-$$
+$$H(Wind) ≈ 0.892$$
 
 #### Information Gain for Wind:
 
-$$
-IG(Wind) ≈ 0.280
-$$
+$$IG(Wind) ≈ 0.280$$
 
 ---
 

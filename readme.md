@@ -1336,7 +1336,7 @@ $$
 \hat{y} = \frac{1}{n} \sum_{i=1}^{n} T_i(x)
 $$
 
-Here
+- Here
 
   - **$\hat{y}$**: Predicted value (output)  
   - **$n$**: Number of trees in the ensemble (e.g., in a random forest)  
@@ -1385,13 +1385,12 @@ $$
 H(S) = - \sum_{i=1}^n p_i \log_2(p_i)
 $$  
 
-Here
+- Here
 
   - **$H(S)$** = Entropy of the dataset $S$  
   - **$\sum_{i=1}^{n}$** = Summation over all $n$ possible classes or outcomes  
   - **$p_i$** = Proportion or probability of class $i$ in the dataset  
   - **$\log_2(p_i)$** = Logarithm base 2 of $p_i$  
-
 
 
 - **Gini Impurity**: 
@@ -1406,7 +1405,7 @@ $$
 IG = H(S) - \sum_{i=1}^k \frac{|S_k|}{|S|} H(S_k)
 $$
 
-Where
+- Where
 
   - **$IG$** = Information Gain  
   - **$H(S)$** = Entropy of the original dataset $S$  
@@ -1458,7 +1457,7 @@ $$
 J = \sum_{i=1}^k \sum_{x \in C_i} ||x - \mu_i||^2
 $$
 
-Here
+- Here
 
   - **$J$** = Objective function (sum of squared errors)  
   - **$\sum_{i=1}^{k}$** = Summation over all $k$ clusters  

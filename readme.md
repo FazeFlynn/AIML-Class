@@ -1457,10 +1457,7 @@ print("Predictions:", predictions)
 
 ## **3. Unsupervised Learning**
 [Detailed Explanation here](#Unsupervised-Learning)
-
 Unsupervised learning algorithms learn patterns from unlabeled data.
-
----
 
 #### **3.1 K-Means Clustering**
 [Detailed Explanation here](#k-means-clustering)

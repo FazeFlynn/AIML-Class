@@ -502,13 +502,16 @@ Since **Outlook** has the highest Information Gain, it is chosen as the root nod
 
 
 
+
+# Unsupervised Learning: - Unsupervised learning is a type of machine learning that involves training models using data that has no labels or specific output. The goal is to uncover hidden structures, patterns, or insights from the data. Unlike supervised learning, there is no direct feedback or target variable to guide the learning process.
+
+
 ## `Topics under Unsupervised Learning`:
    - K-means
    - DB Scan
    - Hierarchical CLustering
    - Dimensionality Reduction
 
-`Unsupervised Learning:` - Unsupervised learning is a type of machine learning that involves training models using data that has no labels or specific output. The goal is to uncover hidden structures, patterns, or insights from the data. Unlike supervised learning, there is no direct feedback or target variable to guide the learning process.
 
 ## `Examples of Unsupervised Learning`:
 
@@ -1044,7 +1047,7 @@ plt.show()
 
 
 # `K-Means Clustering` 
-[Refresher for K-Means Clustering](https://youtu.be/CLKW6uWJtTc?si=oU2h6lLe_fS9XDX1) {target="_blank"}
+[Refresher for K-Means Clustering](https://youtu.be/CLKW6uWJtTc?si=oU2h6lLe_fS9XDX1)
 
 
 **K-Means** Clustering is a popular **unsupervised learning**  algorithm used for **partitioning data**  into a specified number of clusters (K). The goal is to group data points into clusters such that points in the same cluster are more similar to each other than to those in other clusters. The algorithm iteratively refines the cluster centers (centroids) to minimize the sum of squared distances between each point and its nearest centroid.
@@ -1371,6 +1374,7 @@ print("Predictions:", predictions)
 ---
 
 ### **2. Decision Tree**
+[Detailed Explanation here](#knn-for-classification-and-regression)
 #### **Definition**  
 A Decision Tree is a flowchart-like structure where each internal node represents a feature test, each branch represents a decision outcome, and each leaf node represents a final prediction.
 
@@ -1442,6 +1446,7 @@ print("Predictions:", predictions)
 ---
 
 ### **3. Unsupervised Learning**
+[Detailed Explanation here](#Unsupervised-Learning)
 Unsupervised learning algorithms learn patterns from unlabeled data.
 
 ---

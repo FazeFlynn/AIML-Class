@@ -296,14 +296,22 @@
 > ![Decision tree Of the Datset](/images/decisiontrees.png)
 
 
-
-
 ### `Formulas Of Decision Trees`:
 
-#### `Entropy (For Small datasets)`
-> ![Entropy Formula](/images/btentropy.png)
+#### `Entropy (For Small datasets (2 classes))`
 
-- where:
+<!-- > ![Entropy Formula](/images/btentropy.png) -->
+
+$$
+H(S) = -p_1 \cdot \log_2(p_1) - p_2 \cdot \log_2(p_2)
+$$
+
+
+
+
+
+
+- where: 
    - H(S) is the entropy of the set (S),
    - p1 is the proportion of instances in class 1,
    - p2 is the proportion of instances in class 2.
@@ -311,7 +319,11 @@
    - in the case of impure split the will be 1 -->
 
 #### `Gini Impurity (For Large Datasets)`
-> ![Ginny Formula](https://latex2png.com/pngs/6cb4ca476124cf03743e4651613e01c4.png)
+<!-- > ![Ginny Formula](https://latex2png.com/pngs/6cb4ca476124cf03743e4651613e01c4.png) -->
+
+$$
+GI(S) = 1 - \sum_{i=1}^{n} p_i^2
+$$
 
 - where:
    - Gini(S) is the Gini impurity of the set (S).
@@ -319,7 +331,11 @@
    - pi is the proportion of instances belonging to class i.
 
 #### `Gini Impurity` - `when there are only two classes (class 1 and class 2)`
-> ![Ginny2 Formula](https://latex2png.com/pngs/f86cbe93d832c32c3a84538425c56e6f.png)
+<!-- > ![Ginny2 Formula](https://latex2png.com/pngs/f86cbe93d832c32c3a84538425c56e6f.png) -->
+
+$$
+GI(S) = 1 - (p_1^2 + p_2^2)
+$$
 
 - where:
    - p1 is the proportion of instances in class 1,
@@ -345,7 +361,14 @@ GI(C1) = 1 - |P1.pow2 + p2.pow2|
 ``` -->
 
 
-# `Example: Choosing the Root Node by Information Gain`
+
+
+<details>
+<summary>
+
+`Example: Choosing the Root Node by Information Gain`
+
+</summary>
 
 Let’s consider a small dataset to explain how to choose the root node using **Information Gain**. We'll use the **Play Tennis** dataset as an example. The dataset contains the following features:
 
@@ -384,7 +407,11 @@ Our goal is to choose the root node by calculating the **Information Gain** for 
 The target variable is **Play Tennis**, which has 9 "Yes" and 5 "No" values. The entropy H(S) is calculated as follows:
 
 `Formula`
-> ![H(S) = - p_{yes} \log_2(p_{yes}) - p_{no} \log_2(p_{no})](https://latex2png.com/pngs/adeba375467475dcfdb8598128c266b1.png)
+<!-- > ![H(S) = - p_{yes} \log_2(p_{yes}) - p_{no} \log_2(p_{no})](https://latex2png.com/pngs/adeba375467475dcfdb8598128c266b1.png) -->
+
+$$
+H(S) = - p_{yes} \log_2(p_{yes}) - p_{no} \log_2(p_{no})
+$$
 
 
 Where:
@@ -498,12 +525,17 @@ The Information Gain values for each feature are:
 - **Wind**: 0.280
 
 Since **Outlook** has the highest Information Gain, it is chosen as the root node.
-"""
 
 
+</details>
 
 
-# Unsupervised Learning: - Unsupervised learning is a type of machine learning that involves training models using data that has no labels or specific output. The goal is to uncover hidden structures, patterns, or insights from the data. Unlike supervised learning, there is no direct feedback or target variable to guide the learning process.
+---
+
+
+# Unsupervised Learning
+
+**Unsupervised learning** is a type of machine learning that involves training models using data that has no labels or specific output. The goal is to uncover hidden structures, patterns, or insights from the data. Unlike supervised learning, there is no direct feedback or target variable to guide the learning process.
 
 
 ## `Topics under Unsupervised Learning`:
@@ -1374,7 +1406,7 @@ print("Predictions:", predictions)
 ---
 
 ### **2. Decision Tree**
-[Detailed Explanation here](#knn-for-classification-and-regression)
+[Detailed Explanation here](#decision-tree)
 #### **Definition**  
 A Decision Tree is a flowchart-like structure where each internal node represents a feature test, each branch represents a decision outcome, and each leaf node represents a final prediction.
 

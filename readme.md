@@ -1328,7 +1328,7 @@ $$
 \hat{y} = \text{Mode}(T_1(x), T_2(x), ..., T_n(x))
 $$  
 
-   where $T_i(x)$ is the prediction from the $i^{th}$ decision tree.  
+  where $T_i(x)$ is the prediction from the $i^{th}$ decision tree.  
 
 2. **For Regression**: 
 
@@ -1336,12 +1336,12 @@ $$
 \hat{y} = \frac{1}{n} \sum_{i=1}^{n} T_i(x)
 $$
 
-Here:
-
-1. **$\hat{y}$**: Predicted value (output)  
-2. **$n$**: Number of trees in the ensemble (e.g., in a random forest)  
-3. **$\sum_{i=1}^{n}$**: Summation over all $n$ trees  
-4. **$T_i(x)$**: Prediction from the $i^{th}$ tree for input $x$  
+  Here:
+  
+  1. **$\hat{y}$**: Predicted value (output)  
+  2. **$n$**: Number of trees in the ensemble (e.g., in a random forest)  
+  3. **$\sum_{i=1}^{n}$**: Summation over all $n$ trees  
+  4. **$T_i(x)$**: Prediction from the $i^{th}$ tree for input $x$  
 
 This formula is used to calculate the aggregated output (e.g., by averaging or voting) from an ensemble of decision trees.
 
@@ -1387,10 +1387,11 @@ $$
 
 Here:
 
-1. **$H(S)$**: Entropy of the dataset $S$  
-2. **$\sum_{i=1}^{n}$**: Summation over all $n$ possible classes or outcomes  
-3. **$p_i$**: Proportion or probability of class $i$ in the dataset  
-4. **$\log_2(p_i)$**: Logarithm base 2 of $p_i$  
+1. **$H(S)$** = Entropy of the dataset $S$  
+2. **$\sum_{i=1}^{n}$** = Summation over all $n$ possible classes or outcomes  
+3. **$p_i$** = Proportion or probability of class $i$ in the dataset  
+4. **$\log_2(p_i)$** = Logarithm base 2 of $p_i$  
+
 
 
 - **Gini Impurity**: 
@@ -1578,7 +1579,7 @@ reduced_data = pca.fit_transform(data)
 print("Reduced Data:", reduced_data)
 ```
 $$
-\Large \text{2nd Isem Ends Here}
+\Large \text{2nd Insem Ends Here}
 $$
 
 

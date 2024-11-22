@@ -1379,7 +1379,7 @@ A Decision Tree is a flowchart-like structure where each internal node represent
 2. **Regression Tree**: Predicts numerical values.  
 
 #### **Formulas**  
-- **Entropy**:  
+**1. Entropy**:  
 
 $$
 H(S) = - \sum_{i=1}^n p_i \log_2(p_i)
@@ -1393,13 +1393,13 @@ $$
   - **$\log_2(p_i)$** = Logarithm base 2 of $p_i$  
 
 
-- **Gini Impurity**: 
+**2. Gini Impurity**: 
 
 $$
 G = 1 - \sum_{i=1}^n p_i^2
 $$ 
 
-- **Information Gain**:  
+**3. Information Gain**:  
 
 $$
 IG = H(S) - \sum_{i=1}^k \frac{|S_k|}{|S|} H(S_k)

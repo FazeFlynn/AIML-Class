@@ -1328,7 +1328,7 @@ $$
 \hat{y} = \text{Mode}(T_1(x), T_2(x), ..., T_n(x))
 $$  
 
-  where $T_i(x)$ is the prediction from the $i^{th}$ decision tree.  
+  - where $T_i(x)$ is the prediction from the $i^{th}$ decision tree.  
 
 2. **For Regression**: 
 
@@ -1336,12 +1336,12 @@ $$
 \hat{y} = \frac{1}{n} \sum_{i=1}^{n} T_i(x)
 $$
 
-  Here:
-  
-  1. **$\hat{y}$**: Predicted value (output)  
-  2. **$n$**: Number of trees in the ensemble (e.g., in a random forest)  
-  3. **$\sum_{i=1}^{n}$**: Summation over all $n$ trees  
-  4. **$T_i(x)$**: Prediction from the $i^{th}$ tree for input $x$  
+Here
+
+  - **$\hat{y}$**: Predicted value (output)  
+  - **$n$**: Number of trees in the ensemble (e.g., in a random forest)  
+  - **$\sum_{i=1}^{n}$**: Summation over all $n$ trees  
+  - **$T_i(x)$**: Prediction from the $i^{th}$ tree for input $x$  
 
 This formula is used to calculate the aggregated output (e.g., by averaging or voting) from an ensemble of decision trees.
 
@@ -1385,12 +1385,12 @@ $$
 H(S) = - \sum_{i=1}^n p_i \log_2(p_i)
 $$  
 
-Here:
+Here
 
-1. **$H(S)$** = Entropy of the dataset $S$  
-2. **$\sum_{i=1}^{n}$** = Summation over all $n$ possible classes or outcomes  
-3. **$p_i$** = Proportion or probability of class $i$ in the dataset  
-4. **$\log_2(p_i)$** = Logarithm base 2 of $p_i$  
+  - **$H(S)$** = Entropy of the dataset $S$  
+  - **$\sum_{i=1}^{n}$** = Summation over all $n$ possible classes or outcomes  
+  - **$p_i$** = Proportion or probability of class $i$ in the dataset  
+  - **$\log_2(p_i)$** = Logarithm base 2 of $p_i$  
 
 
 
@@ -1406,15 +1406,15 @@ $$
 IG = H(S) - \sum_{i=1}^k \frac{|S_k|}{|S|} H(S_k)
 $$
 
-Where:
+Where
 
-**$IG$** = Information Gain  
-**$H(S)$** = Entropy of the original dataset $S$  
-**$\sum_{i=1}^{k}$** = Summation over all subsets $S_k$  
-**$|S_k|$** = Size (number of elements) of subset $S_k$  
-**$|S|$** = Size (number of elements) of the original dataset $S$  
-**$\frac{|S_k|}{|S|}$** = Proportion of subset $S_k$ in the original dataset $S$  
-**$H(S_k)$** = Entropy of subset $S_k$  
+  - **$IG$** = Information Gain  
+  - **$H(S)$** = Entropy of the original dataset $S$  
+  - **$\sum_{i=1}^{k}$** = Summation over all subsets $S_k$  
+  - **$|S_k|$** = Size (number of elements) of subset $S_k$  
+  - **$|S|$** = Size (number of elements) of the original dataset $S$  
+  - **$\frac{|S_k|}{|S|}$** = Proportion of subset $S_k$ in the original dataset $S$  
+  - **$H(S_k)$** = Entropy of subset $S_k$  
 
 
 #### **Real-Life Example**  
@@ -1458,15 +1458,15 @@ $$
 J = \sum_{i=1}^k \sum_{x \in C_i} ||x - \mu_i||^2
 $$
 
-Here:
+Here
 
-1. **$J$** = Objective function (sum of squared errors)  
-2. **$\sum_{i=1}^{k}$** = Summation over all $k$ clusters  
-3. **$\sum_{x \in C_i}$** = Summation over all data points $x$ in cluster $C_i$  
-4. **$x$** = A data point  
-5. **$C_i$** = Cluster $i$  
-6. **$\mu_i$** = Centroid of cluster $C_i$  
-7. **$\|x - \mu_i\|^2$** = Squared Euclidean distance between $x$ and $\mu_i$
+  - **$J$** = Objective function (sum of squared errors)  
+  - **$\sum_{i=1}^{k}$** = Summation over all $k$ clusters  
+  - **$\sum_{x \in C_i}$** = Summation over all data points $x$ in cluster $C_i$  
+  - **$x$** = A data point  
+  - **$C_i$** = Cluster $i$  
+  - **$\mu_i$** = Centroid of cluster $C_i$  
+  - **$\|x - \mu_i\|^2$** = Squared Euclidean distance between $x$ and $\mu_i$
 
 #### **Real-Life Example**  
 - **Use Case**: Customer segmentation in marketing.  
@@ -1558,7 +1558,7 @@ $$
 Z = XW
 $$  
 
-Where $W$ is the matrix of eigenvectors.
+  - Where $W$ is the matrix of eigenvectors.
 
 #### **Real-Life Example**  
 - **Use Case**: Visualizing customer preferences.  

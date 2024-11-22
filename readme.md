@@ -510,6 +510,7 @@ Since **Outlook** has the highest Information Gain, it is chosen as the root nod
 
 
 # Unsupervised Learning
+[Short Explanation here](#3-unsupervised-learning)
 
 **Unsupervised learning** is a type of machine learning that involves training models using data that has no labels or specific output. The goal is to uncover hidden structures, patterns, or insights from the data. Unlike supervised learning, there is no direct feedback or target variable to guide the learning process.
 
@@ -931,6 +932,7 @@ Random Forest is a powerful and flexible model that works well for many tasks. I
 
 
 # `Hierarchical Clustering`:
+[Short Explanation here](#33-hierarchical-clustering)
 
 **Hierarchical clustering** is an **unsupervised learning**  algorithm used for clustering data points into a hierarchy of clusters. It is commonly used in exploratory data analysis when the number of clusters is unknown. The goal is to create a dendrogram (tree-like diagram) that visually represents the nested grouping of data.
 
@@ -1054,11 +1056,12 @@ plt.show()
 
 
 
-# `K-Means Clustering` 
+# K-Means Clustering`
 [Refresher for K-Means Clustering](https://youtu.be/CLKW6uWJtTc?si=oU2h6lLe_fS9XDX1)
 
-
 **K-Means** Clustering is a popular **unsupervised learning**  algorithm used for **partitioning data**  into a specified number of clusters (K). The goal is to group data points into clusters such that points in the same cluster are more similar to each other than to those in other clusters. The algorithm iteratively refines the cluster centers (centroids) to minimize the sum of squared distances between each point and its nearest centroid.
+
+[Short Explanation here](#31-k-means-clustering)
 
 **1. How K-Means Clustering Works** 
 The K-Means algorithm follows these steps:
@@ -1455,12 +1458,14 @@ print("Predictions:", predictions)
 
 ### **3. Unsupervised Learning**
 [Detailed Explanation here](#Unsupervised-Learning)
+
 Unsupervised learning algorithms learn patterns from unlabeled data.
 
 ---
 
 #### **3.1 K-Means Clustering**
-#### **Definition**  
+[Detailed Explanation here](#k-means-clustering)
+ 
 An algorithm that partitions data into $k$ clusters based on the proximity of data points to centroids.
 
 #### **Formula**  
@@ -1504,8 +1509,19 @@ print("Centroids:", kmeans.cluster_centers_)
 ---
 
 #### **3.2 DBSCAN**
-#### **Definition**  
+
 Density-Based Spatial Clustering of Applications with Noise. Groups points close to each other based on density, ignoring noise.
+
+### Formula/Method for determining whether a point is a **core point**:
+A point $p$ is a **core point** if the number of points $N(p, \epsilon)$ within the **ε**-radius of $p$ (including $p$ itself) is greater than or equal to **MinPts**.
+
+$$
+|N(p, \epsilon)| \geq \text{MinPts}
+$$
+
+Where:
+- $N(p, \epsilon)$ is the set of points within the **ε**-radius of point $p$.
+- $|N(p, \epsilon)|$ is the number of points in the neighborhood of $p$.
 
 #### **Real-Life Example**  
 - **Use Case**: Identifying geographic hotspots for crimes.  
@@ -1529,7 +1545,8 @@ print("Labels:", dbscan.labels_)
 ---
 
 #### **3.3 Hierarchical Clustering**
-#### **Definition**  
+[Detailed Explanation here](#hierarchical-clustering)
+
 A clustering algorithm that creates a dendrogram representing nested groupings of data points.
 
 #### **Real-Life Example**  

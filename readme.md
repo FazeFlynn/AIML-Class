@@ -292,9 +292,7 @@
 
 ### `Decision Tree`:
 
-**Definition**: A Decision Tree is a supervised machine learning algorithm used for classification and regression tasks. It splits the data into subsets based on the feature values, using a tree-like structure, where each internal node represents a decision (based on a feature), each branch represents the outcome of a decision, and each leaf node represents a class label (for classification) or a continuous value (for regression).
-
-[Short Explanation here](#2-decision-tree)
+**Definition**: A Decision Tree is a supervised machine learning algorithm used for classification and regression tasks. It splits the data into subsets based on the feature values, using a tree-like structure, where each internal node represents a decision (based on a feature), each branch represents the outcome of a decision, and each leaf node represents a class label (for classification) or a continuous value (for regression). [><](#2-decision-tree)
 
 > ![Decision tree Of the Datset](/images/decisiontrees.png)
 
@@ -513,9 +511,8 @@ Since **Outlook** has the highest Information Gain, it is chosen as the root nod
 
 
 # Unsupervised Learning
-[Short Explanation here](#3-unsupervised-learning)
 
-**Unsupervised learning** is a type of machine learning that involves training models using data that has no labels or specific output. The goal is to uncover hidden structures, patterns, or insights from the data. Unlike supervised learning, there is no direct feedback or target variable to guide the learning process.
+**Unsupervised learning** is a type of machine learning that involves training models using data that has no labels or specific output. The goal is to uncover hidden structures, patterns, or insights from the data. Unlike supervised learning, there is no direct feedback or target variable to guide the learning process. [><](#3-unsupervised-learning)
 
 
 ## `Topics under Unsupervised Learning`:
@@ -934,9 +931,8 @@ Random Forest is a powerful and flexible model that works well for many tasks. I
 
 
 # `Hierarchical Clustering`:
-[Short Explanation here](#33-hierarchical-clustering)
 
-**Hierarchical clustering** is an **unsupervised learning**  algorithm used for clustering data points into a hierarchy of clusters. It is commonly used in exploratory data analysis when the number of clusters is unknown. The goal is to create a dendrogram (tree-like diagram) that visually represents the nested grouping of data.
+**Hierarchical clustering** is an **unsupervised learning**  algorithm used for clustering data points into a hierarchy of clusters. It is commonly used in exploratory data analysis when the number of clusters is unknown. The goal is to create a dendrogram (tree-like diagram) that visually represents the nested grouping of data. [><](#33-hierarchical-clustering)
 
 ---
 
@@ -1061,9 +1057,7 @@ plt.show()
 # K-Means Clustering`
 [Refresher for K-Means Clustering](https://youtu.be/CLKW6uWJtTc?si=oU2h6lLe_fS9XDX1)
 
-**K-Means** Clustering is a popular **unsupervised learning**  algorithm used for **partitioning data**  into a specified number of clusters (K). The goal is to group data points into clusters such that points in the same cluster are more similar to each other than to those in other clusters. The algorithm iteratively refines the cluster centers (centroids) to minimize the sum of squared distances between each point and its nearest centroid.
-
-[Short Explanation here](#31-k-means-clustering)
+**K-Means** Clustering is a popular **unsupervised learning**  algorithm used for **partitioning data**  into a specified number of clusters (K). The goal is to group data points into clusters such that points in the same cluster are more similar to each other than to those in other clusters. The algorithm iteratively refines the cluster centers (centroids) to minimize the sum of squared distances between each point and its nearest centroid. [><](#31-k-means-clustering)
 
 **1. How K-Means Clustering Works** 
 The K-Means algorithm follows these steps:
@@ -1385,9 +1379,7 @@ print("Predictions:", predictions)
 ---
 
 ## **2. Decision Tree**
-[Detailed Explanation here](#decision-tree)
-
-A Decision Tree is a flowchart-like structure where each internal node represents a feature test, each branch represents a decision outcome, and each leaf node represents a final prediction.
+A Decision Tree is a flowchart-like structure where each internal node represents a feature test, each branch represents a decision outcome, and each leaf node represents a final prediction. [<>](#decision-tree)
 
 #### **Types**  
 1. **Classification Tree**: Classifies data into categories.  
@@ -1457,13 +1449,10 @@ print("Predictions:", predictions)
 ---
 
 ## **3. Unsupervised Learning**
-[Detailed Explanation here](#Unsupervised-Learning)
-Unsupervised learning algorithms learn patterns from unlabeled data.
+Unsupervised learning algorithms learn patterns from unlabeled data. [<>](#Unsupervised-Learning)
 
 #### **3.1 K-Means Clustering**
-[Detailed Explanation here](#k-means-clustering)
- 
-An algorithm that partitions data into $k$ clusters based on the proximity of data points to centroids.
+An algorithm that partitions data into $k$ clusters based on the proximity of data points to centroids. [<>](#k-means-clustering)
 
 #### **Formula**  
 Objective function (Minimize within-cluster variance):  
@@ -1542,9 +1531,7 @@ print("Labels:", dbscan.labels_)
 ---
 
 #### **3.3 Hierarchical Clustering**
-[Detailed Explanation here](#hierarchical-clustering)
-
-A clustering algorithm that creates a dendrogram representing nested groupings of data points.
+A clustering algorithm that creates a dendrogram representing nested groupings of data points. [<>](#hierarchical-clustering)
 
 #### **Real-Life Example**  
 - **Use Case**: Analyzing genetic similarities.  

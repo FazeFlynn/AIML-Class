@@ -1336,6 +1336,15 @@ $$
 \hat{y} = \frac{1}{n} \sum_{i=1}^{n} T_i(x)
 $$
 
+Here:
+
+1. **$\hat{y}$**: Predicted value (output)  
+2. **$n$**: Number of trees in the ensemble (e.g., in a random forest)  
+3. **$\sum_{i=1}^{n}$**: Summation over all $n$ trees  
+4. **$T_i(x)$**: Prediction from the $i^{th}$ tree for input $x$  
+
+This formula is used to calculate the aggregated output (e.g., by averaging or voting) from an ensemble of decision trees.
+
 #### **Real-Life Example**  
 - **Use Case**: Predicting if a loan applicant will default.  
 - **Scenario**: A bank analyzes historical data (income, credit score, debt) and builds a Random Forest model to predict loan default.
@@ -1375,6 +1384,14 @@ A Decision Tree is a flowchart-like structure where each internal node represent
 $$
 H(S) = - \sum_{i=1}^n p_i \log_2(p_i)
 $$  
+
+Here:
+
+1. **$H(S)$**: Entropy of the dataset $S$  
+2. **$\sum_{i=1}^{n}$**: Summation over all $n$ possible classes or outcomes  
+3. **$p_i$**: Proportion or probability of class $i$ in the dataset  
+4. **$\log_2(p_i)$**: Logarithm base 2 of $p_i$  
+
 
 - **Gini Impurity**: 
 
@@ -1439,6 +1456,16 @@ Objective function (Minimize within-cluster variance):
 $$
 J = \sum_{i=1}^k \sum_{x \in C_i} ||x - \mu_i||^2
 $$
+
+Here:
+
+1. **$J$** = Objective function (sum of squared errors)  
+2. **$\sum_{i=1}^{k}$** = Summation over all $k$ clusters  
+3. **$\sum_{x \in C_i}$** = Summation over all data points $x$ in cluster $C_i$  
+4. **$x$** = A data point  
+5. **$C_i$** = Cluster $i$  
+6. **$\mu_i$** = Centroid of cluster $C_i$  
+7. **$\|x - \mu_i\|^2$** = Squared Euclidean distance between $x$ and $\mu_i$
 
 #### **Real-Life Example**  
 - **Use Case**: Customer segmentation in marketing.  

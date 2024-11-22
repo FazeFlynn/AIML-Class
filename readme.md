@@ -776,8 +776,7 @@ Both supervised and unsupervised learning have unique strengths and are used in 
 
 
 ### What is Random Forest? 
-**Random Forest**  is an ensemble learning method used for both classification and regression tasks. It operates by constructing multiple decision trees during training and outputs the average prediction (regression) or the majority vote (classification) of the individual trees.
-[Short Explanation here](#1-random-forest)
+**Random Forest**  is an ensemble learning method used for both classification and regression tasks. It operates by constructing multiple decision trees during training and outputs the average prediction (regression) or the majority vote (classification) of the individual trees.  [Short Explanation here](#1-random-forest)
 
 ### How Does Random Forest Work? 
  
@@ -1329,10 +1328,7 @@ plt.show()
 # 2nd Insem
 
 ## **1. Random Forest**
-
-[Detailed Explanation here](#random-forest-an-overview)
-
-Random Forest is an ensemble machine learning method that builds multiple decision trees during training and merges their outputs for better accuracy and stability.
+Random Forest is an ensemble machine learning method that builds multiple decision trees during training and merges their outputs for better accuracy and stability. [Detailed Explanation here](#random-forest-an-overview)
 
 #### **Types**  
 - **Classification**: Predicts categorical labels.  

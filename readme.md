@@ -364,11 +364,9 @@ GI(C1) = 1 - |P1.pow2 + p2.pow2|
 
 
 <details>
-<summary>
+<summary>Example: Choosing the Root Node by Information Gain</summary>
 
-`Example: Choosing the Root Node by Information Gain`
-
-</summary>
+---
 
 Let’s consider a small dataset to explain how to choose the root node using **Information Gain**. We'll use the **Play Tennis** dataset as an example. The dataset contains the following features:
 
@@ -414,16 +412,17 @@ H(S) = - p_{yes} \log_2(p_{yes}) - p_{no} \log_2(p_{no})
 $$
 
 
+
 Where:
 - p(yes) = 9/14
 - p(no) = 5/14
 
 $$
-  H(S) = - \\frac{9}{14} \log_2 \\left( \\frac{9}{14} \\right) - \\frac{5}{14} \log_2 \\left( \\frac{5}{14} \\right)
+H(S) = - \\frac{9}{14} \log_2 \\left( \\frac{9}{14} \\right) - \\frac{5}{14} \log_2 \\left( \\frac{5}{14} \\right)
 $$
 
 $$
-  H(S) ≈ -0.642 - 0.530 ≈ 1.172
+H(S) ≈ -0.642 - 0.530 ≈ 1.172
 $$
 
 ---
@@ -431,6 +430,7 @@ $$
 ## Step 2: Calculate Information Gain for Each Feature
 
 The Information Gain for a feature is the difference between the entropy of the original set and the weighted entropy after splitting the dataset on that feature.
+
 
 $$
 IG = H(S) - \\sum \\left( \\frac{|S_i|}{|S|} H(S_i) \\right)

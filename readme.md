@@ -1390,13 +1390,13 @@ $$
 
 Where:
 
-**$IG$**:   Information Gain  
-**$H(S)$**:   Entropy of the original dataset $S$  
-**$\sum_{i=1}^{k}$**:   Summation over all subsets $S_k$  
-**$|S_k|$**:   Size (number of elements) of subset $S_k$  
-**$|S|$**:   Size (number of elements) of the original dataset $S$  
-**$\frac{|S_k|}{|S|}$**:   Proportion of subset $S_k$ in the original dataset $S$  
-**$H(S_k)$**:   Entropy of subset $S_k$  
+**$IG$** = Information Gain  
+**$H(S)$** = Entropy of the original dataset $S$  
+**$\sum_{i=1}^{k}$** = Summation over all subsets $S_k$  
+**$|S_k|$** = Size (number of elements) of subset $S_k$  
+**$|S|$** = Size (number of elements) of the original dataset $S$  
+**$\frac{|S_k|}{|S|}$** = Proportion of subset $S_k$ in the original dataset $S$  
+**$H(S_k)$** = Entropy of subset $S_k$  
 
 
 #### **Real-Life Example**  

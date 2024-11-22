@@ -291,7 +291,10 @@
 
 
 ### `Decision Tree`:
+
 **Definition**: A Decision Tree is a supervised machine learning algorithm used for classification and regression tasks. It splits the data into subsets based on the feature values, using a tree-like structure, where each internal node represents a decision (based on a feature), each branch represents the outcome of a decision, and each leaf node represents a class label (for classification) or a continuous value (for regression).
+
+[Short Explanation here](#2-decision-tree)
 
 > ![Decision tree Of the Datset](/images/decisiontrees.png)
 
@@ -602,7 +605,7 @@ Since **Outlook** has the highest Information Gain, it is chosen as the root nod
 
 
 
-# `Refresher Starts`
+# Refresher Starts
 
 # Machine Learning: Supervised vs. Unsupervised Learning
 
@@ -764,17 +767,17 @@ Unsupervised learning involves training models on data that has no labels. The g
 
 Both supervised and unsupervised learning have unique strengths and are used in different scenarios. Supervised learning is effective when labeled data is available, while unsupervised learning is valuable for exploring and understanding unlabeled data.
 
-# `Refresher Ends`
-
-# `Test`
-
-## Random Forest: An Overview 
-
-### What is Random Forest? 
-**Random Forest**  is an ensemble learning method used for both classification and regression tasks. It operates by constructing multiple decision trees during training and outputs the average prediction (regression) or the majority vote (classification) of the individual trees.
+# Refresher Ends
 
 ---
 
+
+## Random Forest: An Overview 
+
+
+### What is Random Forest? 
+**Random Forest**  is an ensemble learning method used for both classification and regression tasks. It operates by constructing multiple decision trees during training and outputs the average prediction (regression) or the majority vote (classification) of the individual trees.
+[Short Explanation here](#1-random-forest)
 
 ### How Does Random Forest Work? 
  
@@ -1326,6 +1329,8 @@ plt.show()
 # 2nd Insem
 
 ## **1. Random Forest**
+
+[Detailed Explanation here](#random-forest-an-overview)
 
 Random Forest is an ensemble machine learning method that builds multiple decision trees during training and merges their outputs for better accuracy and stability.
 

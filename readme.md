@@ -1325,9 +1325,8 @@ plt.show()
 
 # 2nd Insem
 
+## **1. Random Forest**
 
-### **1. Random Forest**
-#### **Definition**  
 Random Forest is an ensemble machine learning method that builds multiple decision trees during training and merges their outputs for better accuracy and stability.
 
 #### **Types**  
@@ -1384,9 +1383,9 @@ print("Predictions:", predictions)
 
 ---
 
-### **2. Decision Tree**
+## **2. Decision Tree**
 [Detailed Explanation here](#decision-tree)
-#### **Definition**  
+
 A Decision Tree is a flowchart-like structure where each internal node represents a feature test, each branch represents a decision outcome, and each leaf node represents a final prediction.
 
 #### **Types**  
@@ -1456,7 +1455,7 @@ print("Predictions:", predictions)
 
 ---
 
-### **3. Unsupervised Learning**
+## **3. Unsupervised Learning**
 [Detailed Explanation here](#Unsupervised-Learning)
 
 Unsupervised learning algorithms learn patterns from unlabeled data.
@@ -1572,8 +1571,8 @@ plt.show()
 
 ---
 
-### **4. Dimensionality Reduction**
-#### **Definition**  
+## **4. Dimensionality Reduction**
+
 A technique to reduce the number of features in a dataset while retaining meaningful information.
 
 #### **Types**  

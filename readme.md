@@ -1044,7 +1044,7 @@ plt.show()
 
 
 # `K-Means Clustering` 
-[Refresher for K-Means Clustering](https://youtu.be/CLKW6uWJtTc?si=oU2h6lLe_fS9XDX1)
+[Refresher for K-Means Clustering](https://youtu.be/CLKW6uWJtTc?si=oU2h6lLe_fS9XDX1) {target="_blank"}
 
 
 **K-Means** Clustering is a popular **unsupervised learning**  algorithm used for **partitioning data**  into a specified number of clusters (K). The goal is to group data points into clusters such that points in the same cluster are more similar to each other than to those in other clusters. The algorithm iteratively refines the cluster centers (centroids) to minimize the sum of squared distances between each point and its nearest centroid.
@@ -1279,13 +1279,277 @@ After a few iterations, the centroids stabilize, and we obtain the final cluster
 
 This manual step-by-step example shows the core mechanism of the K-Means algorithm. In practice, libraries like **Scikit-Learn**  perform these steps efficiently.
 
+`program here`
 
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.datasets import make_blobs
+
+# Generate synthetic data
+X, _ = make_blobs(n_samples=300, centers=4, cluster_std=0.6, random_state=42)
+
+# Apply K-Means with K=4
+kmeans = KMeans(n_clusters=4, random_state=42)
+kmeans.fit(X)
+y_kmeans = kmeans.predict(X)
+
+# Plot the results
+plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, cmap='viridis', marker='o', edgecolor='k')
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=300, c='red', marker='X')
+plt.title("K-Means Clustering")
+plt.xlabel("Feature 1")
+plt.ylabel("Feature 2")
+plt.show()
+```
 
 </details>
 
 ---
 
 
+# 2nd Insem
+
+
+### **1. Random Forest**
+#### **Definition**  
+Random Forest is an ensemble machine learning method that builds multiple decision trees during training and merges their outputs for better accuracy and stability.
+
+#### **Types**  
+- **Classification**: Predicts categorical labels.  
+- **Regression**: Predicts continuous numerical values.  
+
+#### **Formula**  
+Random Forest works by averaging results or taking majority votes:  
+1. **For Classification**: 
+
+$$
+\hat{y} = \text{Mode}(T_1(x), T_2(x), ..., T_n(x))
+$$  
+
+   where $T_i(x)$ is the prediction from the $i^{th}$ decision tree.  
+
+2. **For Regression**: 
+
+$$
+\hat{y} = \frac{1}{n} \sum_{i=1}^{n} T_i(x)
+$$
+
+#### **Real-Life Example**  
+- **Use Case**: Predicting if a loan applicant will default.  
+- **Scenario**: A bank analyzes historical data (income, credit score, debt) and builds a Random Forest model to predict loan default.
+
+#### **Code Example** (Python)
+```python
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+
+# Load dataset
+data = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=42)
+
+# Train model
+rf = RandomForestClassifier(n_estimators=100, random_state=42)
+rf.fit(X_train, y_train)
+
+# Predict and evaluate
+predictions = rf.predict(X_test)
+print("Predictions:", predictions)
+```
+
+---
+
+### **2. Decision Tree**
+#### **Definition**  
+A Decision Tree is a flowchart-like structure where each internal node represents a feature test, each branch represents a decision outcome, and each leaf node represents a final prediction.
+
+#### **Types**  
+1. **Classification Tree**: Classifies data into categories.  
+2. **Regression Tree**: Predicts numerical values.  
+
+#### **Formulas**  
+- **Entropy**:  
+
+$$
+H(S) = - \sum_{i=1}^n p_i \log_2(p_i)
+$$  
+
+- **Gini Impurity**: 
+
+$$
+G = 1 - \sum_{i=1}^n p_i^2
+$$ 
+
+- **Information Gain**:  
+
+$$
+IG = H(S) - \sum_{i=1}^k \frac{|S_k|}{|S|} H(S_k)
+$$
+
+#### **Real-Life Example**  
+- **Use Case**: Approving credit card applications.  
+- **Scenario**: A bank uses historical data (age, income, etc.) and builds a decision tree to automate credit card approval decisions.
+
+#### **Code Example** (Python)
+```python
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+
+# Load dataset
+data = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=42)
+
+# Train model
+dt = DecisionTreeClassifier(criterion="entropy", random_state=42)
+dt.fit(X_train, y_train)
+
+# Predict and evaluate
+predictions = dt.predict(X_test)
+print("Predictions:", predictions)
+```
+
+---
+
+### **3. Unsupervised Learning**
+Unsupervised learning algorithms learn patterns from unlabeled data.
+
+---
+
+#### **3.1 K-Means Clustering**
+#### **Definition**  
+An algorithm that partitions data into $k$ clusters based on the proximity of data points to centroids.
+
+#### **Formula**  
+Objective function (Minimize within-cluster variance):  
+
+$$
+J = \sum_{i=1}^k \sum_{x \in C_i} ||x - \mu_i||^2
+$$
+
+#### **Real-Life Example**  
+- **Use Case**: Customer segmentation in marketing.  
+- **Scenario**: Group customers based on age, spending, and income.
+
+#### **Code Example**  
+```python
+from sklearn.cluster import KMeans
+import numpy as np
+
+# Sample data
+data = np.array([[150, 50], [160, 55], [170, 65], [180, 70], [155, 52], [165, 60]])
+
+# Train model
+kmeans = KMeans(n_clusters=2, random_state=42)
+kmeans.fit(data)
+
+# Get labels and centroids
+print("Labels:", kmeans.labels_)
+print("Centroids:", kmeans.cluster_centers_)
+```
+
+---
+
+#### **3.2 DBSCAN**
+#### **Definition**  
+Density-Based Spatial Clustering of Applications with Noise. Groups points close to each other based on density, ignoring noise.
+
+#### **Real-Life Example**  
+- **Use Case**: Identifying geographic hotspots for crimes.  
+- **Scenario**: Detect dense regions of crime in city data to allocate police resources.
+
+#### **Code Example**  
+```python
+from sklearn.cluster import DBSCAN
+import numpy as np
+
+# Sample data
+data = np.array([[1, 2], [2, 3], [2, 2], [8, 8], [8, 9], [25, 80]])
+
+# Train model
+dbscan = DBSCAN(eps=3, min_samples=2)
+dbscan.fit(data)
+
+print("Labels:", dbscan.labels_)
+```
+
+---
+
+#### **3.3 Hierarchical Clustering**
+#### **Definition**  
+A clustering algorithm that creates a dendrogram representing nested groupings of data points.
+
+#### **Real-Life Example**  
+- **Use Case**: Analyzing genetic similarities.  
+- **Scenario**: Grouping species based on DNA similarity.
+
+#### **Code Example**  
+```python
+from scipy.cluster.hierarchy import dendrogram, linkage
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Sample data
+data = np.array([[1, 2], [2, 3], [2, 2], [8, 8], [8, 9]])
+
+# Perform clustering
+linked = linkage(data, method='ward')
+
+# Plot dendrogram
+dendrogram(linked)
+plt.show()
+```
+
+---
+
+### **4. Dimensionality Reduction**
+#### **Definition**  
+A technique to reduce the number of features in a dataset while retaining meaningful information.
+
+#### **Types**  
+1. **PCA (Principal Component Analysis)**: Transforms data to a new set of axes.  
+2. **t-SNE**: For visualization of high-dimensional data.  
+3. **LDA (Linear Discriminant Analysis)**: Optimized for classification tasks.
+
+#### **Formula for PCA**  
+
+$$
+Z = XW
+$$  
+
+Where $W$ is the matrix of eigenvectors.
+
+#### **Real-Life Example**  
+- **Use Case**: Visualizing customer preferences.  
+- **Scenario**: Compressing 100+ customer attributes into 2 dimensions for analysis.
+
+#### **Code Example** (PCA)
+```python
+from sklearn.decomposition import PCA
+import numpy as np
+
+# Sample data
+data = np.array([[2.5, 2.4], [0.5, 0.7], [2.2, 2.9], [1.9, 2.2], [3.1, 3.0]])
+
+# Apply PCA
+pca = PCA(n_components=1)
+reduced_data = pca.fit_transform(data)
+
+print("Reduced Data:", reduced_data)
+```
+$$
+\Large \text{2nd Isem Ends Here}
+$$
+
+
+---
+
+
+$$
+\Large \text{End Of File}
+$$
 
 
 

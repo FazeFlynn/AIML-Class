@@ -341,14 +341,14 @@ $$
    - p1 is the proportion of instances in class 1,
    - p2 is the proportion of instances in class 2.
 
-
+<!-- 
 ### `Gini Example`
 
 > ![giniExample](/images/ginniExample.png)
 
 `Solution`:
 > ![Solution](https://latex2png.com/pngs/cda73feb60862c53948c9fa484c357c8.png)
-
+ -->
 
 
 

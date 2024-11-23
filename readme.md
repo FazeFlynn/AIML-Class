@@ -918,10 +918,6 @@ print(f"Accuracy: {accuracy}")
 
 Random Forest provides an estimate of the importance of each feature in making predictions. This is useful for understanding which features are most influential in the model.
 
-
----
-
-
 ### Conclusion 
 
 Random Forest is a powerful and flexible model that works well for many tasks. Its ability to handle large datasets and provide feature importance insights makes it a popular choice for both regression and classification problems. However, it is essential to carefully tune hyperparameters to balance performance and computational efficiency.
@@ -1050,11 +1046,232 @@ plt.show()
 
 ---
 
+# **DBSCAN: Density-Based Spatial Clustering of Applications with Noise**
+
+DBSCAN is a popular clustering algorithm that groups data points based on density, making it well-suited for datasets with irregular cluster shapes and noise. Here is a comprehensive explanation of DBSCAN and its components:
+
+### **Key Concepts**
+1. **Core Points**:
+   - A point is classified as a **core point** if it has at least **MinPts** points (including itself) within a radius **ε** (epsilon).
+   - **Condition**: 
+
+$$
+|N(p, \epsilon)| \geq \text{MinPts}
+$$
+   - Where $N(p, \epsilon)$ is the neighborhood of $p$ containing all points within a distance $\epsilon$.
+
+2. **Border Points**:
+   - A point is classified as a **border point** if it is within the **ε** radius of a core point but does not meet the **MinPts** condition itself.
+   - **Condition**:
+
+$$
+0 < |N(p, \epsilon)| < \text{MinPts}
+$$
+
+3. **Noise Points**:
+   - A point is classified as **noise** (or an outlier) if it does not belong to any cluster. It is neither a core point nor a border point.
+   - **Condition**:
+
+$$
+|N(p, \epsilon)| < 1
+$$
+
+4. **Directly Density-Reachable**:
+   - A point $q$ is **directly density-reachable** from a point $p$ if:
+     - $p$ is a core point.
+     - $q$ is within the **ε** radius of $p$.
+
+5. **Density-Reachable**:
+   - A point $q$ is **density-reachable** from $p$ if there is a chain of points $p_1, p_2, ..., p_n$ where:
+     - $p_1 = p$, $p_n = q$.
+     - Each $p_i$ is **directly density-reachable** from $p_{i-1}$.
+
+6. **Density-Connected**:
+   - Two points $p$ and $q$ are **density-connected** if there exists a point $o$ such that:
+     - Both $p$ and $q$ are **density-reachable** from $o$.
+
+### **Steps of DBSCAN Algorithm**
+1. Choose a point $p$ that has not been visited.
+2. Compute its neighborhood $N(p, \epsilon)$.
+3. If $|N(p, \epsilon)| \geq \text{MinPts}$, $p$ is a core point, and a cluster is formed:
+   - Add all points in $N(p, \epsilon)$ to the cluster.
+   - Recursively visit each core point in the neighborhood to expand the cluster.
+4. If $|N(p, \epsilon)| < \text{MinPts}$, $p$ is labeled as noise (temporarily).
+5. Repeat until all points are visited.
+
+
+### **Example Dataset**
+Consider the following 2D points (in meters):
+
+| Point | X   | Y   |
+|-------|-----|-----|
+| A     | 1.0 | 1.0 |
+| B     | 1.2 | 1.1 |
+| C     | 1.1 | 1.3 |
+| D     | 8.0 | 8.0 |
+| E     | 8.1 | 8.1 |
+| F     | 25.0| 25.0|
+
+
+### **Example Parameters**
+- **ε** (epsilon): 1.5 meters.
+- **MinPts**: 3 points.
+
+
+### **Example Analysis**
+
+#### Step 1: Check each point's neighborhood.
+
+- **Point A**:
+  - Neighborhood: $N(A, \epsilon) = \{A, B, C\}$.
+  - $|N(A, \epsilon)| = 3 \geq 3$ (MinPts).
+  - $A$ is a **core point**.
+
+- **Point B**:
+  - Neighborhood: $N(B, \epsilon) = \{A, B, C\}$.
+  - $|N(B, \epsilon)| = 3 \geq 3$.
+  - $B$ is a **core point**.
+
+- **Point C**:
+  - Neighborhood: $N(C, \epsilon) = \{A, B, C\}$.
+  - $|N(C, \epsilon)| = 3 \geq 3$.
+  - $C$ is a **core point**.
+
+#### Step 2: Form clusters.
+
+- Points $A, B, C$ are density-reachable and form **Cluster 1**.
+
+#### Step 3: Check remaining points.
+
+- **Point D**:
+  - Neighborhood: $N(D, \epsilon) = \{D, E\}$.
+  - $|N(D, \epsilon)| = 2 < 3$ (MinPts).
+  - $D$ is not a core point.
+  - $D$ is a **noise point** (temporarily).
+
+- **Point E**:
+  - Neighborhood: $N(E, \epsilon) = \{D, E\}$.
+  - $|N(E, \epsilon)| = 2 < 3$.
+  - $E$ is not a core point.
+  - $E$ is also **noise**.
+
+- **Point F**:
+  - Neighborhood: $N(F, \epsilon) = \{F\}$.
+  - $|N(F, \epsilon)| = 1 < 3$.
+  - $F$ is a **noise point**.
+
+
+### **Final Clusters**
+- **Cluster 1**: $\{A, B, C\}$
+- Noise points: $\{D, E, F\}$.
+
+
+### **Advantages of DBSCAN**
+1. Identifies clusters of arbitrary shape.
+2. Automatically detects outliers as noise points.
+3. Does not require the number of clusters to be specified.
+
+
+### **Limitations**
+1. Choosing good values for $\epsilon$ and **MinPts** can be challenging.
+2. Struggles with varying density clusters.
+3. Sensitive to the distance metric used.
+
+
+## Example
+
+### **Parameters**
+- \( \epsilon \) = 1.5
+- MinPts = 3
+
+
+### **Python Code**
+
+```python
+import numpy as np
+from sklearn.cluster import DBSCAN
+import matplotlib.pyplot as plt
+
+# Dataset
+points = np.array([
+    [1.0, 1.0],  # A
+    [1.2, 1.1],  # B
+    [1.1, 1.3],  # C
+    [8.0, 8.0],  # D
+    [8.1, 8.1],  # E
+    [25.0, 25.0] # F
+])
+
+# DBSCAN Parameters
+epsilon = 1.5
+min_samples = 3
+
+# DBSCAN Clustering
+dbscan = DBSCAN(eps=epsilon, min_samples=min_samples)
+labels = dbscan.fit_predict(points)
+
+# Output Results
+print("Cluster Labels for Each Point:", labels)
+print("\nLegend:")
+print("-1: Noise points")
+print("0, 1, ...: Cluster IDs")
+
+# Plotting the clusters
+for label in set(labels):
+    cluster_points = points[labels == label]
+    if label == -1:
+        plt.scatter(cluster_points[:, 0], cluster_points[:, 1], color='red', label='Noise', marker='x')
+    else:
+        plt.scatter(cluster_points[:, 0], cluster_points[:, 1], label=f'Cluster {label}')
+
+plt.xlabel("X Coordinate")
+plt.ylabel("Y Coordinate")
+plt.title("DBSCAN Clustering")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+### **Explanation of the Code**
+1. **Dataset**: 
+   - Represented as a NumPy array. Each row is a point (X, Y).
+   
+2. **Parameters**:
+   - `eps` (epsilon): 1.5, the maximum radius of the neighborhood.
+   - `min_samples`: 3, the minimum number of points to form a dense region.
+
+3. **DBSCAN**:
+   - The `DBSCAN` class from `sklearn.cluster` is used for clustering.
+   - The `fit_predict` method returns cluster labels for each data point.
+
+4. **Cluster Labels**:
+   - A label of `-1` indicates a noise point.
+   - Cluster IDs (e.g., `0`, `1`) represent valid clusters.
+
+5. **Visualization**:
+   - Each cluster is plotted with different colors.
+   - Noise points are shown in red with a cross (`x` marker).
+
+
+### **Output**
+#### Cluster Labels:
+```
+Cluster Labels for Each Point: [ 0  0  0 -1 -1 -1]
+Legend:
+-1: Noise points
+0, 1, ...: Cluster IDs
+```
+
+#### Plot:
+- **Cluster 0**: Points A, B, and C form a cluster.
+- **Noise**: Points D, E, and F are marked as noise.
 
 
 
 
-# K-Means Clustering`
+---
+
+# K-Means Clustering
 [Refresher for K-Means Clustering](https://youtu.be/CLKW6uWJtTc?si=oU2h6lLe_fS9XDX1)
 
 **K-Means** Clustering is a popular **unsupervised learning**  algorithm used for **partitioning data**  into a specified number of clusters (K). The goal is to group data points into clusters such that points in the same cluster are more similar to each other than to those in other clusters. The algorithm iteratively refines the cluster centers (centroids) to minimize the sum of squared distances between each point and its nearest centroid. [><](#31-k-means-clustering)
@@ -1470,6 +1687,13 @@ $$
   - **$C_i$** = Cluster $i$  
   - **$\mu_i$** = Centroid of cluster $C_i$  
   - **$\|x - \mu_i\|^2$** = Squared Euclidean distance between $x$ and $\mu_i$
+
+**2. Distance Metrics** The most common distance metric used in K-Means Clustering is **Euclidean distance** :
+
+$$
+ \text{Distance} = \sqrt{\sum_{i=1}^n (x_i - y_i)^2} 
+$$
+
 
 #### **Real-Life Example**  
 - **Use Case**: Customer segmentation in marketing.  

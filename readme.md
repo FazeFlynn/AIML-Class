@@ -267,8 +267,8 @@
             -------------------------
 ```
 
+---
 
-# `Decision Trees`
 
 ### `Sample PLay Tennis Dataset`
 
@@ -290,7 +290,7 @@
 | D14  | Rain     | Mild        | High     | Strong| No          |
 
 
-### `Decision Tree`:
+# `Decision Trees`
 
 **Definition**: A Decision Tree is a supervised machine learning algorithm used for classification and regression tasks. It splits the data into subsets based on the feature values, using a tree-like structure, where each internal node represents a decision (based on a feature), each branch represents the outcome of a decision, and each leaf node represents a class label (for classification) or a continuous value (for regression). [><](#2-decision-tree)
 
@@ -1046,9 +1046,9 @@ plt.show()
 
 ---
 
-# **DBSCAN: Density-Based Spatial Clustering of Applications with Noise**
+# **DBSCAN**
 
-DBSCAN is a popular clustering algorithm that groups data points based on density, making it well-suited for datasets with irregular cluster shapes and noise. Here is a comprehensive explanation of DBSCAN and its components:
+DBSCAN ( Density-Based Spatial Clustering of Applications with Noise) is a popular clustering algorithm that groups data points based on density, making it well-suited for datasets with irregular cluster shapes and noise. Here is a comprehensive explanation of DBSCAN and its components: [><](#32-dbscan)
 
 ### **Key Concepts**
 1. **Core Points**:
@@ -1596,7 +1596,7 @@ print("Predictions:", predictions)
 ---
 
 ## **2. Decision Tree**
-A Decision Tree is a flowchart-like structure where each internal node represents a feature test, each branch represents a decision outcome, and each leaf node represents a final prediction. [<>](#decision-tree)
+A Decision Tree is a flowchart-like structure where each internal node represents a feature test, each branch represents a decision outcome, and each leaf node represents a final prediction. [<>](#decision-trees)
 
 #### **Types**  
 1. **Classification Tree**: Classifies data into categories.  
@@ -1720,7 +1720,7 @@ print("Centroids:", kmeans.cluster_centers_)
 
 #### **3.2 DBSCAN**
 
-Density-Based Spatial Clustering of Applications with Noise. Groups points close to each other based on density, ignoring noise.
+Density-Based Spatial Clustering of Applications with Noise. Groups points close to each other based on density, ignoring noise. [<>](#dbscan)
 
 ### Formula/Method for determining whether a point is a **core point**:
 A point $p$ is a **core point** if the number of points $N(p, \epsilon)$ within the **ε**-radius of $p$ (including $p$ itself) is greater than or equal to **MinPts**.

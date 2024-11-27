@@ -148,18 +148,18 @@
 1. **R-Squared (R²):**
   - Formula: 
 
-  $$
+$$
     R^2 = 1 - \left(\frac{\text{Sum of Squared Residuals}}{\text{Total Sum of Squares}}\right)
-  $$
+$$
 
   - Problem: It doesn't account for which features are relevant.
 
 2. **Adjusted R-Squared:**
   - Formula:
 
-  $$
+$$
     \text{Adjusted } R^2 = 1 - \left(\frac{(1-R^2)(N-1)}{N-P-1}\right)
-  $$
+$$
 
   - `N`: Number of data points
   - `P`: Number of independent features
@@ -210,16 +210,16 @@
 1. **Precision:**
   - Formula: 
 
-  $$
+$$
     \text{Precision} = \frac{TP}{TP + FP}
-  $$
+$$
 
 2. **Recall:**
   - Formula: 
 
-  $$
+$$
     \text{Recall} = \frac{TP}{TP + FN}
-  $$
+$$
 
   - Used when reducing **False Negatives (FN)** is important.
 
@@ -236,9 +236,9 @@
 1. **Mean:** 
   - Formula: 
 
-  $$
+$$
     \text{Mean} = \frac{\text{Sum of All Numbers}}{\text{Count of Numbers}}
-  $$
+$$
 
 2. **Median:**
    - Arrange data in ascending order and pick the middle value.
@@ -1181,7 +1181,7 @@ Consider the following 2D points (in meters):
 ## Example
 
 ### **Parameters**
-- \( \epsilon \) = 1.5
+- $\epsilon$ = 1.5
 - MinPts = 3
 
 
@@ -1828,7 +1828,7 @@ $$
 
 `Section A`
 
-### 1. **What are the basic types of Machine Learning?**  
+### Q1. **What are the basic types of Machine Learning?**  
 Machine Learning can be broadly categorized into three types:  
 
 #### **1. Supervised Learning**  
@@ -1848,8 +1848,6 @@ model = LinearRegression().fit(X, y)
 print(model.predict([[4]]))  # Predict price for a house of size 4
 ```
 
----
-
 #### **2. Unsupervised Learning**  
 - **Definition**: The model identifies patterns or clusters in data without labeled outputs.  
 - **Types**:  
@@ -1865,15 +1863,13 @@ kmeans = KMeans(n_clusters=2, random_state=0).fit(X)
 print(kmeans.labels_)  # Outputs cluster assignments
 ```
 
----
-
 #### **3. Reinforcement Learning**  
 - **Definition**: The model learns through trial and error by interacting with the environment to maximize rewards.  
 - **Example**: Training robots to play games or self-driving cars learning optimal routes.  
 
 ---
 
-### 2. **Define a Decision Tree and explain its working in the context of classification tasks.**  
+### Q2. **Define a Decision Tree and explain its working in the context of classification tasks.**  
 - **Definition**: A Decision Tree is a flowchart-like structure where internal nodes represent feature tests, branches represent outcomes, and leaf nodes represent classes or predictions.  
 
 - **Working**:  
@@ -1894,7 +1890,7 @@ print(model.predict([[30, 60000]]))  # Predict for new customer
 
 ---
 
-### 3. **What is Random Forest, and how does it address the limitations of Decision Trees?**  
+### Q3. **What is Random Forest, and how does it address the limitations of Decision Trees?**  
 - **Definition**: Random Forest is an ensemble method that creates multiple decision trees and combines their predictions through averaging (regression) or majority voting (classification).  
 
 - **Advantages Over Decision Trees**:  
@@ -1913,7 +1909,7 @@ print(model.predict([[30, 60000]]))  # Predict for new customer
 
 ---
 
-### 4. **Describe the process of Bagging and its role in reducing overfitting.**  
+### Q4. **Describe the process of Bagging and its role in reducing overfitting.**  
 - **Definition**: Bagging (Bootstrap Aggregating) is an ensemble method that trains multiple models on different bootstrapped subsets of the data and combines their predictions.  
 - **Working**:  
   1. **Bootstrap**: Create random subsets of data with replacement.  
@@ -1937,7 +1933,7 @@ print(model.predict([[30, 60000]]))  # Predict for new customer
 
 ---
 
-### 5. **What is Boosting, and how does it differ from Bagging?**  
+### Q5. **What is Boosting, and how does it differ from Bagging?**  
 - **Definition**: Boosting is an ensemble method where models are trained sequentially, and each model focuses on correcting the errors of its predecessor.  
 
 - **Differences from Bagging**:  
@@ -1972,8 +1968,6 @@ Decision Trees and Random Forests are popular machine learning algorithms, but t
 | **Definition**      | A tree-like structure where nodes represent features, branches represent decisions, and leaf nodes represent outcomes. | An ensemble of decision trees built using bagging to improve performance and robustness. |
 | **Key Idea**        | Single model working on the entire dataset.       | Combines predictions from multiple decision trees. |
 
----
-
 ### **2. Performance Comparison**  
 
 #### **(a) Accuracy**  
@@ -1996,8 +1990,6 @@ Decision Trees and Random Forests are popular machine learning algorithms, but t
   - Slower to train due to the creation of multiple trees.  
   - Prediction is slower as it requires aggregation from multiple trees.  
 
----
-
 ### **3. Strengths and Weaknesses**  
 
 #### **(a) Interpretability**  
@@ -2018,8 +2010,6 @@ Decision Trees and Random Forests are popular machine learning algorithms, but t
   - Reduces overfitting significantly by averaging the outputs of multiple trees.  
   - Better generalization on unseen data.  
 
----
-
 ### **4. When to Use**  
 
 | Scenario                      | Decision Tree                           | Random Forest                                |
@@ -2028,8 +2018,6 @@ Decision Trees and Random Forests are popular machine learning algorithms, but t
 | **High Dimensional Data**     | Struggles with noise and irrelevant features. | Handles high-dimensional data effectively by random feature selection. |
 | **Need for Interpretability** | Preferred due to simplicity.            | Not preferred; harder to explain.           |
 | **Large Datasets with Noise** | May overfit and perform poorly.         | Performs well due to robustness.            |
-
----
 
 ### **5. Real-Life Examples**  
 
@@ -2057,8 +2045,6 @@ model = RandomForestClassifier(n_estimators=100).fit(X, y)
 print(model.predict([[28, 60000]]))  # Predict for new applicant
 ```
 
----
-
 ### **6. Summary Table**
 
 | Metric                  | Decision Tree                                | Random Forest                              |
@@ -2068,8 +2054,6 @@ print(model.predict([[28, 60000]]))  # Predict for new applicant
 | **Speed**               | Faster to train and predict                 | Slower due to ensemble methods           |
 | **Interpretability**    | Easy to interpret                           | Harder to interpret                      |
 | **Robustness**          | Sensitive to noise and irrelevant features  | Robust against noise and irrelevant data |
-
----
 
 **Conclusion**:  
 - Use **Decision Trees** when you need a quick and interpretable model for small datasets.  
@@ -2139,8 +2123,6 @@ Hyperparameters in Random Forest are settings that control the learning process 
    - **Effect on Model**:  
      - Ensures consistent results when running the same model multiple times.  
 
----
-
 ### **How Hyperparameters Affect Accuracy**
 
 - **Underfitting**:  
@@ -2153,8 +2135,6 @@ Hyperparameters in Random Forest are settings that control the learning process 
 
 - **Bias-Variance Tradeoff**:  
   - Proper tuning balances bias (underfitting) and variance (overfitting) to achieve optimal accuracy.  
-
----
 
 ### **Example: Random Forest with Hyperparameter Tuning**
 
@@ -2184,14 +2164,10 @@ grid_search.fit(X, y)
 print("Best Parameters:", grid_search.best_params_)
 ```
 
----
-
 ### **Real-Life Example**
 
 - **Spam Email Detection**:  
   Hyperparameters like `max_features` and `n_estimators` are tuned to balance model complexity and accuracy, improving detection of spam emails.  
-
----
 
 ### **Conclusion**
 
@@ -2218,7 +2194,6 @@ print("Best Parameters:", grid_search.best_params_)
 | **Speed**                   | Faster training as it uses simpler base learners. | Slower due to more complex models and gradient calculations. |
 | **Hyperparameters**         | Fewer (e.g., number of estimators, learning rate). | More complex tuning with parameters like tree depth, loss function, and learning rate. |
 
----
 
 ### **Strengths in Handling Various Data Types**
 
@@ -2236,8 +2211,6 @@ print("Best Parameters:", grid_search.best_params_)
    - **Spam Detection**: Works well on clean email datasets.
    - **Credit Risk Prediction**: Suitable when dealing with well-defined patterns in binary outcomes (e.g., loan approval).
 
----
-
 #### **Gradient Boosting**
 1. **Strengths**:
    - Flexible: Can handle custom loss functions for different tasks (e.g., classification, regression, ranking).
@@ -2251,8 +2224,6 @@ print("Best Parameters:", grid_search.best_params_)
 3. **Use Cases**:
    - **Fraud Detection**: Suitable for imbalanced datasets with many complex features.
    - **Predictive Analytics**: Used for house price prediction, stock market forecasting, and other regression problems.
-
----
 
 ### **Example: AdaBoost vs Gradient Boosting on the Same Dataset**
 
@@ -2281,8 +2252,6 @@ gb_pred = gradient_boost.predict(X_test)
 print("Gradient Boosting Accuracy:", accuracy_score(y_test, gb_pred))
 ```
 
----
-
 ### **Summary**
 
 | Aspect                      | **AdaBoost**                                    | **Gradient Boosting**                              |
@@ -2299,10 +2268,9 @@ Both methods are powerful ensemble techniques. **AdaBoost** is simpler and faste
 `Section C`
 
 ### Q1. Discuss the advantages and disadvantages of using ensemble methods like Bagging and Boosting in Machine Learning.
---
+
 #### **Advantages and Disadvantages of Using Ensemble Methods Like Bagging and Boosting**
 
----
 
 ### **Overview of Bagging and Boosting**
 - **Bagging (Bootstrap Aggregating)**: Combines predictions from multiple models (weak learners) trained independently on different random subsets of the dataset using bootstrapping.
@@ -2311,7 +2279,6 @@ Both methods are powerful ensemble techniques. **AdaBoost** is simpler and faste
 - **Boosting**: Sequentially combines weak learners, where each new learner focuses on correcting errors made by the previous ones.
   - Example: **AdaBoost**, **Gradient Boosting**, and **XGBoost**.
 
----
 
 ### **Advantages of Bagging**
 
@@ -2331,7 +2298,6 @@ Both methods are powerful ensemble techniques. **AdaBoost** is simpler and faste
 #### **Example**:
 - **Random Forest** builds decision trees on bootstrapped datasets and averages their predictions, reducing variance and preventing overfitting.
 
----
 
 ### **Disadvantages of Bagging**
 
@@ -2344,7 +2310,6 @@ Both methods are powerful ensemble techniques. **AdaBoost** is simpler and faste
 3. **Requires Large Data**:
    - Bagging needs a sufficiently large dataset for effective sampling.
 
----
 
 ### **Advantages of Boosting**
 
@@ -2363,7 +2328,6 @@ Both methods are powerful ensemble techniques. **AdaBoost** is simpler and faste
 #### **Example**:
 - **AdaBoost** sequentially adds weak classifiers, like decision stumps, improving performance on classification tasks.
 
----
 
 ### **Disadvantages of Boosting**
 
@@ -2379,7 +2343,6 @@ Both methods are powerful ensemble techniques. **AdaBoost** is simpler and faste
 4. **Slower Training**:
    - Boosting algorithms train sequentially, which increases training time.
 
----
 
 ### **Comparison of Bagging and Boosting**
 
@@ -2392,7 +2355,6 @@ Both methods are powerful ensemble techniques. **AdaBoost** is simpler and faste
 | **Performance**            | Works well for high-variance models.         | Performs well for imbalanced datasets.        |
 | **Training Speed**         | Faster due to parallel computation.          | Slower due to sequential training.            |
 
----
 
 ### **Real-Life Applications**
 
@@ -2408,7 +2370,6 @@ Both methods are powerful ensemble techniques. **AdaBoost** is simpler and faste
 2. **Ad Click-Through Rate (CTR) Prediction**:
    - Gradient Boosting handles large-scale imbalanced data effectively.
 
----
 
 ### **Coding Example: Comparison of Bagging and Boosting**
 
@@ -2448,23 +2409,22 @@ Both methods have their advantages and are chosen based on the problem's nature 
 ---
 
 
-## Q2. Explain the concept of entropy and information gain in the context of Decision Tree learning.
+### Q2. Explain the concept of entropy and information gain in the context of Decision Tree learning.
 
 
-### **1. Entropy**
+#### **1. Entropy**
 
-#### **Definition**:
 Entropy measures the **uncertainty** or **impurity** in a dataset. In decision tree learning, it helps determine how mixed the data is at a node.
 
 #### **Formula for Entropy**:
-For a dataset with \( n \) classes:
+For a dataset with $n$ classes:
 
-\[
+$$
 H(S) = - \sum_{i=1}^{n} p_i \cdot \log_2(p_i)
-\]
+$$
 
 Where:
-- \( p_i \) = proportion of data belonging to class \( i \).
+- $p_i$ = proportion of data belonging to class $i$.
 
 #### **Key Properties**:
 1. **Maximum Entropy**:
@@ -2478,34 +2438,34 @@ Consider a dataset with 10 samples:
 - 4 samples belong to **Class B**.
 
 Entropy calculation:
-\[
+
+$$
 H(S) = -\left(\frac{6}{10} \log_2 \frac{6}{10} + \frac{4}{10} \log_2 \frac{4}{10}\right)
-\]
-\[
+$$
+
+$$
 H(S) = -\left(0.6 \log_2 0.6 + 0.4 \log_2 0.4\right) \approx 0.971
-\]
+$$
 
----
 
-### **2. Information Gain**
+#### **2. Information Gain**
 
-#### **Definition**:
 Information Gain (IG) measures the **reduction in entropy** achieved by splitting a dataset based on an attribute.
 
 #### **Formula for Information Gain**:
-\[
+
+$$
 IG(S, A) = H(S) - \sum_{v \in A} \frac{|S_v|}{|S|} \cdot H(S_v)
-\]
+$$
 
 Where:
-- \( H(S) \): Entropy of the dataset \( S \).
-- \( v \): Possible values of attribute \( A \).
-- \( |S_v| \): Number of samples in the subset \( S_v \).
+- $H(S)$: Entropy of the dataset $S$.
+- $v$: Possible values of attribute $A$.
+- $|S_v|$: Number of samples in the subset $S_v$.
 
 #### **Key Idea**:
 The attribute with the **highest Information Gain** is chosen for splitting, as it provides the most "purity" in child nodes.
 
----
 
 ### **3. Entropy and Information Gain in Decision Trees**
 
@@ -2531,42 +2491,46 @@ Consider a dataset with two features: **Weather** (Sunny, Rainy) and **Play** (Y
 | Sunny   | Yes   |
 
 **Step 1: Calculate Entropy of the Dataset**:
-\[
+
+$$
 H(S) = -\left(\frac{3}{5} \log_2 \frac{3}{5} + \frac{2}{5} \log_2 \frac{2}{5}\right) \approx 0.971
-\]
+$$
 
 **Step 2: Calculate Entropy for Attribute 'Weather'**:
 - For **Sunny** (3 samples: 2 Yes, 1 No):
-  \[
-  H(Sunny) = -\left(\frac{2}{3} \log_2 \frac{2}{3} + \frac{1}{3} \log_2 \frac{1}{3}\right) \approx 0.918
-  \]
+
+$$
+H(Sunny) = -\left(\frac{2}{3} \log_2 \frac{2}{3} + \frac{1}{3} \log_2 \frac{1}{3}\right) \approx 0.918
+$$
 
 - For **Rainy** (2 samples: 2 Yes, 0 No):
-  \[
-  H(Rainy) = -\left(\frac{2}{2} \log_2 \frac{2}{2}\right) = 0
-  \]
+
+$$
+H(Rainy) = -\left(\frac{2}{2} \log_2 \frac{2}{2}\right) = 0
+$$
 
 **Step 3: Calculate Weighted Average Entropy**:
-\[
+
+$$
 H(S, Weather) = \frac{3}{5} \cdot 0.918 + \frac{2}{5} \cdot 0 = 0.5508
-\]
+$$
 
 **Step 4: Calculate Information Gain**:
-\[
-IG(S, Weather) = H(S) - H(S, Weather)
-\]
-\[
-IG(S, Weather) = 0.971 - 0.5508 = 0.4202
-\]
 
----
+$$
+IG(S, Weather) = H(S) - H(S, Weather)
+$$
+
+$$
+IG(S, Weather) = 0.971 - 0.5508 = 0.4202
+$$
+
 
 ### **4. Real-Life Example**
 
 #### **Scenario**:
 A company wants to predict whether a customer will purchase a product based on features like **age group** and **income level**. The decision tree splits data into subsets, such as "high income" vs. "low income," to make predictions with the highest accuracy.
 
----
 
 ### **5. Coding Example**
 
@@ -2588,7 +2552,6 @@ tree.fit(X_train, y_train)
 print(export_text(tree, feature_names=data.feature_names))
 ```
 
----
 
 ### **Conclusion**
 
@@ -2624,7 +2587,6 @@ Overfitting occurs when a model learns the noise and specific details in the tra
 5. **Limited Robustness**:
    - Boosting is not robust against mislabeled or noisy data, as it tends to assign higher weights to such samples.
 
----
 
 ### **Strategies to Mitigate Overfitting**
 
@@ -2637,10 +2599,11 @@ Overfitting occurs when a model learns the noise and specific details in the tra
    - Use regularization techniques to control model complexity:
      - **Shrinkage**: Reduce the contribution of each weak learner by multiplying its output with a small learning rate (\(\eta\)).
      - Formula:  
-       \[
-       F_m(x) = F_{m-1}(x) + \eta \cdot h_m(x)
-       \]
-       where \( \eta \) (learning rate) is a small positive value.
+
+$$
+F_m(x) = F_{m-1}(x) + \eta \cdot h_m(x)
+$$
+       where $\eta$ (learning rate) is a small positive value.
 
    **Effect**: Lower learning rates force the algorithm to make smaller adjustments, reducing overfitting risk.
 
@@ -2666,7 +2629,6 @@ Overfitting occurs when a model learns the noise and specific details in the tra
 8. **Hybrid Methods**:
    - Use hybrid algorithms like XGBoost and CatBoost, which have built-in regularization to prevent overfitting.
 
----
 
 ### **Real-Life Example**
 
@@ -2678,7 +2640,6 @@ In a financial fraud detection system, Boosting algorithms may overfit to noisy 
 2. Limit the number of boosting iterations.
 3. Apply cross-validation to ensure robustness.
 
----
 
 ### **Coding Example: Regularized Gradient Boosting (XGBoost)**
 
@@ -2701,8 +2662,6 @@ y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {accuracy:.2f}")
 ```
-
----
 
 ### **Conclusion**
 

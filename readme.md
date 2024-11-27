@@ -2299,8 +2299,8 @@ Both methods are powerful ensemble techniques. **AdaBoost** is simpler and faste
 `Section C`
 
 ### Q1. Discuss the advantages and disadvantages of using ensemble methods like Bagging and Boosting in Machine Learning.
-
-### **Advantages and Disadvantages of Using Ensemble Methods Like Bagging and Boosting**
+--
+#### **Advantages and Disadvantages of Using Ensemble Methods Like Bagging and Boosting**
 
 ---
 

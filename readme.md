@@ -2597,13 +2597,14 @@ Overfitting occurs when a model learns the noise and specific details in the tra
 
 2. **Regularization**:
    - Use regularization techniques to control model complexity:
-     - **Shrinkage**: Reduce the contribution of each weak learner by multiplying its output with a small learning rate (\(\eta\)).
+     - **Shrinkage**: Reduce the contribution of each weak learner by multiplying its output with a small learning rate ($\eta$).
      - Formula:  
 
 $$
 F_m(x) = F_{m-1}(x) + \eta \cdot h_m(x)
 $$
-       where $\eta$ (learning rate) is a small positive value.
+
+where $\eta$ (learning rate) is a small positive value.
 
    **Effect**: Lower learning rates force the algorithm to make smaller adjustments, reducing overfitting risk.
 

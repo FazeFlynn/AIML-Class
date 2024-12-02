@@ -3025,9 +3025,11 @@ A supervised learning algorithm that assumes features are conditionally independ
 
 #### **Bayes' Theorem**:
 The model is based on Bayes' Theorem:
+
 $$
 P(C|X) = \frac{P(X|C)P(C)}{P(X)}
 $$
+
 Where:
 - $P(C|X)$: Probability of class $C$ given features $X$ (posterior probability).
 - $P(X|C)$: Probability of features $X$ given class $C$.
@@ -3105,9 +3107,10 @@ print("Model Accuracy:", accuracy)
    - **Solution**: Use **Laplace Smoothing**:
 
 $$
-P(X|C) = \frac{n_{X,C} + 1}{n_C + k}
+    P(X|C) = \frac{n_{X,C} + 1}{n_C + k}
 $$
-     Where $k$ is the total number of features.
+
+Where $k$ is the total number of features.
 
 
 ### **Real-Life Applications**:

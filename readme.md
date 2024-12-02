@@ -2686,89 +2686,82 @@ print(f"Accuracy: {accuracy:.2f}")
 #### **1. What is Text Classification?**
 Text Classification is a supervised learning task where a model is trained to assign predefined categories or labels to textual data. It is widely used in applications such as spam detection, sentiment analysis, and topic categorization.
 
-- **Definition**:  
-  It involves mapping a piece of text (like an email, tweet, or document) to one or more categories based on its content.  
+It involves mapping a piece of text (like an email, tweet, or document) to one or more categories based on its content.  
 
-- **Example (Scenario)**:  
-  - **Spam Classification**: Classifying emails as "Spam" or "Not Spam."
-  - **Sentiment Analysis**: Identifying whether a product review is "Positive," "Negative," or "Neutral."
+**Example (Scenario)**:
+  
+- **Spam Classification**: Classifying emails as "Spam" or "Not Spam."
+- **Sentiment Analysis**: Identifying whether a product review is "Positive," "Negative," or "Neutral."
 
 
 #### **2. Types of Text Classification Problems**
 There are several types of text classification problems based on the nature of the task:
 
-- **Binary Classification**:
-  - **Definition**: Classify text into one of two categories.
-  - **Example**: Determining if a tweet is "Hate Speech" or "Not Hate Speech."
-  - **Coding Example** (using Python):
-    ```python
-    from sklearn.feature_extraction.text import CountVectorizer
-    from sklearn.naive_bayes import MultinomialNB
+#### **Binary Classification**:
 
-    # Sample data
-    texts = ["This is spam", "This is not spam"]
-    labels = [1, 0]  # 1: Spam, 0: Not Spam
+- **Definition**: Classify text into one of two categories.
+- **Example**: Determining if a tweet is "Hate Speech" or "Not Hate Speech."
+- **Coding Example** (using Python):
 
-    # Vectorize text
-    vectorizer = CountVectorizer()
-    X = vectorizer.fit_transform(texts)
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+# Sample data
+texts = ["This is spam", "This is not spam"]
+labels = [1, 0]  # 1: Spam, 0: Not Spam
+# Vectorize text
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(texts)
+# Train a Naive Bayes model
+model = MultinomialNB()
+model.fit(X, labels)
+# Predict
+print(model.predict(vectorizer.transform(["This is spam"])))  # Output: [1]
+```
 
-    # Train a Naive Bayes model
-    model = MultinomialNB()
-    model.fit(X, labels)
 
-    # Predict
-    print(model.predict(vectorizer.transform(["This is spam"])))  # Output: [1]
-    ```
+#### **Multi-class Classification**:
+- **Definition**: Classify text into one of multiple categories.
+- **Example**: Classifying news articles into categories such as "Politics," "Sports," and "Technology."
+- **Coding Example**:
 
-- **Multi-class Classification**:
-  - **Definition**: Classify text into one of multiple categories.
-  - **Example**: Classifying news articles into categories such as "Politics," "Sports," and "Technology."
-  - **Coding Example**:
-    ```python
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    from sklearn.linear_model import LogisticRegression
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+# Sample data
+texts = ["Sports are great", "Politics is interesting", "Tech is advancing"]
+labels = [0, 1, 2]  # 0: Sports, 1: Politics, 2: Technology
+# Vectorize text
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(texts)
+# Train a Logistic Regression model
+model = LogisticRegression()
+model.fit(X, labels)
+# Predict
+print(model.predict(vectorizer.transform(["Technology is amazing"])))  # Output: [2]
+```
 
-    # Sample data
-    texts = ["Sports are great", "Politics is interesting", "Tech is advancing"]
-    labels = [0, 1, 2]  # 0: Sports, 1: Politics, 2: Technology
+#### **Multi-label Classification**:
+- **Definition**: Assign multiple labels to a single piece of text.
+- **Example**: Classifying a research paper as both "Machine Learning" and "Data Science."
+- **Coding Example**:
 
-    # Vectorize text
-    vectorizer = TfidfVectorizer()
-    X = vectorizer.fit_transform(texts)
-
-    # Train a Logistic Regression model
-    model = LogisticRegression()
-    model.fit(X, labels)
-
-    # Predict
-    print(model.predict(vectorizer.transform(["Technology is amazing"])))  # Output: [2]
-    ```
-
-- **Multi-label Classification**:
-  - **Definition**: Assign multiple labels to a single piece of text.
-  - **Example**: Classifying a research paper as both "Machine Learning" and "Data Science."
-  - **Coding Example**:
-    ```python
-    from sklearn.feature_extraction.text import CountVectorizer
-    from sklearn.multioutput import MultiOutputClassifier
-    from sklearn.ensemble import RandomForestClassifier
-
-    # Sample data
-    texts = ["AI in healthcare", "Big data in finance", "AI in finance"]
-    labels = [[1, 0], [0, 1], [1, 1]]  # 1st: AI, 2nd: Finance
-
-    # Vectorize text
-    vectorizer = CountVectorizer()
-    X = vectorizer.fit_transform(texts)
-
-    # Train a Random Forest model
-    model = MultiOutputClassifier(RandomForestClassifier())
-    model.fit(X, labels)
-
-    # Predict
-    print(model.predict(vectorizer.transform(["AI in finance"])))  # Output: [[1 1]]
-    ```
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.multioutput import MultiOutputClassifier
+from sklearn.ensemble import RandomForestClassifier
+# Sample data
+texts = ["AI in healthcare", "Big data in finance", "AI in finance"]
+labels = [[1, 0], [0, 1], [1, 1]]  # 1st: AI, 2nd: Finance
+# Vectorize text
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(texts)
+# Train a Random Forest model
+model = MultiOutputClassifier(RandomForestClassifier())
+model.fit(X, labels)
+# Predict
+print(model.predict(vectorizer.transform(["AI in finance"])))  # Output: [[1 1]]
+```
 
 
 ### **Key Points to Remember**
@@ -2793,10 +2786,9 @@ Text preprocessing is a crucial step in Natural Language Processing (NLP) that i
 
 
 #### **1. Tokenization**
-- **Definition**:  
-  Tokenization is the process of splitting text into smaller units, called tokens, such as words, sentences, or subwords.
+ Tokenization is the process of splitting text into smaller units, called tokens, such as words, sentences, or subwords.
 
-- **Types**:  
+**Types**:  
   - **Word Tokenization**: Splits text into individual words.  
     Example: *"Natural Language Processing"* → `['Natural', 'Language', 'Processing']`
   - **Sentence Tokenization**: Splits text into sentences.  
@@ -2815,65 +2807,62 @@ Text preprocessing is a crucial step in Natural Language Processing (NLP) that i
   ```
 
 #### **2. Stopword Removal**
-- **Definition**:  
-  Stopwords are commonly used words (e.g., "is," "the," "and") that add little meaning to the text and are often removed during preprocessing.
+Stopwords are commonly used words (e.g., "is," "the," "and") that add little meaning to the text and are often removed during preprocessing.
 
-- **Purpose**:  
-  Focus on the most relevant words by removing unnecessary words.
+**Purpose**: Focus on the most relevant words by removing unnecessary words.
 
 - **Example (Scenario)**:  
   Removing stopwords from search queries to enhance search engine results.
 
-- **Coding Example**:
-  ```python
-  from nltk.corpus import stopwords
-  from nltk.tokenize import word_tokenize
+**Coding Example**:
 
-  text = "This is a simple example demonstrating stopword removal."
-  stop_words = set(stopwords.words('english'))
-  words = word_tokenize(text)
-  filtered_words = [word for word in words if word.lower() not in stop_words]
-  print("Filtered Words:", filtered_words)  # ['This', 'simple', 'example', 'demonstrating', 'stopword', 'removal']
-  ```
+```python
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+text = "This is a simple example demonstrating stopword removal."
+stop_words = set(stopwords.words('english'))
+words = word_tokenize(text)
+filtered_words = [word for word in words if word.lower() not in stop_words]
+print("Filtered Words:", filtered_words)  # ['This', 'simple', 'example', 'demonstrating', 'stopword', 'removal']
+```
 
 #### **3. Stemming and Lemmatization**
-- **Stemming**:
-  - **Definition**:  
-    Reduces words to their root or base form, often by chopping off suffixes. It may not produce valid words.
-  - **Example**:  
+
+#### **Stemming**:
+Reduces words to their root or base form, often by chopping off suffixes. It may not produce valid words.
+
+- **Example**:  
     *"running," "runner," "runs"* → `"run"`
 
-- **Lemmatization**:
-  - **Definition**:  
-    Reduces words to their base form using vocabulary and morphology, ensuring that the result is a valid word.
-  - **Example**:  
-    *"running," "ran"* → `"run"`
+#### **Lemmatization**:
+Reduces words to their base form using vocabulary and morphology, ensuring that the result is a valid word.
 
-- **Differences**:
-  - Stemming is faster but less accurate.
-  - Lemmatization is more accurate but computationally expensive.
+- **Example**:  
+  *"running," "ran"* → `"run"`
+
+**Differences**:
+- Stemming is faster but less accurate.
+- Lemmatization is more accurate but computationally expensive.
 
 - **Example (Scenario)**:  
   Preprocessing customer reviews to normalize text before sentiment analysis.
 
-- **Coding Example**:
-  ```python
-  from nltk.stem import PorterStemmer, WordNetLemmatizer
-  from nltk.tokenize import word_tokenize
+**Coding Example**:
 
-  text = "running runs ran easily"
-  words = word_tokenize(text)
-
-  # Stemming
-  stemmer = PorterStemmer()
-  stemmed_words = [stemmer.stem(word) for word in words]
-  print("Stemmed Words:", stemmed_words)  # ['run', 'run', 'ran', 'easili']
-
-  # Lemmatization
-  lemmatizer = WordNetLemmatizer()
-  lemmatized_words = [lemmatizer.lemmatize(word, pos='v') for word in words]
-  print("Lemmatized Words:", lemmatized_words)  # ['run', 'run', 'run', 'easily']
-  ```
+```python
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+from nltk.tokenize import word_tokenize
+text = "running runs ran easily"
+words = word_tokenize(text)
+# Stemming
+stemmer = PorterStemmer()
+stemmed_words = [stemmer.stem(word) for word in words]
+print("Stemmed Words:", stemmed_words)  # ['run', 'run', 'ran', 'easili']
+# Lemmatization
+lemmatizer = WordNetLemmatizer()
+lemmatized_words = [lemmatizer.lemmatize(word, pos='v') for word in words]
+print("Lemmatized Words:", lemmatized_words)  # ['run', 'run', 'run', 'easily']
+```
 
 ### **Key Points to Remember**
 1. **Text Preprocessing Steps**:
@@ -2899,94 +2888,90 @@ Feature extraction transforms raw text into numerical representations that machi
 
 
 ### **1. Bag-of-Words (BoW)**
-- **Definition**:  
-  The Bag-of-Words model represents text as a vector of word frequencies or occurrences without considering the order of the words.
+The Bag-of-Words model represents text as a vector of word frequencies or occurrences without considering the order of the words.
 
-- **Working**:  
-  1. Create a vocabulary of unique words from the dataset.  
-  2. Count the frequency of each word in the text.  
-  3. Represent each text as a vector of word frequencies.
+**Working**:  
+1. Create a vocabulary of unique words from the dataset.  
+2. Count the frequency of each word in the text.  
+3. Represent each text as a vector of word frequencies.
 
-- **Example (Scenario)**:  
-  Converting product reviews into numerical features for sentiment classification.
+**Example (Scenario)**:  
+Converting product reviews into numerical features for sentiment classification.
 
-- **Coding Example**:
-  ```python
-  from sklearn.feature_extraction.text import CountVectorizer
+**Coding Example**:
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+texts = ["I love NLP", "NLP is amazing", "I love learning NLP"]
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(texts)
+print("Vocabulary:", vectorizer.get_feature_names_out())  # ['amazing', 'is', 'learning', 'love', 'nlp']
+print("Bag-of-Words Representation:\n", X.toarray())
+# Output:
+# [[0 0 0 1 1]
+#  [1 1 0 0 1]
+#  [0 0 1 1 1]]
+```
 
-  texts = ["I love NLP", "NLP is amazing", "I love learning NLP"]
-  vectorizer = CountVectorizer()
-  X = vectorizer.fit_transform(texts)
 
-  print("Vocabulary:", vectorizer.get_feature_names_out())  # ['amazing', 'is', 'learning', 'love', 'nlp']
-  print("Bag-of-Words Representation:\n", X.toarray())
-  # Output:
-  # [[0 0 0 1 1]
-  #  [1 1 0 0 1]
-  #  [0 0 1 1 1]]
-  ```
+**Advantages**:
+- Simple and easy to implement.
+- Effective for small datasets.
 
-- **Advantages**:
-  - Simple and easy to implement.
-  - Effective for small datasets.
+**Limitations**:
+- Ignores word order.
+- High-dimensional for large vocabularies.
 
-- **Limitations**:
-  - Ignores word order.
-  - High-dimensional for large vocabularies.
 
 
 ### **2. TF-IDF (Term Frequency-Inverse Document Frequency)**
-- **Definition**:  
-  TF-IDF evaluates the importance of a word in a document relative to the entire dataset.  
-  - **Term Frequency (TF)**: Measures how often a word appears in a document.  
+TF-IDF evaluates the importance of a word in a document relative to the entire dataset.  
+
+**Term Frequency (TF)**: Measures how often a word appears in a document.  
 
 $$
     \text{TF} = \frac{\text{Number of times word occurs in the document}}{\text{Total number of words in the document}}
 $$
 
-  - **Inverse Document Frequency (IDF)**: Measures the uniqueness of a word across documents.  
+**Inverse Document Frequency (IDF)**: Measures the uniqueness of a word across documents.  
 
 $$
     \text{IDF} = \log\left(\frac{\text{Total number of documents}}{\text{Number of documents containing the word}}\right)
 $$
 
-  - **TF-IDF Formula**:  
+**TF-IDF Formula**:  
 
 $$
     \text{TF-IDF} = \text{TF} \times \text{IDF}
 $$
 
-- **Working**:
-  1. Compute TF and IDF for each word in the dataset.
-  2. Multiply TF and IDF to get the TF-IDF score.
-  3. Represent each document as a vector of TF-IDF scores.
+**Working**:
+1. Compute TF and IDF for each word in the dataset.
+2. Multiply TF and IDF to get the TF-IDF score.
+3. Represent each document as a vector of TF-IDF scores.
 
-- **Example (Scenario)**:  
-  Extracting keywords from research papers to identify the main topics.
+**Example (Scenario)**:  
+Extracting keywords from research papers to identify the main topics.
 
-- **Coding Example**:
-  ```python
-  from sklearn.feature_extraction.text import TfidfVectorizer
+**Coding Example**:
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+texts = ["I love NLP", "NLP is amazing", "I love learning NLP"]
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(texts)
+print("Vocabulary:", vectorizer.get_feature_names_out())  # ['amazing', 'is', 'learning', 'love', 'nlp']
+print("TF-IDF Representation:\n", X.toarray())
+# Output: TF-IDF scores for each word
+# [[0.         0.         0.         0.57973867 0.81480247]
+#  [0.81480247 0.81480247 0.         0.         0.57973867]
+#  [0.         0.         0.81480247 0.57973867 0.57973867]]
+```
 
-  texts = ["I love NLP", "NLP is amazing", "I love learning NLP"]
-  vectorizer = TfidfVectorizer()
-  X = vectorizer.fit_transform(texts)
-
-  print("Vocabulary:", vectorizer.get_feature_names_out())  # ['amazing', 'is', 'learning', 'love', 'nlp']
-  print("TF-IDF Representation:\n", X.toarray())
-  # Output: TF-IDF scores for each word
-  # [[0.         0.         0.         0.57973867 0.81480247]
-  #  [0.81480247 0.81480247 0.         0.         0.57973867]
-  #  [0.         0.         0.81480247 0.57973867 0.57973867]]
-  ```
-
-- **Advantages**:
-  - Captures the importance of rare but relevant words.
-  - Reduces the impact of common words.
-
-- **Limitations**:
-  - Computationally expensive for large datasets.
-  - Assumes word independence.
+**Advantages**:
+- Captures the importance of rare but relevant words.
+- Reduces the impact of common words.
+**Limitations**:
+- Computationally expensive for large datasets.
+- Assumes word independence.
 
 
 ### **Key Points to Remember**
@@ -3019,8 +3004,6 @@ The Naive Bayes classifier is a probabilistic machine learning model based on Ba
 
 
 ### **Naive Bayes Classifier**
-
-#### **Definition**:
 A supervised learning algorithm that assumes features are conditionally independent given the target class. This "naive" assumption simplifies the computation of probabilities.
 
 #### **Bayes' Theorem**:
@@ -3135,13 +3118,7 @@ Where $k$ is the total number of features.
 
 ### **Lecture 41: Advanced Text Classification Techniques**
 
-In this lecture, we will explore advanced techniques used in text classification. These methods go beyond basic models like Naive Bayes and offer more flexibility and power for various text classification tasks.
-
----
-
 ### **1. Support Vector Machines (SVM)**
-
-#### **Definition**:
 Support Vector Machines (SVM) are supervised learning models that can be used for both classification and regression tasks. In text classification, SVMs are widely used for their ability to find the optimal hyperplane that separates different classes.
 
 #### **Key Concept**:
@@ -3187,13 +3164,16 @@ print("SVM Accuracy:", accuracy)
 ### **2. Decision Trees and Random Forests**
 
 #### **Decision Trees**:
-- **Definition**: A decision tree is a tree-like model that makes decisions by splitting data into subsets based on feature values.
-- **Working**: The tree splits the data using conditions (such as "is the feature greater than a value?") at each node, leading to leaves that represent class labels.
+A decision tree is a tree-like model that makes decisions by splitting data into subsets based on feature values.
+
+**Working**: The tree splits the data using conditions (such as "is the feature greater than a value?") at each node, leading to leaves that represent class labels.
 
 #### **Random Forests**:
-- **Definition**: A random forest is an ensemble method that builds multiple decision trees and combines their predictions to improve accuracy.
-- **Working**: It uses bootstrapping (random sampling with replacement) to create different training sets and builds multiple trees. The final prediction is based on the majority vote from all the trees.
-- **Advantages**: More robust and accurate than individual decision trees due to reduced overfitting.
+A random forest is an ensemble method that builds multiple decision trees and combines their predictions to improve accuracy.
+
+**Working**: It uses bootstrapping (random sampling with replacement) to create different training sets and builds multiple trees. The final prediction is based on the majority vote from all the trees.
+
+**Advantages**: More robust and accurate than individual decision trees due to reduced overfitting.
 
 #### **Example (Scenario)**:
 Classifying customer reviews into categories like "Positive", "Negative", and "Neutral".
@@ -3235,8 +3215,6 @@ print("Decision Tree Accuracy:", dt_accuracy)
 ---
 
 ### **3. Neural Networks**
-
-#### **Definition**:
 Neural Networks (NN) are computational models inspired by the human brain. They consist of layers of nodes (neurons) that process information. They are especially powerful for large-scale and complex datasets like text.
 
 #### **Types**:
@@ -3353,8 +3331,6 @@ This lecture focuses on specific NLP techniques like Named Entity Recognition (N
 
 
 ### **1. Named Entity Recognition (NER)**
-
-#### **Definition**:
 NER identifies and classifies named entities (e.g., names of people, organizations, locations, dates) within a text into predefined categories.
 
 #### **Types of Entities**:
@@ -3396,7 +3372,6 @@ California GPE
 
 ### **2. Sentiment Analysis**
 
-#### **Definition**:
 Sentiment Analysis determines the sentiment (positive, negative, or neutral) expressed in a piece of text.
 
 #### **Types**:

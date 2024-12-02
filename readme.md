@@ -2674,6 +2674,883 @@ print(f"Accuracy: {accuracy:.2f}")
   - Hybrid models like XGBoost offer additional controls for regularization.
 
 
+---
+---
+
+
+
+# Unit 5
+
+### **Lecture 37: Introduction to Text Classification**
+
+#### **1. What is Text Classification?**
+Text Classification is a supervised learning task where a model is trained to assign predefined categories or labels to textual data. It is widely used in applications such as spam detection, sentiment analysis, and topic categorization.
+
+- **Definition**:  
+  It involves mapping a piece of text (like an email, tweet, or document) to one or more categories based on its content.  
+
+- **Example (Scenario)**:  
+  - **Spam Classification**: Classifying emails as "Spam" or "Not Spam."
+  - **Sentiment Analysis**: Identifying whether a product review is "Positive," "Negative," or "Neutral."
+
+
+#### **2. Types of Text Classification Problems**
+There are several types of text classification problems based on the nature of the task:
+
+- **Binary Classification**:
+  - **Definition**: Classify text into one of two categories.
+  - **Example**: Determining if a tweet is "Hate Speech" or "Not Hate Speech."
+  - **Coding Example** (using Python):
+    ```python
+    from sklearn.feature_extraction.text import CountVectorizer
+    from sklearn.naive_bayes import MultinomialNB
+
+    # Sample data
+    texts = ["This is spam", "This is not spam"]
+    labels = [1, 0]  # 1: Spam, 0: Not Spam
+
+    # Vectorize text
+    vectorizer = CountVectorizer()
+    X = vectorizer.fit_transform(texts)
+
+    # Train a Naive Bayes model
+    model = MultinomialNB()
+    model.fit(X, labels)
+
+    # Predict
+    print(model.predict(vectorizer.transform(["This is spam"])))  # Output: [1]
+    ```
+
+- **Multi-class Classification**:
+  - **Definition**: Classify text into one of multiple categories.
+  - **Example**: Classifying news articles into categories such as "Politics," "Sports," and "Technology."
+  - **Coding Example**:
+    ```python
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.linear_model import LogisticRegression
+
+    # Sample data
+    texts = ["Sports are great", "Politics is interesting", "Tech is advancing"]
+    labels = [0, 1, 2]  # 0: Sports, 1: Politics, 2: Technology
+
+    # Vectorize text
+    vectorizer = TfidfVectorizer()
+    X = vectorizer.fit_transform(texts)
+
+    # Train a Logistic Regression model
+    model = LogisticRegression()
+    model.fit(X, labels)
+
+    # Predict
+    print(model.predict(vectorizer.transform(["Technology is amazing"])))  # Output: [2]
+    ```
+
+- **Multi-label Classification**:
+  - **Definition**: Assign multiple labels to a single piece of text.
+  - **Example**: Classifying a research paper as both "Machine Learning" and "Data Science."
+  - **Coding Example**:
+    ```python
+    from sklearn.feature_extraction.text import CountVectorizer
+    from sklearn.multioutput import MultiOutputClassifier
+    from sklearn.ensemble import RandomForestClassifier
+
+    # Sample data
+    texts = ["AI in healthcare", "Big data in finance", "AI in finance"]
+    labels = [[1, 0], [0, 1], [1, 1]]  # 1st: AI, 2nd: Finance
+
+    # Vectorize text
+    vectorizer = CountVectorizer()
+    X = vectorizer.fit_transform(texts)
+
+    # Train a Random Forest model
+    model = MultiOutputClassifier(RandomForestClassifier())
+    model.fit(X, labels)
+
+    # Predict
+    print(model.predict(vectorizer.transform(["AI in finance"])))  # Output: [[1 1]]
+    ```
+
+
+### **Key Points to Remember**
+1. **Supervised Nature**: Text Classification relies on labeled datasets to train models.
+2. **Common Algorithms**: Logistic Regression, Naive Bayes, and Neural Networks are commonly used.
+3. **Applications**:
+   - **Spam Detection**
+   - **Language Detection**
+   - **Customer Feedback Analysis**
+4. **Evaluation Metrics**:
+   - **Accuracy**: Correct predictions out of all predictions.
+   - **Precision, Recall, and F1-score**: Metrics for imbalanced datasets.
+
+---
+
+<!-- ===================================================================================== -->
+
+
+### **Lecture 38: Text Preprocessing Techniques**
+
+Text preprocessing is a crucial step in Natural Language Processing (NLP) that involves preparing and cleaning text data for analysis or modeling. It ensures that the text is in a structured and uniform format for effective processing.
+
+
+#### **1. Tokenization**
+- **Definition**:  
+  Tokenization is the process of splitting text into smaller units, called tokens, such as words, sentences, or subwords.
+
+- **Types**:  
+  - **Word Tokenization**: Splits text into individual words.  
+    Example: *"Natural Language Processing"* → `['Natural', 'Language', 'Processing']`
+  - **Sentence Tokenization**: Splits text into sentences.  
+    Example: *"I love NLP. It is amazing!"* → `['I love NLP.', 'It is amazing!']`
+
+- **Example (Scenario)**:  
+  Tokenizing reviews into words to analyze customer sentiments.
+
+- **Coding Example**:
+  ```python
+  from nltk.tokenize import word_tokenize, sent_tokenize
+
+  text = "I love NLP. It's amazing!"
+  print("Word Tokenization:", word_tokenize(text))  # ['I', 'love', 'NLP', '.', 'It', "'s", 'amazing', '!']
+  print("Sentence Tokenization:", sent_tokenize(text))  # ['I love NLP.', "It's amazing!"]
+  ```
+
+#### **2. Stopword Removal**
+- **Definition**:  
+  Stopwords are commonly used words (e.g., "is," "the," "and") that add little meaning to the text and are often removed during preprocessing.
+
+- **Purpose**:  
+  Focus on the most relevant words by removing unnecessary words.
+
+- **Example (Scenario)**:  
+  Removing stopwords from search queries to enhance search engine results.
+
+- **Coding Example**:
+  ```python
+  from nltk.corpus import stopwords
+  from nltk.tokenize import word_tokenize
+
+  text = "This is a simple example demonstrating stopword removal."
+  stop_words = set(stopwords.words('english'))
+  words = word_tokenize(text)
+  filtered_words = [word for word in words if word.lower() not in stop_words]
+  print("Filtered Words:", filtered_words)  # ['This', 'simple', 'example', 'demonstrating', 'stopword', 'removal']
+  ```
+
+#### **3. Stemming and Lemmatization**
+- **Stemming**:
+  - **Definition**:  
+    Reduces words to their root or base form, often by chopping off suffixes. It may not produce valid words.
+  - **Example**:  
+    *"running," "runner," "runs"* → `"run"`
+
+- **Lemmatization**:
+  - **Definition**:  
+    Reduces words to their base form using vocabulary and morphology, ensuring that the result is a valid word.
+  - **Example**:  
+    *"running," "ran"* → `"run"`
+
+- **Differences**:
+  - Stemming is faster but less accurate.
+  - Lemmatization is more accurate but computationally expensive.
+
+- **Example (Scenario)**:  
+  Preprocessing customer reviews to normalize text before sentiment analysis.
+
+- **Coding Example**:
+  ```python
+  from nltk.stem import PorterStemmer, WordNetLemmatizer
+  from nltk.tokenize import word_tokenize
+
+  text = "running runs ran easily"
+  words = word_tokenize(text)
+
+  # Stemming
+  stemmer = PorterStemmer()
+  stemmed_words = [stemmer.stem(word) for word in words]
+  print("Stemmed Words:", stemmed_words)  # ['run', 'run', 'ran', 'easili']
+
+  # Lemmatization
+  lemmatizer = WordNetLemmatizer()
+  lemmatized_words = [lemmatizer.lemmatize(word, pos='v') for word in words]
+  print("Lemmatized Words:", lemmatized_words)  # ['run', 'run', 'run', 'easily']
+  ```
+
+### **Key Points to Remember**
+1. **Text Preprocessing Steps**:
+   - Tokenize the text into smaller components.
+   - Remove stopwords to retain meaningful words.
+   - Normalize words using stemming or lemmatization.
+2. **Importance**:
+   - Improves model performance by reducing noise.
+   - Standardizes text for easier analysis.
+3. **Real-Life Applications**:
+   - **Chatbots**: Preprocessing customer queries for intent detection.
+   - **Search Engines**: Normalizing and filtering queries for better results.
+4. **Common Libraries**:
+   - **NLTK**: Widely used for text preprocessing.
+   - **spaCy**: A faster library for large-scale NLP tasks.
+
+---
+
+
+### **Lecture 39: Feature Extraction Methods**
+
+Feature extraction transforms raw text into numerical representations that machine learning algorithms can process. It is a critical step in Natural Language Processing (NLP) for converting unstructured text into structured data.
+
+
+### **1. Bag-of-Words (BoW)**
+- **Definition**:  
+  The Bag-of-Words model represents text as a vector of word frequencies or occurrences without considering the order of the words.
+
+- **Working**:  
+  1. Create a vocabulary of unique words from the dataset.  
+  2. Count the frequency of each word in the text.  
+  3. Represent each text as a vector of word frequencies.
+
+- **Example (Scenario)**:  
+  Converting product reviews into numerical features for sentiment classification.
+
+- **Coding Example**:
+  ```python
+  from sklearn.feature_extraction.text import CountVectorizer
+
+  texts = ["I love NLP", "NLP is amazing", "I love learning NLP"]
+  vectorizer = CountVectorizer()
+  X = vectorizer.fit_transform(texts)
+
+  print("Vocabulary:", vectorizer.get_feature_names_out())  # ['amazing', 'is', 'learning', 'love', 'nlp']
+  print("Bag-of-Words Representation:\n", X.toarray())
+  # Output:
+  # [[0 0 0 1 1]
+  #  [1 1 0 0 1]
+  #  [0 0 1 1 1]]
+  ```
+
+- **Advantages**:
+  - Simple and easy to implement.
+  - Effective for small datasets.
+
+- **Limitations**:
+  - Ignores word order.
+  - High-dimensional for large vocabularies.
+
+
+### **2. TF-IDF (Term Frequency-Inverse Document Frequency)**
+- **Definition**:  
+  TF-IDF evaluates the importance of a word in a document relative to the entire dataset.  
+  - **Term Frequency (TF)**: Measures how often a word appears in a document.  
+
+$$
+    \text{TF} = \frac{\text{Number of times word occurs in the document}}{\text{Total number of words in the document}}
+$$
+
+  - **Inverse Document Frequency (IDF)**: Measures the uniqueness of a word across documents.  
+
+$$
+    \text{IDF} = \log\left(\frac{\text{Total number of documents}}{\text{Number of documents containing the word}}\right)
+$$
+
+  - **TF-IDF Formula**:  
+
+$$
+    \text{TF-IDF} = \text{TF} \times \text{IDF}
+$$
+
+- **Working**:
+  1. Compute TF and IDF for each word in the dataset.
+  2. Multiply TF and IDF to get the TF-IDF score.
+  3. Represent each document as a vector of TF-IDF scores.
+
+- **Example (Scenario)**:  
+  Extracting keywords from research papers to identify the main topics.
+
+- **Coding Example**:
+  ```python
+  from sklearn.feature_extraction.text import TfidfVectorizer
+
+  texts = ["I love NLP", "NLP is amazing", "I love learning NLP"]
+  vectorizer = TfidfVectorizer()
+  X = vectorizer.fit_transform(texts)
+
+  print("Vocabulary:", vectorizer.get_feature_names_out())  # ['amazing', 'is', 'learning', 'love', 'nlp']
+  print("TF-IDF Representation:\n", X.toarray())
+  # Output: TF-IDF scores for each word
+  # [[0.         0.         0.         0.57973867 0.81480247]
+  #  [0.81480247 0.81480247 0.         0.         0.57973867]
+  #  [0.         0.         0.81480247 0.57973867 0.57973867]]
+  ```
+
+- **Advantages**:
+  - Captures the importance of rare but relevant words.
+  - Reduces the impact of common words.
+
+- **Limitations**:
+  - Computationally expensive for large datasets.
+  - Assumes word independence.
+
+
+### **Key Points to Remember**
+1. **BoW vs. TF-IDF**:
+   - BoW focuses only on word frequency, while TF-IDF considers word relevance across the dataset.
+   - TF-IDF provides a weighted representation that highlights important words.
+2. **Applications**:
+   - **Spam Detection**: Identifying spam emails by analyzing word frequencies.
+   - **Topic Modeling**: Grouping documents based on the occurrence of keywords.
+3. **Challenges**:
+   - Both methods ignore the semantic meaning and order of words.
+   - High-dimensional representations can lead to sparsity in large datasets.
+
+
+### **Comparison of BoW and TF-IDF**
+
+| **Aspect**            | **Bag-of-Words (BoW)**            | **TF-IDF**                              |
+|-----------------------|-----------------------------------|-----------------------------------------|
+| **Word Order**        | Ignored                          | Ignored                                 |
+| **Weighting**         | Frequency-based                  | Frequency + Relevance                   |
+| **Dimensionality**    | High for large vocabularies      | High for large vocabularies             |
+| **Applications**      | Basic text classification        | Keyword extraction, advanced NLP tasks |
+
+
+---
+
+### **Lecture 40: Naive Bayes Classifier**
+
+The Naive Bayes classifier is a probabilistic machine learning model based on Bayes' Theorem. It is particularly effective for text classification and works well with high-dimensional datasets.
+
+
+### **Naive Bayes Classifier**
+
+#### **Definition**:
+A supervised learning algorithm that assumes features are conditionally independent given the target class. This "naive" assumption simplifies the computation of probabilities.
+
+#### **Bayes' Theorem**:
+The model is based on Bayes' Theorem:
+$$
+P(C|X) = \frac{P(X|C)P(C)}{P(X)}
+$$
+Where:
+- $P(C|X)$: Probability of class $C$ given features $X$ (posterior probability).
+- $P(X|C)$: Probability of features $X$ given class $C$.
+- $P(C)$: Prior probability of class $C$.
+- $P(X)$: Evidence (total probability of data).
+
+#### **Types of Naive Bayes Classifier**:
+1. **Gaussian Naive Bayes**:
+   - Assumes continuous data follows a Gaussian distribution.
+   - Commonly used for numerical features.
+   - Formula for likelihood:
+
+$$
+     P(X|C) = \frac{1}{\sqrt{2\pi\sigma_C^2}} e^{-\frac{(X - \mu_C)^2}{2\sigma_C^2}}
+$$
+
+Where $\mu_C$ and $\sigma_C^2$ are the mean and variance for class $C$.
+
+2. **Multinomial Naive Bayes**:
+   - Used for discrete data (e.g., word counts in text data).
+   - Calculates probabilities based on frequency of features in each class.
+
+3. **Bernoulli Naive Bayes**:
+   - Used for binary features (e.g., presence/absence of words).
+   - Assumes features follow a Bernoulli distribution.
+
+
+### **Training and Evaluating a Naive Bayes Model for Text Classification**
+
+#### **Working**:
+1. Compute prior probabilities $P(C)$ for each class based on training data.
+2. Compute likelihood $P(X|C)$ for each feature $X$ in the dataset.
+3. Predict class $C$ for new data by maximizing posterior probability $P(C|X)$.
+
+#### **Example (Scenario)**:
+Classifying emails into "spam" and "not spam."
+
+#### **Coding Example**:
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.model_selection import train_test_split
+
+# Sample dataset
+emails = [
+    "Win a lottery now", "Congratulations, you've won!",
+    "Meeting tomorrow", "Let's schedule a call", 
+    "Free prize inside!", "Discount on your purchase"
+]
+labels = [1, 1, 0, 0, 1, 1]  # 1: Spam, 0: Not Spam
+
+# Preprocess data
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(emails)
+X_train, X_test, y_train, y_test = train_test_split(X, labels, test_size=0.3, random_state=42)
+
+# Train model
+model = MultinomialNB()
+model.fit(X_train, y_train)
+
+# Evaluate model
+accuracy = model.score(X_test, y_test)
+print("Model Accuracy:", accuracy)
+```
+
+
+### **Advantages of Naive Bayes**:
+1. **Simple and Fast**: Performs well even with small datasets.
+2. **Effective for Text Classification**: Works well with high-dimensional data.
+3. **Scalable**: Efficient with large datasets.
+
+### **Disadvantages of Naive Bayes**:
+1. **Feature Independence Assumption**: The naive assumption may not hold for all datasets.
+2. **Zero Probability Problem**: If a feature is not present in training data for a class, it results in zero probability.
+   - **Solution**: Use **Laplace Smoothing**:
+
+$$
+P(X|C) = \frac{n_{X,C} + 1}{n_C + k}
+$$
+     Where $k$ is the total number of features.
+
+
+### **Real-Life Applications**:
+1. **Spam Filtering**: Identify spam emails using word frequencies.
+2. **Sentiment Analysis**: Classify text as positive or negative sentiment.
+3. **Medical Diagnosis**: Predict diseases based on symptoms.
+
+
+### **Summary Table**
+
+| **Aspect**                   | **Details**                                                                 |
+|-------------------------------|-----------------------------------------------------------------------------|
+| **Types**                    | Gaussian, Multinomial, Bernoulli                                            |
+| **Formula**                  | Bayes' Theorem: $P(C|X) = \frac{P(X|C)P(C)}{P(X)}$                      |
+| **Applications**             | Spam filtering, sentiment analysis, medical diagnosis                      |
+| **Advantages**               | Simple, fast, effective for text data                                      |
+| **Disadvantages**            | Assumes feature independence, suffers from zero probability problem         |
+
+
+---
+
+
+### **Lecture 41: Advanced Text Classification Techniques**
+
+In this lecture, we will explore advanced techniques used in text classification. These methods go beyond basic models like Naive Bayes and offer more flexibility and power for various text classification tasks.
+
+---
+
+### **1. Support Vector Machines (SVM)**
+
+#### **Definition**:
+Support Vector Machines (SVM) are supervised learning models that can be used for both classification and regression tasks. In text classification, SVMs are widely used for their ability to find the optimal hyperplane that separates different classes.
+
+#### **Key Concept**:
+- **Hyperplane**: A decision boundary that divides data points of different classes.
+- **Margin**: The distance between the closest points of each class to the hyperplane, which SVM maximizes to improve generalization.
+- **Kernel Trick**: A method that allows SVM to perform well even in non-linearly separable data by transforming data into higher dimensions.
+
+#### **Types of SVM**:
+1. **Linear SVM**: Used when classes are linearly separable.
+2. **Non-linear SVM**: Uses kernel functions (e.g., polynomial, RBF) to handle non-linear separations.
+
+#### **Example (Scenario)**:
+Classifying news articles into categories such as "Sports", "Politics", "Technology", etc.
+
+#### **Coding Example**:
+```python
+from sklearn.svm import SVC
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+
+# Sample dataset
+documents = ["Football match results", "Tech companies are innovating", "Politics in the US", "New smartphones released"]
+labels = ['Sports', 'Technology', 'Politics', 'Technology']
+
+# Preprocess data using TF-IDF
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(documents)
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, labels, test_size=0.25, random_state=42)
+
+# Train SVM model
+model = SVC(kernel='linear')
+model.fit(X_train, y_train)
+
+# Evaluate model
+accuracy = model.score(X_test, y_test)
+print("SVM Accuracy:", accuracy)
+```
+
+---
+
+### **2. Decision Trees and Random Forests**
+
+#### **Decision Trees**:
+- **Definition**: A decision tree is a tree-like model that makes decisions by splitting data into subsets based on feature values.
+- **Working**: The tree splits the data using conditions (such as "is the feature greater than a value?") at each node, leading to leaves that represent class labels.
+
+#### **Random Forests**:
+- **Definition**: A random forest is an ensemble method that builds multiple decision trees and combines their predictions to improve accuracy.
+- **Working**: It uses bootstrapping (random sampling with replacement) to create different training sets and builds multiple trees. The final prediction is based on the majority vote from all the trees.
+- **Advantages**: More robust and accurate than individual decision trees due to reduced overfitting.
+
+#### **Example (Scenario)**:
+Classifying customer reviews into categories like "Positive", "Negative", and "Neutral".
+
+#### **Coding Example**:
+```python
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Sample dataset
+documents = ["Great product!", "Very bad experience", "Average quality", "Excellent customer service"]
+labels = ['Positive', 'Negative', 'Neutral', 'Positive']
+
+# Preprocess data using TF-IDF
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(documents)
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, labels, test_size=0.25, random_state=42)
+
+# Train Random Forest model
+rf_model = RandomForestClassifier(n_estimators=100)
+rf_model.fit(X_train, y_train)
+
+# Train Decision Tree model
+dt_model = DecisionTreeClassifier()
+dt_model.fit(X_train, y_train)
+
+# Evaluate models
+rf_accuracy = rf_model.score(X_test, y_test)
+dt_accuracy = dt_model.score(X_test, y_test)
+
+print("Random Forest Accuracy:", rf_accuracy)
+print("Decision Tree Accuracy:", dt_accuracy)
+```
+
+---
+
+### **3. Neural Networks**
+
+#### **Definition**:
+Neural Networks (NN) are computational models inspired by the human brain. They consist of layers of nodes (neurons) that process information. They are especially powerful for large-scale and complex datasets like text.
+
+#### **Types**:
+1. **Feedforward Neural Networks (FNN)**: The simplest form where data flows in one direction from input to output.
+2. **Convolutional Neural Networks (CNN)**: Typically used for image processing but can also be applied to text classification (e.g., with character-level analysis).
+3. **Recurrent Neural Networks (RNN)**: Used for sequential data like text, where information from previous words helps classify current words (e.g., LSTM, GRU).
+
+#### **Example (Scenario)**:
+Classifying movie reviews as "positive" or "negative" using deep learning.
+
+#### **Coding Example**:
+```python
+import tensorflow as tf
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Sample dataset
+documents = ["Loved the movie!", "Worst movie ever", "It was an okay movie", "Amazing performance by actors"]
+labels = [1, 0, 1, 1]  # 1: Positive, 0: Negative
+
+# Preprocess data using TF-IDF
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(documents)
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, labels, test_size=0.25, random_state=42)
+
+# Build a simple neural network model
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(128, activation='relu', input_shape=(X_train.shape[1],)),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(1, activation='sigmoid')  # Binary classification
+])
+
+# Compile model
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+# Train model
+model.fit(X_train, y_train, epochs=5, batch_size=2)
+
+# Evaluate model
+accuracy = model.evaluate(X_test, y_test)
+print("Neural Network Accuracy:", accuracy[1])
+```
+
+### **4. Transfer Learning and Pre-trained Models**
+
+#### **Definition**:
+Transfer learning involves using a pre-trained model (trained on a large dataset) and fine-tuning it for a specific task. This saves time and computational resources compared to training a model from scratch.
+
+#### **Popular Pre-trained Models**:
+1. **BERT (Bidirectional Encoder Representations from Transformers)**: Pre-trained on large corpora, used for tasks like sentiment analysis, question answering, etc.
+2. **GPT (Generative Pretrained Transformer)**: Pre-trained on a large corpus and fine-tuned for various NLP tasks.
+3. **Word2Vec**: Pre-trained embeddings for words that capture semantic relationships.
+
+#### **Example (Scenario)**:
+Using a pre-trained BERT model to classify movie reviews as positive or negative.
+
+#### **Coding Example**:
+```python
+from transformers import BertTokenizer, BertForSequenceClassification
+from torch.utils.data import DataLoader
+import torch
+
+# Pre-trained BERT tokenizer and model
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertForSequenceClassification.from_pretrained('bert-base-uncased')
+
+# Sample dataset
+texts = ["Great movie!", "Worst movie ever"]
+labels = [1, 0]
+
+# Tokenize input
+inputs = tokenizer(texts, padding=True, truncation=True, return_tensors="pt")
+
+# Convert labels to tensor
+labels = torch.tensor(labels)
+
+# Make predictions
+outputs = model(**inputs, labels=labels)
+loss = outputs.loss
+logits = outputs.logits
+
+print("Loss:", loss)
+print("Predicted Class:", torch.argmax(logits, dim=1))
+```
+
+
+### **Summary Table**
+
+| **Technique**                 | **Description**                                                        | **Example Application**                    |
+|-------------------------------|------------------------------------------------------------------------|--------------------------------------------|
+| **Support Vector Machines**    | A classifier that finds an optimal hyperplane to separate classes       | Text classification (e.g., news article classification) |
+| **Decision Trees**             | A tree-based model that splits data into subsets based on features      | Customer review classification              |
+| **Random Forests**             | An ensemble method using multiple decision trees for more accuracy     | Text classification                        |
+| **Neural Networks**            | A deep learning model that mimics the brain to classify complex data   | Sentiment analysis on movie reviews        |
+| **Transfer Learning**          | Uses pre-trained models and fine-tunes them for specific tasks         | BERT for sentiment analysis                |
+
+
+### **Conclusion**:
+
+- **Support Vector Machines (SVM)** are powerful for linearly separable data and can be extended for non-linear separations using kernel tricks.
+- **Decision Trees** are simple to understand, while **Random Forests** enhance accuracy and robustness by using multiple trees.
+- **Neural Networks** provide a high level of flexibility and are effective for large and complex datasets.
+- **Transfer Learning** allows leveraging pre-trained models to save time and computational resources, especially with large datasets like text.
+
+
+---
+
+
+### **Lecture 43: NLP Techniques for Text Classification**
+
+This lecture focuses on specific NLP techniques like Named Entity Recognition (NER), Sentiment Analysis, Topic Modeling, Word Embeddings, and how these techniques can be integrated into text classification models. Below is a structured explanation of each topic:
+
+
+### **1. Named Entity Recognition (NER)**
+
+#### **Definition**:
+NER identifies and classifies named entities (e.g., names of people, organizations, locations, dates) within a text into predefined categories.
+
+#### **Types of Entities**:
+- **Person**: "John Doe"
+- **Organization**: "Google"
+- **Location**: "New York"
+- **Date/Time**: "12th March 2023"
+
+#### **Real-Life Example**:
+Extract entities from resumes to identify candidate names, skills, and previous employers.
+
+#### **Coding Example**:
+```python
+from spacy import load
+
+# Load spaCy model
+nlp = load("en_core_web_sm")
+
+# Sample text
+text = "Google was founded by Larry Page and Sergey Brin in California."
+
+# Process text
+doc = nlp(text)
+
+# Extract entities
+for entity in doc.ents:
+    print(entity.text, entity.label_)
+```
+
+**Output**:
+```
+Google ORG
+Larry Page PERSON
+Sergey Brin PERSON
+California GPE
+```
+
+---
+
+### **2. Sentiment Analysis**
+
+#### **Definition**:
+Sentiment Analysis determines the sentiment (positive, negative, or neutral) expressed in a piece of text.
+
+#### **Types**:
+1. **Binary Sentiment Analysis**: Positive/Negative
+2. **Multi-class Sentiment Analysis**: Positive/Negative/Neutral
+
+#### **Real-Life Example**:
+Analyze customer reviews to gauge satisfaction.
+
+#### **Coding Example**:
+```python
+from textblob import TextBlob
+
+# Sample text
+review = "The product is amazing and works perfectly!"
+
+# Analyze sentiment
+blob = TextBlob(review)
+print("Polarity:", blob.polarity)  # Ranges from -1 (negative) to 1 (positive)
+print("Sentiment:", "Positive" if blob.polarity > 0 else "Negative")
+```
+
+**Output**:
+```
+Polarity: 0.9
+Sentiment: Positive
+```
+
+### **3. Topic Modeling**
+
+#### **Definition**:
+Topic Modeling identifies abstract topics within a collection of documents, typically using algorithms like Latent Dirichlet Allocation (LDA).
+
+#### **Real-Life Example**:
+Group articles in a news website into topics like "Sports," "Politics," or "Technology."
+
+#### **Coding Example**:
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.decomposition import LatentDirichletAllocation
+
+# Sample documents
+documents = ["The government announced a new policy.",
+             "The soccer team won the championship.",
+             "New technology trends are emerging in AI."]
+
+# Convert text to features
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(documents)
+
+# Train LDA
+lda = LatentDirichletAllocation(n_components=2, random_state=42)
+lda.fit(X)
+
+# Display topics
+for idx, topic in enumerate(lda.components_):
+    print(f"Topic {idx}:")
+    print([vectorizer.get_feature_names_out()[i] for i in topic.argsort()[-5:]])
+```
+
+**Output**:
+```
+Topic 0: ['government', 'policy', 'announced']
+Topic 1: ['team', 'soccer', 'championship']
+```
+
+### **4. Word Embeddings**
+
+#### **Definition**:
+Word Embeddings represent words as dense numerical vectors capturing semantic meanings. Common methods include Word2Vec, GloVe, and FastText.
+
+#### **Real-Life Example**:
+Use embeddings to analyze document similarity, such as finding similar legal contracts.
+
+#### **Coding Example**:
+```python
+from gensim.models import Word2Vec
+
+# Sample sentences
+sentences = [["dog", "barks", "loudly"], ["cat", "meows", "softly"]]
+
+# Train Word2Vec
+model = Word2Vec(sentences, vector_size=50, min_count=1)
+
+# Get vector for 'dog'
+print("Vector for 'dog':", model.wv['dog'])
+
+# Find most similar words
+print("Words similar to 'dog':", model.wv.most_similar('dog'))
+```
+
+**Output**:
+```
+Vector for 'dog': [0.1, -0.2, ...]
+Words similar to 'dog': [('cat', 0.9), ...]
+```
+
+### **5. Integration of NLP Techniques into Text Classification**
+
+#### **Concept**:
+Combining multiple NLP techniques improves model performance in classification tasks. For example:
+1. **Preprocess Text**: Tokenization, Stopword Removal, Lemmatization.
+2. **Extract Features**: Use embeddings (Word2Vec, GloVe) or vectorizers (TF-IDF, BoW).
+3. **Apply NLP Techniques**: Perform sentiment analysis, entity recognition, or topic modeling as intermediate steps.
+4. **Classification**: Use models like Naive Bayes, SVM, or Neural Networks.
+
+#### **Real-Life Example**:
+Classify customer support emails into categories like "Complaint," "Inquiry," or "Feedback" by combining topic modeling with sentiment analysis.
+
+#### **Coding Example (Pipeline)**:
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import make_pipeline
+
+# Sample emails
+emails = ["I want to return my order.",
+          "Can I know the status of my shipment?",
+          "Your service is terrible!"]
+
+# Labels
+categories = ["Complaint", "Inquiry", "Feedback"]
+
+# Create pipeline
+pipeline = make_pipeline(TfidfVectorizer(), MultinomialNB())
+
+# Train model
+pipeline.fit(emails, categories)
+
+# Predict
+new_email = ["The product is faulty and I need a replacement."]
+print("Category:", pipeline.predict(new_email))
+```
+
+**Output**:
+```
+Category: ['Complaint']
+```
+
+
+### **Summary Table**
+
+| **Technique**           | **Definition**                                                            | **Use Cases**                         | **Example**                           |
+|-------------------------|--------------------------------------------------------------------------|---------------------------------------|---------------------------------------|
+| **Named Entity Recognition** | Identify named entities in text (e.g., names, dates)                       | Resume parsing, event detection       | Extract organization names            |
+| **Sentiment Analysis**   | Determine sentiment (positive, negative, neutral)                        | Customer review analysis              | Polarity-based sentiment scoring      |
+| **Topic Modeling**       | Discover topics from a collection of documents                           | News article categorization           | Latent Dirichlet Allocation (LDA)     |
+| **Word Embeddings**      | Represent words as dense vectors capturing semantic meaning              | Document similarity, chatbot training | Word2Vec, GloVe                      |
+| **Integration Techniques** | Combine multiple techniques for enhanced classification accuracy       | Email categorization                  | Preprocessing + embeddings + models   |
+
+
+### **Conclusion**
+
+NLP techniques like NER, sentiment analysis, topic modeling, and word embeddings are crucial for building sophisticated text classification systems. By integrating these techniques, you can enhance model accuracy and solve complex problems efficiently. The coding examples illustrate their practical applications in real-world scenarios.
+
+
+
 
 ---
 

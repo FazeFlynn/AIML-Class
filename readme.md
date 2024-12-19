@@ -2153,7 +2153,7 @@ plt.show()
 A technique to reduce the number of features in a dataset while retaining meaningful information.
 
 #### **Types**  
-1. **PCA (Principal Component Analysis)**: Transforms data to a new set of axes.  
+1. **PCA (Principal Component Analysis)**: A technique used to reduce the dimensionality of a dataset by transforming it into a new set of variables, called principal components. These components capture the maximum variance in the data while minimizing information loss, making the data easier to analyze and visualize.
 2. **t-SNE**: For visualization of high-dimensional data.  
 3. **LDA (Linear Discriminant Analysis)**: Optimized for classification tasks.
 
@@ -2172,20 +2172,23 @@ $$
 #### **Code Example** (PCA)
 ```python
 from sklearn.decomposition import PCA
-import numpy as np
+from sklearn.datasets import load_iris
+import pandas as pd
 
-# Sample data
-data = np.array([[2.5, 2.4], [0.5, 0.7], [2.2, 2.9], [1.9, 2.2], [3.1, 3.0]])
+# Load dataset
+data = load_iris()
+X = pd.DataFrame(data.data, columns=data.feature_names)
 
 # Apply PCA
-pca = PCA(n_components=1)
-reduced_data = pca.fit_transform(data)
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
 
-print("Reduced Data:", reduced_data)
+# Print explained variance ratio
+print("Explained Variance Ratio:", pca.explained_variance_ratio_)
+
+# Output shape of reduced data
+print("Reduced Data Shape:", X_pca.shape)
 ```
-$$
-\Large \text{2nd Insem Ends Here}
-$$
 
 ---
 

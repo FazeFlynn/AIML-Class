@@ -3034,10 +3034,10 @@ $$
 R^2 = 1 - \frac{\text{SS}_{\text{residual}}}{\text{SS}_{\text{total}}}
 $$
 
-     Where:  
-     
-     - $\text{SS}_{\text{residual}}$: Residual sum of squares  
-     - $\text{SS}_{\text{total}}$: Total sum of squares
+  Where:  
+  
+  - $\text{SS}_{\text{residual}}$ : Residual sum of squares  
+  - $\text{SS}_{\text{total}}$ : Total sum of squares
 
 2. **Mean Absolute Error (MAE):**
    - **Definition:** Measures the average of the absolute errors between the predicted and actual values. It provides an idea of how far off the predictions are.

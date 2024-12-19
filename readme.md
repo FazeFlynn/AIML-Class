@@ -2268,6 +2268,9 @@ $$
   - **$H(S_k)$** = Entropy of subset $S_k$  
 
 
+<img src="./images/decisiontrees.png">
+
+
 #### **Real-Life Example**  
 - **Use Case**: Approving credit card applications.  
 - **Scenario**: A bank uses historical data (age, income, etc.) and builds a decision tree to automate credit card approval decisions.
@@ -2329,9 +2332,10 @@ print("Predictions:", predictions)
   - Introducing randomness in the feature selection reduces correlation among trees, further enhancing model generalization.
 
 
-
-
 ---
+
+
+<img src="./images/random-forest-img.png">
 
 
 ### Hyperparameters in Random Forest 
@@ -3302,6 +3306,14 @@ $$
 | **Performance**            | Works well for high-variance models.         | Performs well for imbalanced datasets.        |
 | **Training Speed**         | Faster due to parallel computation.          | Slower due to sequential training.            |
 
+`Bagging`
+
+<img src="./images/bagging-img.png">
+
+
+`Boosting`
+
+<img src="./images/boosting-img.png">
 
 ### **Real-Life Applications**
 

@@ -2284,6 +2284,350 @@ print(f"F1-Score: {f1}")
    - **Confusion Matrix:** Matches true positives, false positives, false negatives, and true negatives.  
    - Other metrics give insights into the performance of the model.
 
+---
+
+## Distribution
+
+A **distribution** in statistics describes how the values of a variable are spread or distributed. It shows the frequency or probability of data points within a dataset or population.
+
+
+### **Types of Distributions**  
+
+#### 1. **Normal Distribution (Gaussian Distribution)**  
+- A symmetric, bell-shaped curve where most data points lie near the mean.  
+- It is defined by **mean (μ)** and **standard deviation (σ)**.  
+
+**Formula:**  
+The probability density function (PDF) is:  
+
+$$
+f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}
+$$
+
+**Example:** Heights of people in a population.  
+- **Scenario:** Most people are of average height; very few are extremely short or tall.  
+
+---
+
+#### 2. **Uniform Distribution**  
+- All outcomes have equal probability.  
+- It is defined by two parameters: minimum (a) and maximum (b).  
+
+**Formula:**  
+For continuous uniform distribution:  
+
+$$
+f(x) = \frac{1}{b-a} \quad \text{for } a \leq x \leq b
+$$
+
+**Example:** Rolling a fair die.  
+- **Scenario:** Each number (1 to 6) has an equal probability of $\frac{1}{6}$.  
+
+---
+
+#### 3. **Binomial Distribution**  
+- Describes the number of successes in **n** independent trials, with the probability of success $p$.  
+
+**Formula:**  
+The probability of exactly $k$ successes:  
+
+$$
+P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}
+$$
+
+where $\binom{n}{k} = \frac{n!}{k!(n-k)!}$.
+
+**Example:** Flipping a coin 10 times.  
+- **Scenario:** Probability of getting heads (success) $p = 0.5$.  
+
+---
+
+#### 4. **Poisson Distribution**  
+- Represents the probability of a given number of events occurring in a fixed interval of time or space.  
+
+**Formula:**  
+
+$$
+P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}
+$$  
+
+where $\lambda$ = average rate of occurrence.  
+
+**Example:** Number of calls a call center receives per hour.  
+- **Scenario:** If a center receives 5 calls/hour on average, we can calculate the probability of receiving exactly 3 calls.  
+
+---
+
+#### 5. **Exponential Distribution**  
+- Describes the time between events in a Poisson process.  
+
+**Formula:**  
+The probability density function (PDF):
+
+$$
+f(x) = \lambda e^{-\lambda x} \quad \text{for } x \geq 0
+$$  
+
+**Example:** Time between arrivals of buses at a stop.  
+- **Scenario:** If the average waiting time for a bus is 10 minutes, exponential distribution can model the probability of waiting for a certain duration.  
+
+---
+
+### **Simple Python Examples**
+
+#### **1. Normal Distribution**
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate a normal distribution
+data = np.random.normal(loc=0, scale=1, size=1000)  # Mean=0, Std=1
+plt.hist(data, bins=30, density=True)
+plt.title("Normal Distribution")
+plt.show()
+```
+
+#### **2. Uniform Distribution**
+```python
+data = np.random.uniform(low=0, high=10, size=1000)  # Range 0 to 10
+plt.hist(data, bins=30, density=True)
+plt.title("Uniform Distribution")
+plt.show()
+```
+
+#### **3. Binomial Distribution**
+```python
+from scipy.stats import binom
+
+n, p = 10, 0.5  # 10 trials, 50% success probability
+x = np.arange(0, 11)
+pmf = binom.pmf(x, n, p)
+
+plt.bar(x, pmf)
+plt.title("Binomial Distribution (n=10, p=0.5)")
+plt.show()
+```
+
+#### **4. Poisson Distribution**
+```python
+from scipy.stats import poisson
+
+x = np.arange(0, 15)
+pmf = poisson.pmf(x, mu=5)  # Average rate λ=5
+
+plt.bar(x, pmf)
+plt.title("Poisson Distribution (λ=5)")
+plt.show()
+```
+
+#### **5. Exponential Distribution**
+```python
+data = np.random.exponential(scale=1, size=1000)  # λ=1
+plt.hist(data, bins=30, density=True)
+plt.title("Exponential Distribution")
+plt.show()
+```
+
+---
+
+### **Conclusion**  
+- **Normal Distribution:** Bell-shaped, common in natural phenomena.  
+- **Uniform Distribution:** Equal probability for all outcomes.  
+- **Binomial Distribution:** Successes in trials.  
+- **Poisson Distribution:** Events in fixed intervals.  
+- **Exponential Distribution:** Time between events.  
+
+Each distribution serves a unique purpose in statistics and data analysis.
+
+---
+
+## Bias and Variance
+
+### **Bias and Variance in Machine Learning**
+
+Bias and variance are fundamental concepts in machine learning that influence a model's performance. They are part of the **bias-variance tradeoff**, which affects the balance between underfitting and overfitting.
+
+---
+
+### **1. What is Bias?**
+- **Definition:** Bias is the error introduced by approximating a real-world problem with a simplified model.  
+- **Characteristics:**
+  - High bias leads to **underfitting**.
+  - Model makes strong assumptions about the data (e.g., assuming linear relationships when they are not).  
+- **Causes of Bias:** Over-simplified models (e.g., linear regression for non-linear data).  
+- **Impact:** Model fails to capture the underlying trends of the data.  
+
+**Example:**  
+Predicting house prices using a simple linear regression model when the relationship is quadratic.  
+
+---
+
+### **2. What is Variance?**
+- **Definition:** Variance is the error introduced by the model's sensitivity to small fluctuations in the training data.  
+- **Characteristics:**
+  - High variance leads to **overfitting**.
+  - Model captures noise along with the patterns in the training data.  
+- **Causes of Variance:** Complex models with many parameters (e.g., deep neural networks on small datasets).  
+- **Impact:** Model performs well on training data but poorly on unseen data.  
+
+**Example:**  
+A high-degree polynomial model fitting every data point, including noise.  
+
+---
+
+### **3. Bias-Variance Tradeoff**
+- **Goal:** Achieve a balance between bias and variance to minimize total error.  
+- **Key Points:**
+  - Total error = **Bias² + Variance + Irreducible Error**.  
+  - Irreducible error is inherent in the data and cannot be eliminated.
+
+---
+
+### **4. Differences Between Bias and Variance**
+
+| **Aspect**    | **Bias**                        | **Variance**                    |
+|---------------|---------------------------------|----------------------------------|
+| **Definition**| Assumption error of the model  | Sensitivity to training data    |
+| **Effect**    | Underfitting                   | Overfitting                     |
+| **Cause**     | Simple models                  | Complex models                  |
+| **Impact**    | Misses patterns in the data    | Captures noise in the data      |
+
+---
+
+### **5. Simple Example**
+
+- **High Bias:**  
+  A straight line trying to fit a curved dataset. It ignores key patterns.  
+- **High Variance:**  
+  A zig-zagging curve fitting every data point, including outliers.
+
+---
+
+### **6. Example in Python**
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.metrics import mean_squared_error
+
+# Generate synthetic data
+import numpy as np
+import matplotlib.pyplot as plt
+
+X = np.linspace(-3, 3, 100).reshape(-1, 1)
+y = X**3 + np.random.normal(0, 3, 100).reshape(-1, 1)
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# High Bias (Linear Regression)
+model_bias = LinearRegression()
+model_bias.fit(X_train, y_train)
+y_pred_bias = model_bias.predict(X_test)
+
+# High Variance (Decision Tree)
+model_variance = DecisionTreeRegressor(max_depth=10)
+model_variance.fit(X_train, y_train)
+y_pred_variance = model_variance.predict(X_test)
+
+# Evaluate
+print("High Bias MSE:", mean_squared_error(y_test, y_pred_bias))  # High error
+print("High Variance MSE:", mean_squared_error(y_test, y_pred_variance))  # May overfit
+
+# Visualization
+plt.scatter(X_test, y_test, color='blue', label='True Data')
+plt.plot(X_test, y_pred_bias, color='red', label='High Bias (Underfit)')
+plt.scatter(X_test, y_pred_variance, color='green', label='High Variance (Overfit)', alpha=0.5)
+plt.legend()
+plt.show()
+```
+
+---
+
+### **7. Mitigating Bias and Variance**
+- **To Reduce Bias:**
+  - Use more complex models (e.g., polynomial regression, neural networks).
+  - Train on more features relevant to the problem.  
+- **To Reduce Variance:**
+  - Use simpler models (e.g., regularization techniques like Lasso, Ridge).
+  - Use more data for training.
+  - Apply ensemble methods like bagging (Random Forests).  
+
+---
+
+### **8. Use Cases**
+- **Bias-Dominant Models:**
+  - Logistic regression for binary classification on non-linear data.
+- **Variance-Dominant Models:**
+  - Decision trees without pruning on small datasets.
+  
+
+### **Conclusion**
+Understanding bias and variance helps in selecting and tuning models. Striking the right balance ensures better generalization and performance on unseen data.
+
+---
+
+## Supervised vs Unsupervised Learning
+
+### **Difference Between Supervised and Unsupervised Learning**
+
+| **Aspect**                  | **Supervised Learning**                                                  | **Unsupervised Learning**                                              |
+|-----------------------------|--------------------------------------------------------------------------|------------------------------------------------------------------------|
+| **Definition**              | Learning from labeled data to predict outcomes for unseen data.         | Learning from unlabeled data to identify hidden patterns or structures. |
+| **Input Data**              | Labeled data (features + target/output).                                | Unlabeled data (only features, no output/target).                     |
+| **Goal**                    | Predict outputs or classify data based on input features.               | Group similar data points or reduce data dimensions.                  |
+| **Output**                  | Known and measurable (specific labels or numeric values).               | Unknown or inferred (clusters, patterns, or reduced dimensions).       |
+| **Algorithms**              | Regression, Decision Trees, Random Forests, Neural Networks, etc.       | Clustering (K-Means, DBSCAN), PCA, Anomaly Detection, etc.            |
+| **Evaluation**              | Accuracy, Precision, Recall, RMSE, etc.                                | Cluster Validity Indexes (e.g., Silhouette Score), Reconstruction Error.|
+| **Complexity**              | Typically less complex to implement and evaluate.                       | Requires more preprocessing and interpretation of results.            |
+| **Example Tasks**           | - Predicting house prices (Regression).                                 | - Customer segmentation (Clustering).                                |
+|                             | - Classifying emails as spam or not spam (Classification).              | - Reducing image dimensions (PCA).                                   |
+
+---
+
+### **Examples**
+
+#### **Supervised Learning Example: Email Classification**  
+- **Input:** Emails with labels "spam" or "not spam."  
+- **Goal:** Build a model to classify new emails as spam or not.  
+- **Algorithm:** Logistic Regression.  
+
+```python
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+
+# Example data
+emails = [[1, 0, 1], [0, 1, 0], [1, 1, 0]]  # Features
+labels = [1, 0, 1]  # 1 = Spam, 0 = Not Spam
+
+X_train, X_test, y_train, y_test = train_test_split(emails, labels, test_size=0.2)
+model = LogisticRegression()
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+```
+
+---
+
+#### **Unsupervised Learning Example: Customer Segmentation**  
+- **Input:** Customer purchase data (age, income, spending habits).  
+- **Goal:** Group customers into similar segments.  
+- **Algorithm:** K-Means Clustering.  
+
+```python
+from sklearn.cluster import KMeans
+
+# Example data
+data = [[25, 50000], [30, 60000], [22, 40000], [40, 70000]]  # Age, Income
+
+kmeans = KMeans(n_clusters=2)
+clusters = kmeans.fit_predict(data)
+print("Cluster Labels:", clusters)
+```
+
+
+### **Conclusion**
+Supervised learning is best for tasks where labeled data is available, while unsupervised learning is ideal for exploring unknown structures in unlabeled datasets. The choice depends on the problem and the nature of the data.
 
 
 

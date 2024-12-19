@@ -3028,9 +3028,12 @@ $$
 
 1. **R-squared ($R^2$):**
    - **Definition:** Measures how well the model explains the variance of the dependent variable. A higher value indicates a better fit.
-   - **Formula:**
+
+**Formula:**
    
-$R^2 = 1 - \frac{\text{SS}_{\text{residual}}}{\text{SS}_{\text{total}}}$
+$$
+R^2 = 1 - \frac{\text{SS}_{\text{residual}}}{\text{SS}_{\text{total}}}
+$$
 
 Where:    
 

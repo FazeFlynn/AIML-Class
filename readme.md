@@ -3034,8 +3034,8 @@ $$
 R^2 = 1 - \frac{\text{SS}_{\text{residual}}}{\text{SS}_{\text{total}}}
 $$
 
-  Where:  
-  
+Where:    
+
   - $\text{SS}_{\text{residual}}$ : Residual sum of squares  
   - $\text{SS}_{\text{total}}$ : Total sum of squares
 

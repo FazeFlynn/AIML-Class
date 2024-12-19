@@ -3,7 +3,7 @@
 ---
 
 
-# Structure of ML:
+## Structure of ML:
 
 <div style="display: flex; justify-content: center;">
 <table style="text-align: center;">
@@ -201,54 +201,6 @@ $$
 | **Pred 1**    | TP = 3   | FP = 2   |
 | **Pred 0**    | FN = 1   | TN = 1   |
 
----
-
-## 19 September 2024
-
-### Performance Metrics for Imbalanced Data
-
-1. **Precision:**
-  - Formula: 
-
-$$
-    \text{Precision} = \frac{TP}{TP + FP}
-$$
-
-2. **Recall:**
-  - Formula: 
-
-$$
-    \text{Recall} = \frac{TP}{TP + FN}
-$$
-
-  - Used when reducing **False Negatives (FN)** is important.
-
-3. **F-Beta Score:**
-   - Combines precision and recall.
-
----
-
-## 21 September 2024
-
-### Descriptive and Inferential Statistics
-
-#### Measures of Central Tendency:
-1. **Mean:** 
-  - Formula: 
-
-$$
-    \text{Mean} = \frac{\text{Sum of All Numbers}}{\text{Count of Numbers}}
-$$
-
-2. **Median:**
-   - Arrange data in ascending order and pick the middle value.
-   - Use **Median** when there are outliers.
-3. **Mode:**
-   - The most frequent value. Use Mode for categorical data.
-
-#### Measures of Variance:
-- **Variance:** Describes the spread of data around the mean.
-- **Standard Deviation:** The square root of variance.
 
 ---
 
@@ -269,7 +221,7 @@ $$
 
 ---
 
-
+<!-- 
 ### `Sample PLay Tennis Dataset`
 
 | Day  | Outlook  | Temperature | Humidity | Wind  | Play Tennis |
@@ -287,60 +239,9 @@ $$
 | D11  | Sunny    | Mild        | Normal   | Strong| Yes         |
 | D12  | Overcast | Mild        | High     | Strong| Yes         |
 | D13  | Overcast | Hot         | Normal   | Weak  | Yes         |
-| D14  | Rain     | Mild        | High     | Strong| No          |
+| D14  | Rain     | Mild        | High     | Strong| No          | -->
 
 
-# `Decision Trees`
-
-**Definition**: A Decision Tree is a supervised machine learning algorithm used for classification and regression tasks. It splits the data into subsets based on the feature values, using a tree-like structure, where each internal node represents a decision (based on a feature), each branch represents the outcome of a decision, and each leaf node represents a class label (for classification) or a continuous value (for regression). [><](#2-decision-tree)
-
-> ![Decision tree Of the Datset](/images/decisiontrees.png)
-
-
-### `Formulas Of Decision Trees`:
-
-#### `Entropy (For Small datasets (2 classes))`
-
-<!-- > ![Entropy Formula](/images/btentropy.png) -->
-
-$$
-H(S) = -p_1 \cdot \log_2(p_1) - p_2 \cdot \log_2(p_2)
-$$
-
-
-
-
-
-
-- where: 
-   - H(S) is the entropy of the set (S),
-   - p1 is the proportion of instances in class 1,
-   - p2 is the proportion of instances in class 2.
-   <!-- - in the case of pure split the will be 0
-   - in the case of impure split the will be 1 -->
-
-#### `Gini Impurity (For Large Datasets)`
-<!-- > ![Ginny Formula](https://latex2png.com/pngs/6cb4ca476124cf03743e4651613e01c4.png) -->
-
-$$
-GI(S) = 1 - \sum_{i=1}^{n} p_i^2
-$$
-
-- where:
-   - Gini(S) is the Gini impurity of the set (S).
-   - c is the number of classes.
-   - pi is the proportion of instances belonging to class i.
-
-#### `Gini Impurity` - `when there are only two classes (class 1 and class 2)`
-<!-- > ![Ginny2 Formula](https://latex2png.com/pngs/f86cbe93d832c32c3a84538425c56e6f.png) -->
-
-$$
-GI(S) = 1 - (p_1^2 + p_2^2)
-$$
-
-- where:
-   - p1 is the proportion of instances in class 1,
-   - p2 is the proportion of instances in class 2.
 
 <!-- 
 ### `Gini Example`
@@ -1059,16 +960,24 @@ Both supervised and unsupervised learning have unique strengths and are used in 
 ---
 
 
+## Workflow of Data Science:
+
+- **Data Collection**: Gather data from various sources.
+- **Data Cleaning**: Remove inconsistencies and missing values.
+- **Exploratory Data Analysis (EDA)**: Summarize main characteristics using plots.
+- **Feature Engineering**: Create meaningful features for the model.
+- **Model Training**: Use ML/DL algorithms.
+- **Model Evaluation**: Check performance metrics.
+- **Deployment**: Deploy the model in real-world scenarios.
+
+
 # End Sem
-
-# Top Comp
-
 
 ## **K-Nearest Neighbors (KNN)**
 
 KNN is a supervised learning algorithm used for classification and regression tasks. It predicts the class or value of a data point based on the majority class or average value of its nearest neighbors.
 
----
+
 
 #### **2. How KNN Works**
 1. Choose the number of neighbors ($k$).
@@ -2911,6 +2820,227 @@ $$
 
 ---
 
+## Regression
+
+### **Regression: Detailed Overview**
+
+Regression is a fundamental supervised learning technique used in statistics and machine learning to model the relationship between a dependent variable (target) and one or more independent variables (predictors). It aims to predict continuous outcomes based on input data. The goal is to establish a function that can predict the dependent variable’s value as accurately as possible based on the input features.
+
+---
+
+### **Types of Regression**
+
+#### 1. **Linear Regression**
+- **Definition:** Linear regression is the simplest form of regression that models the relationship between the dependent variable and one independent variable by fitting a straight line (linear function) to the data. The model assumes that the relationship between the variables is linear.
+- **Formula:**  
+
+$$
+  y = b_0 + b_1x + \epsilon
+$$
+
+  Where:  
+  - $y $: Dependent variable (target)  
+  - $x $: Independent variable (feature)  
+  - $b_0 $: Intercept  
+  - $b_1 $: Slope (coefficient)  
+  - $\epsilon $: Error term  
+
+- **Example:**  
+  You want to predict house prices based on the area in square feet. The relationship might look like this:
+
+$$
+  \text{Price} = 50,000 + 200 \times (\text{Area in sq. ft.})
+$$
+
+  If the area of a house is 1,000 sq. ft, the price will be:
+
+$$
+  \text{Price} = 50,000 + 200 \times 1000 = 250,000
+$$
+
+---
+
+#### 2. **Multiple Linear Regression**
+- **Definition:** Multiple linear regression is an extension of linear regression where the model uses more than one independent variable (feature) to predict the dependent variable. It is used when there are multiple predictors affecting the target.
+- **Formula:**  
+
+$$
+  y = b_0 + b_1x_1 + b_2x_2 + ... + b_nx_n + \epsilon
+$$
+
+- **Example:**  
+  Predicting the price of a house based on multiple factors such as area, number of bedrooms, and age of the house:
+
+$$
+  \text{Price} = 50,000 + 200 \times (\text{Area}) + 10,000 \times (\text{Bedrooms}) - 5,000 \times (\text{Age})
+$$
+
+---
+
+#### 3. **Polynomial Regression**
+- **Definition:** Polynomial regression is a form of regression that models the relationship between the independent variable and the dependent variable as an nth-degree polynomial. This method is used when the relationship between variables is curvilinear (non-linear).
+- **Formula:**  
+
+$$
+  y = b_0 + b_1x + b_2x^2 + ... + b_nx^n + \epsilon
+$$
+
+- **Example:**  
+  Predicting the population growth over time, where the relationship is exponential:
+
+$$
+  \text{Population} = 5000 + 200 \times (\text{Year}) + 50 \times (\text{Year}^2)
+$$
+
+---
+
+#### 4. **Logistic Regression**
+- **Definition:** Logistic regression is used for binary classification problems, where the dependent variable has two possible outcomes (e.g., success/failure, yes/no). Although it is called "regression," it is used for classification because it predicts probabilities.
+- **Formula:**  
+
+$$
+  P(y=1) = \frac{1}{1 + e^{-(b_0 + b_1x)}}
+$$
+
+  Where:  
+  - $P(y=1) $ is the probability of the event occurring (e.g., success or yes)  
+  - $e $ is the base of the natural logarithm  
+
+- **Example:**  
+  Predict whether a customer will buy a product (1) or not (0) based on age and income:
+
+$$
+  P(\text{Buy}) = \frac{1}{1 + e^{-(b_0 + b_1 \times \text{Age} + b_2 \times \text{Income})}}
+$$
+
+---
+
+#### 5. **Ridge Regression (L2 Regularization)**
+- **Definition:** Ridge regression is used to address multicollinearity in linear regression by adding a penalty term to the model. This penalty term is the sum of the squares of the coefficients, which helps to reduce the complexity of the model and prevent overfitting.
+- **Formula:**  
+
+$$
+  \text{Loss} = \text{RSS} + \lambda \sum b_i^2
+$$
+  Where:
+
+  - $\lambda $ is the regularization parameter
+  - $b_i $ are the coefficients of the regression model
+
+- **Example:**  
+  When predicting house prices, ridge regression can help reduce the impact of less significant predictors (e.g., location, size, number of rooms) by penalizing large coefficient values.
+
+---
+
+#### 6. **Lasso Regression (L1 Regularization)**
+- **Definition:** Lasso regression, similar to ridge regression, is used to prevent overfitting. However, it adds a penalty on the absolute values of the coefficients, which leads to some coefficients being reduced to zero. This feature makes Lasso useful for feature selection.
+- **Formula:**  
+
+$$
+  \text{Loss} = \text{RSS} + \lambda \sum |b_i|
+$$
+
+- **Example:**  
+  When predicting sales based on multiple features, lasso regression can help automatically select the most important features and discard irrelevant ones.
+
+---
+
+#### 7. **Elastic Net Regression**
+- **Definition:** Elastic Net is a hybrid of Lasso and Ridge regression. It combines both L1 and L2 penalties, providing a balance between feature selection and model complexity.
+- **Formula:**  
+
+$$
+  \text{Loss} = \text{RSS} + \lambda_1 \sum |b_i| + \lambda_2 \sum b_i^2
+$$
+
+- **Example:**  
+  Elastic Net can be used when you have many correlated features and want to balance the benefits of both Lasso and Ridge regression.
+
+---
+
+#### 8. **Stepwise Regression**
+- **Definition:** Stepwise regression is an automated method for selecting the most significant predictors in a regression model. It involves adding or removing predictors based on certain criteria (e.g., p-values, AIC/BIC) to find the best subset of variables.
+- **Example:**  
+  In a housing price prediction model, stepwise regression will iteratively add or remove features like number of rooms, proximity to schools, and year built to determine the most important features.
+
+---
+
+### **Evaluation Metrics for Regression**
+
+1. **R-squared ($R^2 $):**
+   - **Definition:** Measures how well the model explains the variance of the dependent variable. A higher value indicates a better fit.
+   - **Formula:**
+
+$$
+R^2 = 1 - \frac{\text{SS}_{\text{residual}}}{\text{SS}_{\text{total}}}
+$$
+     Where:  
+     
+     - $\text{SS}_{\text{residual}} $: Residual sum of squares  
+     - $\text{SS}_{\text{total}} $: Total sum of squares
+
+2. **Mean Absolute Error (MAE):**
+   - **Definition:** Measures the average of the absolute errors between the predicted and actual values. It provides an idea of how far off the predictions are.
+   - **Formula:**
+
+$$
+MAE = \frac{\sum |y_i - \hat{y_i}|}{n}
+$$
+
+3. **Mean Squared Error (MSE):**
+   - **Definition:** Measures the average of the squared differences between the predicted and actual values. It penalizes larger errors more than MAE.
+   - **Formula:**
+
+$$
+MSE = \frac{\sum (y_i - \hat{y_i})^2}{n}
+$$
+
+4. **Root Mean Squared Error (RMSE):**
+   - **Definition:** The square root of the MSE, providing a measure of error in the same units as the target variable.
+   - **Formula:**
+
+$$
+RMSE = \sqrt{MSE}
+$$
+
+---
+
+### **Example (Linear Regression Code in Python)**
+
+```python
+from sklearn.linear_model import LinearRegression
+
+# Dataset
+X = [[1], [2], [3], [4]]  # Predictor (e.g., Area)
+y = [2, 4, 6, 8]          # Target (e.g., Price)
+
+# Create and fit the model
+model = LinearRegression()
+model.fit(X, y)
+
+# Predict the target for a new input
+print(model.predict([[5]]))  # Output: 10 (Predicted Price)
+```
+
+---
+
+### **Use Case Scenarios**
+- **Predict Stock Prices**: Using linear regression to model the relationship between stock prices and time or other financial indicators.
+- **House Price Prediction**: Multiple regression can predict house prices based on various features like area, number of rooms, location, etc.
+- **Customer Churn**: Logistic regression can be used to predict the probability that a customer will leave a service based on user activity and engagement. 
+- **Disease Spread Modeling**: Polynomial regression can predict the spread of diseases (e.g., COVID-19) based on time, area, and other factors.
+
+
+
+
+
+
+
+
+
+---
+
+
 
 ## Text Classification
 
@@ -3374,9 +3504,9 @@ print(X.toarray())
 **Definition:**  
 TF-IDF is a more sophisticated feature extraction technique that evaluates the importance of a word within a document relative to the entire corpus. It is designed to reflect the importance of a word in a specific document rather than just its frequency of occurrence. TF-IDF combines two metrics:
 1. **Term Frequency (TF):** Measures how frequently a word appears in a document.  
- $$\text{TF} = \frac{\text{Number of times word appears in the document}}{\text{Total number of words in the document}}$$
+$$\text{TF} = \frac{\text{Number of times word appears in the document}}{\text{Total number of words in the document}}$$
 2. **Inverse Document Frequency (IDF):** Measures how important a word is across the entire corpus. Words that occur in many documents are considered less important.
- $$\text{IDF} = \log \left( \frac{\text{Total number of documents}}{\text{Number of documents containing the word}} \right)$$
+$$\text{IDF} = \log \left( \frac{\text{Total number of documents}}{\text{Number of documents containing the word}} \right)$$
 
 **TF-IDF Calculation:**
 The TF-IDF value is calculated as:
@@ -4627,15 +4757,15 @@ $$
      - **LASSO (Least Absolute Shrinkage and Selection Operator)**: Shrinks coefficients to zero, effectively performing feature selection.  
 $$
        \text{Minimize } \|Y - X\beta\|_2^2 + \lambda \|\beta\|_1
- $$  
+$$  
      - **Ridge Regression**: Shrinks coefficients but does not set them to zero.  
 $$
        \text{Minimize } \|Y - X\beta\|_2^2 + \lambda \|\beta\|_2^2
- $$  
+$$  
      - **Elastic Net**: Combines LASSO and Ridge penalties.  
 $$
        \text{Minimize } \|Y - X\beta\|_2^2 + \lambda_1 \|\beta\|_1 + \lambda_2 \|\beta\|_2^2
- $$
+$$
 
    **Example Scenario**: Predicting customer churn with many correlated features.
 

@@ -2187,8 +2187,209 @@ $$
 \Large \text{2nd Insem Ends Here}
 $$
 
+---
+
+## Confusion Matrix
+ 
+A **Confusion Matrix** is a table used to evaluate the performance of a classification model. It compares the predicted labels with the actual labels to calculate various metrics like accuracy, precision, recall, and F1-score.
+
+
+#### **Structure of Confusion Matrix**  
+The matrix is structured as follows:
+
+| **Actual/Predicted** | **Positive (1)**       | **Negative (0)**       |
+|-----------------------|------------------------|------------------------|
+| **Positive (1)**      | **True Positive (TP)** | **False Negative (FN)**|
+| **Negative (0)**      | **False Positive (FP)**| **True Negative (TN)** |
+
+1. **True Positive (TP):** Correctly predicted positive cases.  
+2. **False Positive (FP):** Predicted as positive but actually negative (Type I error).  
+3. **False Negative (FN):** Predicted as negative but actually positive (Type II error).  
+4. **True Negative (TN):** Correctly predicted negative cases.
 
 ---
+
+#### **Key Metrics Derived from Confusion Matrix**  
+1. **Accuracy:** Proportion of correctly predicted observations.  
+
+$$
+Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
+$$
+
+2. **Precision (Positive Predictive Value):** Proportion of correctly predicted positive cases out of total predicted positive cases. 
+
+$$
+Precision = \frac{TP}{TP + FP}
+$$
+
+3. **Recall (Sensitivity):** Proportion of actual positives that were correctly identified.  
+
+$$
+Recall = \frac{TP}{TP + FN}
+$$
+
+4. **F1-Score:** Harmonic mean of precision and recall, balancing both metrics.  
+
+$$
+F1 = 2 \times \frac{Precision \times Recall}{Precision + Recall}
+$$
+
+---
+
+#### **Example Scenario**  
+**Use Case:** Spam Email Classification  
+- **Positive (1):** Email is spam.  
+- **Negative (0):** Email is not spam.  
+- Model output is evaluated as follows:
+
+| **Actual/Predicted** | **Spam (1)**           | **Not Spam (0)**       |
+|-----------------------|------------------------|------------------------|
+| **Spam (1)**          | **50 (TP)**           | **10 (FN)**            |
+| **Not Spam (0)**      | **5 (FP)**            | **100 (TN)**           |
+
+---
+
+#### **Simple Python Example**
+
+```python
+from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
+
+# Actual and predicted labels
+y_true = [1, 0, 1, 1, 0, 1, 0, 0, 1, 0]  # Actual
+y_pred = [1, 0, 1, 0, 0, 1, 0, 1, 1, 0]  # Predicted
+
+# Confusion Matrix
+cm = confusion_matrix(y_true, y_pred)
+print("Confusion Matrix:")
+print(cm)
+
+# Metrics
+accuracy = accuracy_score(y_true, y_pred)
+precision = precision_score(y_true, y_pred)
+recall = recall_score(y_true, y_pred)
+f1 = f1_score(y_true, y_pred)
+
+print(f"Accuracy: {accuracy}")
+print(f"Precision: {precision}")
+print(f"Recall: {recall}")
+print(f"F1-Score: {f1}")
+```
+
+---
+
+#### **Explanation of the Code Example**  
+1. The **confusion matrix** is calculated from `y_true` (actual labels) and `y_pred` (predicted labels).  
+2. Metrics such as accuracy, precision, recall, and F1-score are derived and printed.  
+3. Outputs:
+   - **Confusion Matrix:** Matches true positives, false positives, false negatives, and true negatives.  
+   - Other metrics give insights into the performance of the model.
+
+
+
+
+---
+
+## Variables 
+
+Variables represent data or parameters that the machine learning model uses during training, testing, and prediction. 
+
+These can be broadly categorized into different types based on their roles in ML workflows:
+
+
+### **1. Types of Variables in Machine Learning**
+
+#### **a. Feature Variables (Input Variables)**
+- **Definition:** Variables that represent the input data used to train the model.  
+- Also called **independent variables** or **predictors**.  
+- **Role:** Used by the model to learn patterns and relationships.  
+
+**Example:**  
+- Predicting house prices:  
+  - Features: Number of bedrooms, square footage, location.
+
+---
+
+#### **b. Target Variable (Output Variable)**
+- **Definition:** The variable that the model is trying to predict.  
+- Also called **dependent variable** or **response variable**.  
+- **Role:** Used as a reference during supervised learning.  
+
+**Example:**  
+- Predicting house prices:  
+  - Target: The price of the house.  
+
+---
+
+#### **c. Latent Variables**
+- **Definition:** Hidden variables that are not directly observed but inferred from the data.  
+- **Role:** Common in unsupervised learning (e.g., clustering, dimensionality reduction).  
+
+**Example:**  
+- In topic modeling, latent variables represent topics inferred from a collection of documents.  
+
+---
+
+#### **d. Hyperparameters**
+- **Definition:** Variables set by the user before training, controlling the learning process.  
+- **Role:** Determines model performance and complexity.  
+
+**Example:**  
+- Learning rate, number of trees in a random forest, regularization strength.  
+
+---
+
+#### **e. Model Parameters**
+- **Definition:** Internal variables learned by the model during training.  
+- **Role:** Represent the learned patterns or coefficients of the model.  
+
+**Example:**  
+- Weights and biases in a neural network.  
+- Coefficients in linear regression.  
+
+---
+
+### **2. Variables Based on Data Types**
+These define the type of data represented by the variable:
+
+#### **a. Numerical Variables**
+- **Definition:** Represent measurable quantities.  
+- **Example:**  
+  - Temperature, sales figures.  
+
+#### **b. Categorical Variables**
+- **Definition:** Represent categories or groups.  
+- **Example:**  
+  - Gender (Male/Female), colors (Red, Blue).  
+
+#### **c. Ordinal Variables**
+- **Definition:** Represent ranked or ordered categories.  
+- **Example:**  
+  - Education level (High School < Bachelor’s < Master’s).  
+
+#### **d. Binary Variables**
+- **Definition:** Represent two possible values (True/False, 0/1).  
+- **Example:**  
+  - Spam email detection (Spam/Not Spam).  
+
+---
+
+### **3. Variables in Time-Series Data**
+- **Time Variable:** Represents the sequential order (e.g., timestamps).  
+- **Value Variables:** Represent observed data values over time (e.g., stock prices).
+
+---
+
+### **4. Role of Variables in ML Workflows**
+- **Data Representation:** Features and target variables define the dataset.  
+- **Model Training:** Parameters and hyperparameters determine the learning process.  
+- **Model Evaluation:** Performance metrics are calculated using predicted and actual target variables.  
+
+
+
+
+
+---
+
 
 ## Bagging and Boosting
 
@@ -3027,12 +3228,11 @@ $$
 ### **Evaluation Metrics for Regression**
 
 1. **R-squared ($R^2$):**
-   - **Definition:** Measures how well the model explains the variance of the dependent variable. A higher value indicates a better fit.
-
-**Formula:**
+  - **Definition:** Measures how well the model explains the variance of the dependent variable. A higher value indicates a better fit.
+  - **Formula:**
    
 $$
-R^2 = 1 - \frac{\text{SS}_{\text{residual}}}{\text{SS}_{\text{total}}}
+R-Square = 1 - \frac{\text{SS}_{\text{residual}}}{\text{SS}_{\text{total}}}
 $$
 
 Where:    

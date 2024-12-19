@@ -2728,7 +2728,67 @@ These define the type of data represented by the variable:
 - **Model Training:** Parameters and hyperparameters determine the learning process.  
 - **Model Evaluation:** Performance metrics are calculated using predicted and actual target variables.  
 
+---
 
+## Types of data
+
+### **Hierarchy of Data Types in Machine Learning**
+
+1. **Data Types**  
+   - **Structured Data**  
+     - **Numerical Data**  
+       - **Continuous Data**  
+         - Example: Weight, Height, Temperature.  
+       - **Discrete Data**  
+         - Example: Number of Employees, Number of Products Sold.  
+     - **Categorical Data**  
+       - **Nominal Data** (No inherent order)  
+         - Example: Gender (Male/Female), Color (Red, Blue, Green).  
+       - **Ordinal Data** (Has an inherent order)  
+         - Example: Satisfaction Levels (Low, Medium, High).  
+   - **Unstructured Data**  
+     - **Text Data**  
+       - Example: Reviews, Tweets, Articles.  
+     - **Image Data**  
+       - Example: Photos, X-rays, Satellite Images.  
+     - **Audio Data**  
+       - Example: Speech, Music, Sound Recordings.  
+     - **Video Data**  
+       - Example: Movies, Surveillance Footage.
+
+2. **Specialized Data Types**  
+   - **Time Series Data**  
+     - Description: Sequential data collected at regular intervals.  
+     - Example: Stock Prices, Weather Data.  
+   - **Spatial Data**  
+     - Description: Data tied to geographical locations.  
+     - Example: Latitude, Longitude, Map Coordinates.
+
+---
+
+### **Diagram Representation**
+```
+Data Types
+├── Structured Data
+│   ├── Numerical Data
+│   │   ├── Continuous Data
+│   │   └── Discrete Data
+│   └── Categorical Data
+│       ├── Nominal Data
+│       └── Ordinal Data
+└── Unstructured Data
+    ├── Text Data
+    ├── Image Data
+    ├── Audio Data
+    └── Video Data
+```
+
+---
+
+### **Key Points**
+- **Structured Data** is well-organized and easy to analyze using conventional algorithms.  
+- **Unstructured Data** requires preprocessing to extract meaningful features.  
+- **Specialized Data Types** like time series and spatial data often require domain-specific approaches for analysis.
 
 
 

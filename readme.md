@@ -2961,8 +2961,8 @@ $$
 $$
 
   Where:  
-  - $P(y=1) $ is the probability of the event occurring (e.g., success or yes)  
-  - $e $ is the base of the natural logarithm  
+  - $P(y=1)$ is the probability of the event occurring (e.g., success or yes)  
+  - $e$ is the base of the natural logarithm  
 
 - **Example:**  
   Predict whether a customer will buy a product (1) or not (0) based on age and income:
@@ -2980,10 +2980,11 @@ $$
 $$
   \text{Loss} = \text{RSS} + \lambda \sum b_i^2
 $$
+
   Where:
 
-  - $\lambda $ is the regularization parameter
-  - $b_i $ are the coefficients of the regression model
+  - $\lambda$ is the regularization parameter
+  - $b_i$ are the coefficients of the regression model
 
 - **Example:**  
   When predicting house prices, ridge regression can help reduce the impact of less significant predictors (e.g., location, size, number of rooms) by penalizing large coefficient values.
@@ -3025,17 +3026,18 @@ $$
 
 ### **Evaluation Metrics for Regression**
 
-1. **R-squared ($R^2 $):**
+1. **R-squared ($R^2$):**
    - **Definition:** Measures how well the model explains the variance of the dependent variable. A higher value indicates a better fit.
    - **Formula:**
 
 $$
 R^2 = 1 - \frac{\text{SS}_{\text{residual}}}{\text{SS}_{\text{total}}}
 $$
+
      Where:  
      
-     - $\text{SS}_{\text{residual}} $: Residual sum of squares  
-     - $\text{SS}_{\text{total}} $: Total sum of squares
+     - $\text{SS}_{\text{residual}}$: Residual sum of squares  
+     - $\text{SS}_{\text{total}}$: Total sum of squares
 
 2. **Mean Absolute Error (MAE):**
    - **Definition:** Measures the average of the absolute errors between the predicted and actual values. It provides an idea of how far off the predictions are.
@@ -3119,7 +3121,7 @@ Where:
    - Formula for likelihood:
 
 $$
-     P(X|C) = \frac{1}{\sqrt{2\pi\sigma_C^2}} e^{-\frac{(X - \mu_C)^2}{2\sigma_C^2}}
+P(X|C) = \frac{1}{\sqrt{2\pi\sigma_C^2}} e^{-\frac{(X - \mu_C)^2}{2\sigma_C^2}}
 $$
 
 Where $\mu_C$ and $\sigma_C^2$ are the mean and variance for class $C$.
@@ -3183,7 +3185,7 @@ print("Model Accuracy:", accuracy)
    - **Solution**: Use **Laplace Smoothing**:
 
 $$
-    P(X|C) = \frac{n_{X,C} + 1}{n_C + k}
+P(X|C) = \frac{n_{X,C} + 1}{n_C + k}
 $$
 
 Where $k$ is the total number of features.
@@ -3220,9 +3222,11 @@ ARIMA (AutoRegressive Integrated Moving Average) is a statistical model for anal
 - **MA (Moving Average)**: Relates current values to past forecast errors.
 
 **ARIMA Notation**:  
+
 $$
 ARIMA(p, d, q)
 $$  
+
 - **p**: Number of AR terms.  
 - **d**: Degree of differencing to achieve stationarity.  
 - **q**: Number of MA terms.
@@ -3245,9 +3249,11 @@ $$
 SARIMA (Seasonal ARIMA) extends ARIMA to handle seasonality by adding seasonal components.  
 
 **SARIMA Notation**:  
+
 $$
 SARIMA(p, d, q)(P, D, Q, m)
 $$  
+
 - **P, D, Q**: Seasonal counterparts of AR, I, MA.  
 - **m**: Number of periods in a season (e.g., 12 for monthly data).
 
@@ -4423,8 +4429,9 @@ Exponential smoothing is a time series forecasting method that assigns exponenti
    - Used for time series data without trend or seasonality.  
    - **Formula**:  
 $$
-     S_t = \alpha \cdot X_t + (1 - \alpha) \cdot S_{t-1}
-$$  
+S_t = \alpha \cdot X_t + (1 - \alpha) \cdot S_{t-1}
+$$ 
+
      where:  
      - $S_t$: Smoothed value at time $t$.  
      - $X_t$: Actual value at time $t$.  
@@ -4527,9 +4534,11 @@ Regression analysis is a statistical technique used to model the relationship be
 1. **Linear Regression**  
    - Models the relationship between a dependent variable and one independent variable as a straight line.  
    - **Equation**:  
+
 $$
-     Y = \beta_0 + \beta_1X + \epsilon
+Y = \beta_0 + \beta_1X + \epsilon
 $$  
+
      where:  
      - $Y$: Dependent variable (target).  
      - $X$: Independent variable (predictor).  
@@ -4544,9 +4553,11 @@ $$
 2. **Multiple Regression**  
    - Extends linear regression to include multiple predictors.  
    - **Equation**:  
+
 $$
-     Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \ldots + \beta_nX_n + \epsilon
-$$  
+Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \ldots + \beta_nX_n + \epsilon
+$$
+
      where $X_1, X_2, \ldots, X_n$ are independent variables.
 
    **Example Scenario**: Predicting house prices based on location, size, and number of rooms.
@@ -4557,19 +4568,25 @@ $$
    - Used to prevent overfitting by adding penalties to the regression coefficients.  
    - **Types**:  
      - **LASSO (Least Absolute Shrinkage and Selection Operator)**: Shrinks coefficients to zero, effectively performing feature selection.  
+
 $$
-       \text{Minimize } \|Y - X\beta\|_2^2 + \lambda \|\beta\|_1
-$$  
-     - **Ridge Regression**: Shrinks coefficients but does not set them to zero.  
+\text{Minimize } \|Y - X\beta\|_2^2 + \lambda \|\beta\|_1
+$$ 
+
+- **Ridge Regression**: Shrinks coefficients but does not set them to zero.  
+
 $$
-       \text{Minimize } \|Y - X\beta\|_2^2 + \lambda \|\beta\|_2^2
-$$  
-     - **Elastic Net**: Combines LASSO and Ridge penalties.  
-$$
-       \text{Minimize } \|Y - X\beta\|_2^2 + \lambda_1 \|\beta\|_1 + \lambda_2 \|\beta\|_2^2
+\text{Minimize } \|Y - X\beta\|_2^2 + \lambda \|\beta\|_2^2
 $$
 
-   **Example Scenario**: Predicting customer churn with many correlated features.
+- **Elastic Net**: Combines LASSO and Ridge penalties.  
+
+$$
+\text{Minimize } \|Y - X\beta\|_2^2 + \lambda_1 \|\beta\|_1 + \lambda_2 \|\beta\|_2^2
+$$
+
+
+**Example Scenario**: Predicting customer churn with many correlated features.
 
 ---
 

@@ -600,941 +600,6 @@ Since **Outlook** has the highest Information Gain, it is chosen as the root nod
 
 
 
-
-
-## Refresher Starts
-
-# Machine Learning: Supervised vs. Unsupervised Learning
-
-## 1. Supervised Learning
-
-### Definition
-Supervised learning is a type of machine learning where the model is trained using labeled data. The algorithm learns the mapping function from the input data to the output labels, with the goal of making accurate predictions on unseen data.
-
----
-
-### Key Concepts
-
-- **Training Data:** Labeled dataset used to train the model. Each example consists of an input-output pair.
-- **Target Variable:** The output that the model is trained to predict.
-- **Objective:** Minimize the error between the predicted and actual outputs using techniques like regression and classification.
-
----
-
-### Types of Supervised Learning
-
-1. **Classification:**
-   - **Purpose:** Predict a discrete label.
-   - **Examples:** 
-     - Email spam detection (spam or not spam)
-     - Image recognition (cat, dog, car)
-   - **Algorithms:**
-     - Decision Trees
-     - Support Vector Machines (SVM)
-     - Logistic Regression
-     - k-Nearest Neighbors (k-NN)
-
-2. **Regression:**
-   - **Purpose:** Predict a continuous value.
-   - **Examples:**
-     - Predicting house prices
-     - Forecasting stock prices
-   - **Algorithms:**
-     - Linear Regression
-     - Polynomial Regression
-     - Random Forest Regression
-
----
-
-### Applications
-
-- **Medical Diagnosis:** Predicting the presence of diseases based on symptoms.
-- **Finance:** Credit scoring to determine loan eligibility.
-- **Marketing:** Predicting customer churn and targeted advertising.
-- **Speech Recognition:** Translating spoken language into text.
-
----
-
-### Advantages
-
-- **High Accuracy:** With quality labeled data, supervised models can achieve high predictive accuracy.
-- **Interpretable:** Many algorithms, like linear regression, are easy to understand and interpret.
-- **Versatile:** Can be applied to a wide range of real-world problems.
-
-### Challenges
-
-- **Data Dependency:** Requires large amounts of labeled data, which can be expensive and time-consuming to obtain.
-- **Overfitting:** The model may perform well on training data but poorly on unseen data if it is too complex.
-- **Limited by Labels:** Performance is constrained by the quality and quantity of the labeled data.
-
----
-
-## 2. Unsupervised Learning
-
-### Definition
-Unsupervised learning involves training models on data that has no labels. The goal is to identify patterns, group similar data points, or reduce data dimensionality without any specific guidance.
-
----
-
-### Key Concepts
-
-- **Training Data:** Unlabeled dataset used to uncover hidden structures.
-- **Objective:** Learn the underlying distribution or structure of the data.
-
----
-
-### Types of Unsupervised Learning
-
-1. **Clustering:**
-   - **Purpose:** Group similar data points into clusters.
-   - **Examples:**
-     - Customer segmentation for targeted marketing
-     - Document classification
-   - **Algorithms:**
-     - K-means Clustering
-     - Hierarchical Clustering
-     - DBSCAN (Density-Based Spatial Clustering of Applications with Noise)
-
-2. **Dimensionality Reduction:**
-   - **Purpose:** Reduce the number of features while preserving as much information as possible.
-   - **Examples:**
-     - Image compression
-     - Visualizing high-dimensional data
-   - **Algorithms:**
-     - Principal Component Analysis (PCA)
-     - t-Distributed Stochastic Neighbor Embedding (t-SNE)
-     - Autoencoders
-
-3. **Anomaly Detection:**
-   - **Purpose:** Identify data points that deviate from the normal pattern.
-   - **Examples:**
-     - Fraud detection in credit card transactions
-     - Intrusion detection in network security
-   - **Algorithms:**
-     - Isolation Forest
-     - Gaussian Mixture Models (GMM)
-     - Local Outlier Factor (LOF)
-
-4. **Association Rule Learning:**
-   - **Purpose:** Find relationships between variables in large datasets.
-   - **Examples:**
-     - Market basket analysis (e.g., "Customers who buy bread also buy butter")
-   - **Algorithms:**
-     - Apriori Algorithm
-     - Eclat Algorithm
-
----
-
-### Applications
-
-- **Market Segmentation:** Understanding customer groups for personalized marketing.
-- **Data Compression:** Reducing file sizes in multimedia applications.
-- **Anomaly Detection:** Identifying outliers in manufacturing processes or network security.
-- **Recommendation Systems:** Grouping similar items or users for content recommendations.
-
----
-
-### Advantages
-
-- **No Need for Labeled Data:** Useful when labeled data is unavailable or expensive to collect.
-- **Data Exploration:** Helps in understanding the structure and patterns in the data.
-- **Versatility:** Applicable to various fields, including image processing, genetics, and natural language processing.
-
-### Challenges
-
-- **Interpretability:** Results are often difficult to interpret, especially with complex data.
-- **Evaluation Metrics:** There is no definitive way to measure the performance of the model.
-- **Scalability:** Some algorithms may struggle with very large datasets.
-
----
-
-## Key Differences Between Supervised and Unsupervised Learning
-
-| Aspect                    | Supervised Learning                       | Unsupervised Learning                   |
-|---------------------------|-------------------------------------------|-----------------------------------------|
-| **Data Type**             | Labeled data                              | Unlabeled data                          |
-| **Objective**             | Make predictions or classifications       | Discover hidden patterns or structures  |
-| **Algorithms**            | Linear Regression, SVM, Decision Trees    | K-means, PCA, Apriori Algorithm         |
-| **Applications**          | Email filtering, loan prediction          | Customer segmentation, anomaly detection|
-| **Evaluation**            | Measured using metrics like accuracy      | Difficult to evaluate objectively       |
-
----
-
-## Conclusion
-
-Both supervised and unsupervised learning have unique strengths and are used in different scenarios. Supervised learning is effective when labeled data is available, while unsupervised learning is valuable for exploring and understanding unlabeled data.
-
-# Refresher Ends
-
----
-
-
-## Random Forest: An Overview 
-
-
-### What is Random Forest? 
-
-**Random Forest**  is an ensemble learning method used for both classification and regression tasks. It operates by constructing multiple decision trees during training and outputs the average prediction (regression) or the majority vote (classification) of the individual trees.  [><](#1-random-forest)
-
-### How Does Random Forest Work? 
- 
-1. **Bootstrap Sampling** :
-  - The algorithm creates several subsets of the original dataset using sampling with replacement. Each subset is used to train an individual decision tree.
- 
-2. **Feature Selection** :
-  - When building each decision tree, a random subset of features is chosen for splitting at each node. This introduces more diversity among trees and helps to reduce overfitting.
- 
-3. **Tree Construction** :
-  - Each decision tree is grown to its maximum depth without pruning. The trees may become highly specialized and overfit the training data individually.
- 
-4. **Prediction Aggregation** : 
-  - **For Classification** : Each tree votes for a class, and the class with the most votes becomes the model's prediction.
- 
-  - **For Regression** : The predictions of all trees are averaged to get the final output.
-
-
----
-
-
-### Key Concepts 
- 
-1. **Ensemble Learning** :
-  - Random Forest is based on the concept of ensemble learning, where multiple models (decision trees) are combined to improve overall performance.
- 
-2. **Bagging (Bootstrap Aggregating)** :
-  - This technique helps in reducing variance and improving the stability of the model by training each tree on a random subset of the data.
- 
-3. **Feature Randomness** :
-  - Introducing randomness in the feature selection reduces correlation among trees, further enhancing model generalization.
-
-
----
-
-
-### Advantages of Random Forest 
- 
-- **Reduced Overfitting** : By averaging the results of multiple trees, the model becomes less likely to overfit the training data compared to individual decision trees.
- 
-- **Handles Missing Data** : It can maintain accuracy even when a significant portion of the data is missing.
- 
-- **Robust to Noise** : It is relatively robust to outliers and noise in the data.
- 
-- **Feature Importance** : Provides a way to evaluate the importance of each feature in making predictions.
-
-
----
-
-
-### Disadvantages of Random Forest 
- 
-- **Computational Complexity** : Training multiple trees can be time-consuming, especially with large datasets.
- 
-- **Memory Usage** : It can require substantial memory due to the large number of decision trees.
- 
-- **Less Interpretability** : Compared to individual decision trees, understanding and interpreting a random forest model can be challenging.
-
-
----
-
-
-### Hyperparameters in Random Forest 
- 
-1. **Number of Trees (`n_estimators`)** :
-  - The number of decision trees to be built. A higher number generally improves performance but increases training time.
- 
-2. **Maximum Depth (`max_depth`)** :
-  - The maximum depth of each tree. Controlling this can help in avoiding overfitting.
- 
-3. **Minimum Samples Split (`min_samples_split`)** :
-  - The minimum number of samples required to split a node. Increasing this can prevent overfitting.
- 
-4. **Minimum Samples Leaf (`min_samples_leaf`)** :
-  - The minimum number of samples required to be at a leaf node. Higher values can smooth the model.
- 
-5. **Maximum Features (`max_features`)** :
-  - The maximum number of features considered for splitting a node. It introduces randomness and helps in reducing overfitting.
-
-
----
-
-
-### Applications of Random Forest 
- 
-- **Medical Diagnosis** : Identifying diseases based on various symptoms and medical history.
- 
-- **Finance** : Credit scoring, fraud detection, and stock price prediction.
- 
-- **Image and Speech Recognition** : Classification tasks where high accuracy is crucial.
- 
-- **E-commerce** : Customer segmentation, product recommendation, and sentiment analysis.
-
-
----
-
-
-### Example Use Case 
-**Classification Example** :
-Suppose you have a dataset of email messages and you want to build a spam filter. A Random Forest model would learn from features like the presence of certain words and message metadata, then classify each email as spam or not spam.**Regression Example** :
-Predicting house prices based on features like location, number of bedrooms, square footage, etc. Random Forest aggregates the predictions from all trees to give a more accurate price estimate.
-
----
-
-
-### Python Code Example for Random Forest 
-
-
-```python
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-
-# Load the dataset
-data = load_iris()
-X = data.data
-y = data.target
-
-# Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-
-# Initialize the Random Forest Classifier
-rf = RandomForestClassifier(n_estimators=100, random_state=42)
-
-# Train the model
-rf.fit(X_train, y_train)
-
-# Make predictions
-y_pred = rf.predict(X_test)
-
-# Calculate accuracy
-accuracy = accuracy_score(y_test, y_pred)
-print(f"Accuracy: {accuracy}")
-```
-
-
----
-
-
-### Feature Importance in Random Forest 
-
-Random Forest provides an estimate of the importance of each feature in making predictions. This is useful for understanding which features are most influential in the model.
-
-### Conclusion 
-
-Random Forest is a powerful and flexible model that works well for many tasks. Its ability to handle large datasets and provide feature importance insights makes it a popular choice for both regression and classification problems. However, it is essential to carefully tune hyperparameters to balance performance and computational efficiency.
-
-
-
-
-
-# Hierarchical Clustering:
-
-**Hierarchical clustering** is an **unsupervised learning**  algorithm used for clustering data points into a hierarchy of clusters. It is commonly used in exploratory data analysis when the number of clusters is unknown. The goal is to create a dendrogram (tree-like diagram) that visually represents the nested grouping of data. [><](#33-hierarchical-clustering)
-
----
-
-**1. Types of Hierarchical Clustering** 
-There are two main types of hierarchical clustering:
- 
-1. **Agglomerative Hierarchical Clustering (Bottom-Up Approach):** 
-    - Starts with each data point as its own cluster.
-    - Merges the closest clusters iteratively until a single cluster is formed.
-    - Most common type of hierarchical clustering.
- 
-2. **Divisive Hierarchical Clustering (Top-Down Approach):**
-    - Starts with all data points in a single cluster.
-    - Splits the clusters iteratively until each data point is its own cluster.
-
-
-**2. Distance Metrics** In hierarchical clustering, the similarity between data points or clusters is determined using **distance metrics** . Commonly used distance metrics include: 
-- **Euclidean Distance** :
-
-$$
-  \large{d(x, y) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}} 
-$$
- 
-- **Manhattan Distance** :
-
-$$
-  d(x, y) = \sum_{i=1}^n |x_i - y_i| 
-$$
- 
-- **Cosine Similarity** :
-
-$$
-  \text{similarity} = \frac{x \cdot y}{\|x\| \|y\|} 
-$$
-
-
-**3. Linkage Methods** 
-Linkage methods determine how the distance between clusters is calculated:
- 
-1. **Single Linkage (Minimum Linkage):** 
-    - Distance between two clusters is the minimum distance between any two points, one from each cluster.
-    - Can result in “chaining,” where clusters form elongated shapes.
- 
-2. **Complete Linkage (Maximum Linkage):** 
-    - Distance between two clusters is the maximum distance between any two points, one from each cluster.
-    - Tends to create more compact clusters.
- 
-3. **Average Linkage:** 
-    - Distance between two clusters is the average of all pairwise distances between points in the two clusters.
- 
-4. **Ward’s Linkage:** 
-    - Minimizes the total within-cluster variance.
-    - Generally produces clusters of similar size.
-
-
-**4. Dendrogram** A **dendrogram**  is a tree-like diagram used to represent the hierarchical structure of clusters. The height of the branches represents the distance or dissimilarity between clusters. 
-- **Cutting the Dendrogram** : By cutting the dendrogram at a certain height, you can choose the number of clusters.
-
-
-**5. Steps in Hierarchical Clustering** 
-### Agglomerative Hierarchical Clustering: 
- 
-1. **Compute Distance Matrix** : Calculate the pairwise distances between data points. 
-2. **Merge Clusters** : Find the two closest clusters and merge them. 
-3. **Update Distance Matrix** : Recalculate the distances between the new cluster and the remaining clusters using a linkage method.
-4. **Repeat** : Continue merging until a single cluster remains.
-5. **Create Dendrogram** : Plot the hierarchical structure of the clusters.
-
-
-**6. Example in Python** 
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.cluster.hierarchy import dendrogram, linkage
-from sklearn.datasets import make_blobs
-
-# Generate synthetic data
-X, _ = make_blobs(n_samples=10, centers=3, random_state=42)
-
-# Perform hierarchical clustering using Ward's method
-Z = linkage(X, method='ward')
-
-# Plot the dendrogram
-plt.figure(figsize=(8, 4))
-dendrogram(Z)
-plt.title("Dendrogram")
-plt.xlabel("Data Points")
-plt.ylabel("Distance")
-plt.show()
-```
-
-### Explanation: 
- 
-- **`make_blobs`**  creates synthetic data points.
-- **`linkage`**  performs hierarchical clustering using Ward’s method.
-- **`dendrogram`**  visualizes the hierarchical structure of clusters.
-
-
-**7. Advantages of Hierarchical Clustering**  
-- **No need to specify the number of clusters**  in advance (unlike K-Means).
-- **Dendrogram**  provides a clear visual representation of the hierarchy of clusters.- Can handle non-spherical cluster shapes.
-
-**8. Disadvantages of Hierarchical Clustering**  
-- **Computationally expensive**  for large datasets ( $O(n^2 \log n)$ complexity).
-- **Not robust to noise**  and outliers.
-- Difficult to undo a merge (agglomerative) or a split (divisive) once made.
-
-
-**9. Applications of Hierarchical Clustering**  
-- **Gene expression analysis** : Group similar genes or samples based on expression patterns.
-- **Document clustering** : Organize documents into hierarchies based on content similarity.
-- **Market segmentation** : Group customers based on purchasing behavior.
-
-
----
-
-# **DBSCAN**
-
-DBSCAN ( Density-Based Spatial Clustering of Applications with Noise) is a popular clustering algorithm that groups data points based on density, making it well-suited for datasets with irregular cluster shapes and noise. Here is a comprehensive explanation of DBSCAN and its components: [><](#32-dbscan)
-
-### **Key Concepts**
-1. **Core Points**:
-   - A point is classified as a **core point** if it has at least **MinPts** points (including itself) within a radius **ε** (epsilon).
-   - **Condition**: 
-
-$$
-|N(p, \epsilon)| \geq \text{MinPts}
-$$
-   - Where $N(p, \epsilon)$ is the neighborhood of $p$ containing all points within a distance $\epsilon$.
-
-2. **Border Points**:
-   - A point is classified as a **border point** if it is within the **ε** radius of a core point but does not meet the **MinPts** condition itself.
-   - **Condition**:
-
-$$
-0 < |N(p, \epsilon)| < \text{MinPts}
-$$
-
-3. **Noise Points**:
-   - A point is classified as **noise** (or an outlier) if it does not belong to any cluster. It is neither a core point nor a border point.
-   - **Condition**:
-
-$$
-|N(p, \epsilon)| < 1
-$$
-
-4. **Directly Density-Reachable**:
-   - A point $q$ is **directly density-reachable** from a point $p$ if:
-     - $p$ is a core point.
-     - $q$ is within the **ε** radius of $p$.
-
-5. **Density-Reachable**:
-   - A point $q$ is **density-reachable** from $p$ if there is a chain of points $p_1, p_2, ..., p_n$ where:
-     - $p_1 = p$, $p_n = q$.
-     - Each $p_i$ is **directly density-reachable** from $p_{i-1}$.
-
-6. **Density-Connected**:
-   - Two points $p$ and $q$ are **density-connected** if there exists a point $o$ such that:
-     - Both $p$ and $q$ are **density-reachable** from $o$.
-
-### **Steps of DBSCAN Algorithm**
-1. Choose a point $p$ that has not been visited.
-2. Compute its neighborhood $N(p, \epsilon)$.
-3. If $|N(p, \epsilon)| \geq \text{MinPts}$, $p$ is a core point, and a cluster is formed:
-   - Add all points in $N(p, \epsilon)$ to the cluster.
-   - Recursively visit each core point in the neighborhood to expand the cluster.
-4. If $|N(p, \epsilon)| < \text{MinPts}$, $p$ is labeled as noise (temporarily).
-5. Repeat until all points are visited.
-
-
-### **Example Dataset**
-Consider the following 2D points (in meters):
-
-| Point | X   | Y   |
-|-------|-----|-----|
-| A     | 1.0 | 1.0 |
-| B     | 1.2 | 1.1 |
-| C     | 1.1 | 1.3 |
-| D     | 8.0 | 8.0 |
-| E     | 8.1 | 8.1 |
-| F     | 25.0| 25.0|
-
-
-### **Example Parameters**
-- **ε** (epsilon): 1.5 meters.
-- **MinPts**: 3 points.
-
-
-### **Example Analysis**
-
-#### Step 1: Check each point's neighborhood.
-
-- **Point A**:
-  - Neighborhood: $N(A, \epsilon) = \{A, B, C\}$.
-  - $|N(A, \epsilon)| = 3 \geq 3$ (MinPts).
-  - $A$ is a **core point**.
-
-- **Point B**:
-  - Neighborhood: $N(B, \epsilon) = \{A, B, C\}$.
-  - $|N(B, \epsilon)| = 3 \geq 3$.
-  - $B$ is a **core point**.
-
-- **Point C**:
-  - Neighborhood: $N(C, \epsilon) = \{A, B, C\}$.
-  - $|N(C, \epsilon)| = 3 \geq 3$.
-  - $C$ is a **core point**.
-
-#### Step 2: Form clusters.
-
-- Points $A, B, C$ are density-reachable and form **Cluster 1**.
-
-#### Step 3: Check remaining points.
-
-- **Point D**:
-  - Neighborhood: $N(D, \epsilon) = \{D, E\}$.
-  - $|N(D, \epsilon)| = 2 < 3$ (MinPts).
-  - $D$ is not a core point.
-  - $D$ is a **noise point** (temporarily).
-
-- **Point E**:
-  - Neighborhood: $N(E, \epsilon) = \{D, E\}$.
-  - $|N(E, \epsilon)| = 2 < 3$.
-  - $E$ is not a core point.
-  - $E$ is also **noise**.
-
-- **Point F**:
-  - Neighborhood: $N(F, \epsilon) = \{F\}$.
-  - $|N(F, \epsilon)| = 1 < 3$.
-  - $F$ is a **noise point**.
-
-
-### **Final Clusters**
-- **Cluster 1**: $\{A, B, C\}$
-- Noise points: $\{D, E, F\}$.
-
-
-### **Advantages of DBSCAN**
-1. Identifies clusters of arbitrary shape.
-2. Automatically detects outliers as noise points.
-3. Does not require the number of clusters to be specified.
-
-
-### **Limitations**
-1. Choosing good values for $\epsilon$ and **MinPts** can be challenging.
-2. Struggles with varying density clusters.
-3. Sensitive to the distance metric used.
-
-
-## Example
-
-### **Parameters**
-- $\epsilon$ = 1.5
-- MinPts = 3
-
-
-### **Python Code**
-
-```python
-import numpy as np
-from sklearn.cluster import DBSCAN
-import matplotlib.pyplot as plt
-
-# Dataset
-points = np.array([
-    [1.0, 1.0],  # A
-    [1.2, 1.1],  # B
-    [1.1, 1.3],  # C
-    [8.0, 8.0],  # D
-    [8.1, 8.1],  # E
-    [25.0, 25.0] # F
-])
-
-# DBSCAN Parameters
-epsilon = 1.5
-min_samples = 3
-
-# DBSCAN Clustering
-dbscan = DBSCAN(eps=epsilon, min_samples=min_samples)
-labels = dbscan.fit_predict(points)
-
-# Output Results
-print("Cluster Labels for Each Point:", labels)
-print("\nLegend:")
-print("-1: Noise points")
-print("0, 1, ...: Cluster IDs")
-
-# Plotting the clusters
-for label in set(labels):
-    cluster_points = points[labels == label]
-    if label == -1:
-        plt.scatter(cluster_points[:, 0], cluster_points[:, 1], color='red', label='Noise', marker='x')
-    else:
-        plt.scatter(cluster_points[:, 0], cluster_points[:, 1], label=f'Cluster {label}')
-
-plt.xlabel("X Coordinate")
-plt.ylabel("Y Coordinate")
-plt.title("DBSCAN Clustering")
-plt.legend()
-plt.grid(True)
-plt.show()
-```
-
-### **Explanation of the Code**
-1. **Dataset**: 
-   - Represented as a NumPy array. Each row is a point (X, Y).
-   
-2. **Parameters**:
-   - `eps` (epsilon): 1.5, the maximum radius of the neighborhood.
-   - `min_samples`: 3, the minimum number of points to form a dense region.
-
-3. **DBSCAN**:
-   - The `DBSCAN` class from `sklearn.cluster` is used for clustering.
-   - The `fit_predict` method returns cluster labels for each data point.
-
-4. **Cluster Labels**:
-   - A label of `-1` indicates a noise point.
-   - Cluster IDs (e.g., `0`, `1`) represent valid clusters.
-
-5. **Visualization**:
-   - Each cluster is plotted with different colors.
-   - Noise points are shown in red with a cross (`x` marker).
-
-
-### **Output**
-#### Cluster Labels:
-```
-Cluster Labels for Each Point: [ 0  0  0 -1 -1 -1]
-Legend:
--1: Noise points
-0, 1, ...: Cluster IDs
-```
-
-#### Plot:
-- **Cluster 0**: Points A, B, and C form a cluster.
-- **Noise**: Points D, E, and F are marked as noise.
-
-
-
-
----
-
-
-# K-Means Clustering
-[Refresher for K-Means Clustering](https://youtu.be/CLKW6uWJtTc?si=oU2h6lLe_fS9XDX1)
-
-**K-Means** Clustering is a popular **unsupervised learning**  algorithm used for **partitioning data**  into a specified number of clusters (K). The goal is to group data points into clusters such that points in the same cluster are more similar to each other than to those in other clusters. The algorithm iteratively refines the cluster centers (centroids) to minimize the sum of squared distances between each point and its nearest centroid. [><](#31-k-means-clustering)
-
-**1. How K-Means Clustering Works** 
-The K-Means algorithm follows these steps:
- 
-1. **Choose the Number of Clusters (K)** :
-  - Decide the number of clusters, K.
-  - This is a hyperparameter that needs to be chosen in advance.
- 
-2. **Initialize Centroids** :
-  - Randomly select K data points as initial cluster centroids.
- 
-3. **Assign Data Points to Clusters** :
-  - For each data point, calculate its distance to each centroid.
-  - Assign the point to the cluster with the nearest centroid.
- 
-4. **Update Centroids** :
-  - Calculate the new centroids as the mean of all points assigned to each cluster.
- 
-5. **Repeat** :
-  - Repeat the assignment and update steps until the centroids no longer change significantly or a maximum number of iterations is reached.
- 
-6. **Converge** :
-  - The algorithm stops when the centroids stabilize.
-
-
-**2. Distance Metrics** The most common distance metric used in K-Means Clustering is **Euclidean distance** :
-
-$$
- \text{Distance} = \sqrt{\sum_{i=1}^n (x_i - y_i)^2} 
-$$
-
-
-**3. Example of K-Means Clustering in Python** 
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.cluster import KMeans
-from sklearn.datasets import make_blobs
-
-# Generate synthetic data
-X, _ = make_blobs(n_samples=300, centers=4, cluster_std=0.6, random_state=42)
-
-# Apply K-Means with K=4
-kmeans = KMeans(n_clusters=4, random_state=42)
-kmeans.fit(X)
-y_kmeans = kmeans.predict(X)
-
-# Plot the results
-plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, cmap='viridis', marker='o', edgecolor='k')
-plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=300, c='red', marker='X')
-plt.title("K-Means Clustering")
-plt.xlabel("Feature 1")
-plt.ylabel("Feature 2")
-plt.show()
-```
-**Explanation** : 
-  - **`make_blobs`**  generates a dataset with four distinct clusters.
-  - **`KMeans`**  is used to fit the model and assign cluster labels.
-  - **`cluster_centers_`**  provides the coordinates of the centroids.
-
-
-**4. Choosing the Number of Clusters (K)** 
-Selecting the right value of K is crucial for effective clustering. Common methods include:
- 
-1. **Elbow Method** :
-  - Plot the sum of squared errors (SSE) for different values of K.
-  - The optimal K is often where the SSE starts to decrease more slowly (the "elbow").
-
-$$
- \text{SSE} = \sum_{i=1}^{n} \|x_i - c_j\|^2 
-$$
- 
-2. **Silhouette Score** :
-  - Measures how similar a point is to its own cluster compared to other clusters.
-  - A higher score indicates better clustering.
-
-
-**5. Advantages of K-Means Clustering**  
-
-  - **Simple and easy to implement** . 
-  - **Scales well**  to large datasets. 
-  - Efficient with a time complexity of $O(n \cdot k \cdot i)$, where n is the number of data points, k is the number of clusters, and i is the number of iterations.
-
-
-
-**6. Disadvantages of K-Means Clustering**  
-  - **Requires specification of K** : The number of clusters must be chosen beforehand. 
-  - **Sensitive to initial centroids** : Poor initialization can lead to suboptimal clustering. 
-  - **Assumes spherical clusters** : Struggles with non-spherical cluster shapes. 
-  - **Not robust to noise and outliers** : Outliers can significantly affect the centroids.
-
-
-**7. Limitations and Solutions**  
-1. **Limitation** : K-Means is sensitive to the initial placement of centroids. 
-  - **Solution** : Use the **K-Means++ initialization** , which selects initial centroids in a smart way to speed up convergence and improve accuracy.
- 
-2. **Limitation** : Struggles with clusters of varying densities or non-spherical shapes. 
-  - **Solution** : Use density-based clustering algorithms like **DBSCAN**  or hierarchical clustering.
-
-
-
-**8. Applications of K-Means Clustering**  
-  - **Customer Segmentation** : Grouping customers based on purchasing behavior. 
-  - **Image Compression** : Reducing the number of colors in an image by clustering pixel colors. 
-  - **Anomaly Detection** : Identifying unusual data points as outliers. 
-  - **Document Clustering** : Grouping similar documents based on text features.
-
-
-**9. Practical Tips for Using K-Means**  
-  - **Standardize your data**  before applying K-Means, especially if features have different scales. 
-  - **Use the Elbow Method**  or **Silhouette Score**  to determine an optimal value for K. 
-  - **Initialize centroids using K-Means++**  to avoid poor convergence.
-
-
----
-
-**10. Comparison with Other Clustering Algorithms**
-| Feature | K-Means | DBSCAN | Hierarchical Clustering | 
-| --- | --- | --- | --- | 
-| Number of Clusters | Must be specified | Not required | Can be decided using dendrogram | 
-| Cluster Shape | Spherical | Arbitrary | Arbitrary | 
-| Noise Handling | Poor | Robust (identifies noise) | Poor | 
-| Scalability | High | Moderate | Low | 
-
-
-#### `Practical Example of K-Means`
-
-<details>
-  <summary>Practical Example of K-Means</summary>
-
-
-##### Let us take Practical example  of K-Means clustering, including manual centroid selection, distance calculation, and updating the centroids.**Problem Statement** We have a small dataset with two features: **Height (in cm)**  and **Weight (in kg)** . We want to cluster these points into **2 clusters (K = 2)**  using the K-Means algorithm.**Step 1: Dataset**
-
-| Index | Height (in cm) | Weight (in kg) | 
-| --- | --- | --- | 
-| 1 | 150 | 50 | 
-| 2 | 160 | 55 | 
-| 3 | 170 | 65 | 
-| 4 | 180 | 70 | 
-| 5 | 155 | 52 | 
-| 6 | 165 | 60 | 
-
-**Step 2: Initial Centroid Selection** 
-Let's randomly choose the first two data points as our initial centroids:
- 
-- **Centroid 1** : (150, 50) 
-- **Centroid 2** : (160, 55)
-
-**Step 3: Calculate Euclidean Distance** 
-For each data point, we calculate the Euclidean distance to each centroid.
-
-$$
- \text{Distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} 
-$$
-
-**Distance calculations** : 
-- For **Point 1**  (150, 50): 
-  - Distance to Centroid 1: $\sqrt{(150-150)^2 + (50-50)^2} = 0$ 
-  - Distance to Centroid 2: $\sqrt{(160-150)^2 + (55-50)^2} = \sqrt{100 + 25} = \sqrt{125} = 11.18$ 
-  - Assign to **Cluster 1**  (closer to Centroid 1).
- 
-- For **Point 2**  (160, 55): 
-  - Distance to Centroid 1: $\sqrt{(160-150)^2 + (55-50)^2} = 11.18$
-  - Distance to Centroid 2: $\sqrt{(160-160)^2 + (55-55)^2} = 0$ 
-  - Assign to **Cluster 2**  (closer to Centroid 2).
- 
-- For **Point 3**  (170, 65): 
-  - Distance to Centroid 1: $\sqrt{(170-150)^2 + (65-50)^2} = \sqrt{400 + 225} = \sqrt{625} = 25$
-  - Distance to Centroid 2: $\sqrt{(170-160)^2 + (65-55)^2} = \sqrt{100 + 100} = \sqrt{200} = 14.14$
-  - Assign to **Cluster 2** .
- 
-- For **Point 4**  (180, 70): 
-  - Distance to Centroid 1: $\sqrt{(180-150)^2 + (70-50)^2} = \sqrt{900 + 400} = \sqrt{1300} = 36.06$
-  - Distance to Centroid 2: $\sqrt{(180-160)^2 + (70-55)^2} = \sqrt{400 + 225} = \sqrt{625} = 25$
-  - Assign to **Cluster 2** .
- 
-- For **Point 5**  (155, 52): 
-  - Distance to Centroid 1: $\sqrt{(155-150)^2 + (52-50)^2} = \sqrt{25 + 4} = \sqrt{29} = 5.39$ 
-  - Distance to Centroid 2: $\sqrt{(155-160)^2 + (52-55)^2} = \sqrt{25 + 9} = \sqrt{34} = 5.83$
-  - Assign to **Cluster 1** .
- 
-- For **Point 6**  (165, 60): 
-  - Distance to Centroid 1: $\sqrt{(165-150)^2 + (60-50)^2} = \sqrt{225 + 100} = \sqrt{325} = 18.03$ 
-  - Distance to Centroid 2: $\sqrt{(165-160)^2 + (60-55)^2} = \sqrt{25 + 25} = \sqrt{50} = 7.07$ 
-  - Assign to **Cluster 2** .
-
-**Step 4: Cluster Assignment**
-
-| Index | Height | Weight | Assigned Cluster | 
-| --- | --- | --- | --- | 
-| 1 | 150 | 50 | Cluster 1 | 
-| 2 | 160 | 55 | Cluster 2 | 
-| 3 | 170 | 65 | Cluster 2 | 
-| 4 | 180 | 70 | Cluster 2 | 
-| 5 | 155 | 52 | Cluster 1 | 
-| 6 | 165 | 60 | Cluster 2 | 
-
-**Step 5: Update Centroids** 
-Calculate the new centroids by taking the mean of the points in each cluster:
- 
-- **New Centroid 1** : Mean of points in Cluster 1: 
-  - Height: $(150 + 155) / 2 = 152.5$
-  - Weight: $(50 + 52) / 2 = 51$
-  - New Centroid 1: (152.5, 51)
- 
-- **New Centroid 2** : Mean of points in Cluster 2: 
-  - Height: $(160 + 170 + 180 + 165) / 4 = 168.75$
-  - Weight: $(55 + 65 + 70 + 60) / 4 = 62.5$
-  - New Centroid 2: (168.75, 62.5)
-  
-**Step 6: Repeat the Process** 
-We repeat the distance calculation and cluster assignment steps with the new centroids until the centroids do not change (convergence).
-**Final Clusters** 
-After a few iterations, the centroids stabilize, and we obtain the final clusters:
-
-| Index | Height | Weight | Final Cluster | 
-| --- | --- | --- | --- | 
-| 1 | 150 | 50 | Cluster 1 | 
-| 2 | 160 | 55 | Cluster 2 | 
-| 3 | 170 | 65 | Cluster 2 | 
-| 4 | 180 | 70 | Cluster 2 | 
-| 5 | 155 | 52 | Cluster 1 | 
-| 6 | 165 | 60 | Cluster 2 | 
-
-**Visualization**  
-- **Cluster 1** : Represents shorter individuals with lower weight.
-- **Cluster 2** : Represents taller individuals with higher weight.
-
-This manual step-by-step example shows the core mechanism of the K-Means algorithm. In practice, libraries like **Scikit-Learn**  perform these steps efficiently.
-
-`program here`
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.cluster import KMeans
-from sklearn.datasets import make_blobs
-
-# Generate synthetic data
-X, _ = make_blobs(n_samples=300, centers=4, cluster_std=0.6, random_state=42)
-
-# Apply K-Means with K=4
-kmeans = KMeans(n_clusters=4, random_state=42)
-kmeans.fit(X)
-y_kmeans = kmeans.predict(X)
-
-# Plot the results
-plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, cmap='viridis', marker='o', edgecolor='k')
-plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=300, c='red', marker='X')
-plt.title("K-Means Clustering")
-plt.xlabel("Feature 1")
-plt.ylabel("Feature 2")
-plt.show()
-```
-
-</details>
-
 ---
 
 
@@ -2561,7 +1626,7 @@ Decision Trees and Random Forests are popular machine learning algorithms, but t
 
 
 
-# K-Means Clustering
+## K-Means Clustering
 [Refresher for K-Means Clustering](https://youtu.be/CLKW6uWJtTc?si=oU2h6lLe_fS9XDX1)
 
 **K-Means** Clustering is a popular **unsupervised learning**  algorithm used for **partitioning data**  into a specified number of clusters (K). The goal is to group data points into clusters such that points in the same cluster are more similar to each other than to those in other clusters. The algorithm iteratively refines the cluster centers (centroids) to minimize the sum of squared distances between each point and its nearest centroid. [><](#31-k-means-clustering)
@@ -2827,7 +1892,7 @@ plt.show()
 
 
 
-# DBSCAN
+## DBSCAN
 
 DBSCAN ( Density-Based Spatial Clustering of Applications with Noise) is a popular clustering algorithm that groups data points based on density, making it well-suited for datasets with irregular cluster shapes and noise. Here is a comprehensive explanation of DBSCAN and its components: [><](#32-dbscan)
 
@@ -2959,7 +2024,7 @@ Consider the following 2D points (in meters):
 3. Sensitive to the distance metric used.
 
 
-## Example
+### Example
 
 ### **Parameters**
 - $\epsilon$ = 1.5
@@ -3051,7 +2116,7 @@ Legend:
 ---
 
 
-# Hierarchical Clustering:
+## Hierarchical Clustering:
 
 **Hierarchical clustering** is an **unsupervised learning**  algorithm used for clustering data points into a hierarchy of clusters. It is commonly used in exploratory data analysis when the number of clusters is unknown. The goal is to create a dendrogram (tree-like diagram) that visually represents the nested grouping of data. [><](#33-hierarchical-clustering)
 
@@ -3216,7 +2281,7 @@ $$
 
 ---
 
-# Bagging and Boosting
+## Bagging and Boosting
 
 ### Q1. Discuss the advantages and disadvantages of using ensemble methods like Bagging and Boosting in Machine Learning.
 
@@ -3366,7 +2431,7 @@ Both methods have their advantages and are chosen based on the problem's nature 
 
 ---
 
-# Diff b/w AdaBoost and Gradient
+## Diff b/w AdaBoost and Gradient
 
 
 | Feature                     | **AdaBoost**                                    | **Gradient Boosting**                              |
@@ -3453,7 +2518,7 @@ Both methods are powerful ensemble techniques. **AdaBoost** is simpler and faste
 ---
 
 
-# Overfitting and Underfitting
+## Overfitting
 
 Overfitting occurs when a machine learning model learns the training data too well, including its noise and outliers, making it perform poorly on unseen data (test/validation data). The model becomes overly complex and fails to generalize.
 
@@ -3534,7 +2599,7 @@ plt.show()
 
 --- 
 
-### **Underfitting**
+## Underfitting
 
 Underfitting occurs when a machine learning model is too simple to capture the underlying patterns in the data. It performs poorly on both the training and test datasets, failing to generalize or even learn the training data effectively.
 
@@ -3613,7 +2678,7 @@ plt.show()
 ---
 
 
-# Accuracy and Performance Metrics
+## Accuracy and Performance Metrics
 
 
 Performance metrics are essential for evaluating the quality of a machine learning model. They measure how well a model performs on given data and help choose the best model for a problem.
@@ -3740,7 +2805,7 @@ $$
 ---
 
 
-# Descriptive Statistics
+## Descriptive Statistics
 
 Descriptive statistics summarize and describe the main features of a dataset. These are broadly divided into measures of central tendency, measures of variability, and measures of shape.
 
@@ -3944,7 +3009,7 @@ print(model.predict(vectorizer.transform(["AI in finance"])))  # Output: [[1 1]]
 ---
 
 
-# Unit 5_2
+# Unit 5
 
 ## **Lecture 37: Introduction to Text Classification**.
 
@@ -6501,8 +5566,10 @@ print(f"Accuracy: {accuracy:.2f}")
 ---
 
 
+# Unit-5
 
-# Unit 5
+<details>
+ <summary>unit5</summary>
 
 ### **Lecture 37: Introduction to Text Classification**
 
@@ -7349,10 +6416,18 @@ NLP techniques like NER, sentiment analysis, topic modeling, and word embeddings
 ---
 
 
+
+</details>
+
 ---
 
 
 # Unit 3
+
+<details>
+
+<summary>Unit-3</summary>
+
 
 ### Lecture 20: Introduction to Unsupervised Learning
 
@@ -7945,6 +7020,7 @@ Advanced unsupervised learning techniques have made significant strides in solvi
 
 
 
+</details>
 
 
 
